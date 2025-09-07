@@ -9,7 +9,7 @@ export default function Contact() {
         <section id="contact" className="py-20 px-6 bg-background text-foreground">
             <div className="max-w-3xl mx-auto text-center">
                 <h2 className="text-3xl md:text-4xl font-bold mb-8">Contactez-moi</h2>
-                <p className="text-muted mb-8">Vous pouvez m'envoyer un message directement via ce formulaire.</p>
+                <p className="text-muted mb-8">Vous pouvez m&apos;envoyer un message directement via ce formulaire.</p>
                 <form className="grid gap-6">
                     <input
                         type="text"

@@ -1,4 +1,7 @@
 // src/components/Projects.tsx
+
+import Image from "next/image";
+
 export const metadata = {
     title: "Projets - Killian Fievet",
     description: "Découvrez mes projets réalisés en développement web et mobile.",
@@ -43,10 +46,11 @@ export default function Projects() {
                             rel="noopener noreferrer"
                         >
                             <div className="relative w-full h-48 md:h-56">
-                                <img
+                                <Image
                                     src={project.image}
                                     alt={project.title}
-                                    className="object-cover w-full h-full"
+                                    layout="fill" // You can customize this based on your design
+                                    objectFit="cover" // To maintain aspect ratio
                                 />
                             </div>
                             <div className="p-6 text-left">
