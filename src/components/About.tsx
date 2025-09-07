@@ -14,11 +14,11 @@ export default function About() {
                 </p>
                 <div className="grid md:grid-cols-2 gap-8">
                     <div className="card-glass p-6">
-                        <h3 className="text-xl font-bold text-primary mb-2">SLAM 💻</h3>
+                        <h3 className="text-xl font-bold text-primary mb-2">SLAM &#x1F4BB;</h3>  {/* 💻 en échappé */}
                         <p className="text-muted">Développement web, mobile et logiciels métiers.</p>
                     </div>
                     <div className="card-glass p-6">
-                        <h3 className="text-xl font-bold text-secondary mb-2">SISR 🛠️</h3>
+                        <h3 className="text-xl font-bold text-secondary mb-2">SISR &#x1F6E0;&#xFE0F;</h3> {/* 🛠️ en échappé */}
                         <p className="text-muted">Gestion des réseaux, serveurs et sécurité informatique.</p>
                     </div>
                 </div>

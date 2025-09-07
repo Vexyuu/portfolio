@@ -1,4 +1,5 @@
 // src/components/Skills.tsx
+import Image from "next/image";
 
 export const metadata = {
     title: "Compétences - Killian Fievet",
@@ -6,12 +7,12 @@ export const metadata = {
 };
 
 const skills = [
-    { name: "HTML", icon: "@/data/images/HTML.png" },
-    { name: "CSS", icon: "@/data/images/CSS.png" },
-    { name: "JavaScript", icon: "@/data/images/JavaScript.png" },
-    { name: "React", icon: "@/data/images/React.png" },
-    { name: "PHP", icon: "@/data/images/PHP.png" },
-    { name: "Python", icon: "@/data/images/Python.png" },
+    { name: "HTML", icon: "/data/images/HTML.png" },
+    { name: "CSS", icon: "/data/images/CSS.png" },
+    { name: "JavaScript", icon: "/data/images/JavaScript.png" },
+    { name: "React", icon: "/data/images/React.png" },
+    { name: "PHP", icon: "/data/images/PHP.png" },
+    { name: "Python", icon: "/data/images/Python.png" },
 ];
 
 export default function Skills() {
@@ -22,7 +23,13 @@ export default function Skills() {
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
                     {skills.map((skill) => (
                         <div key={skill.name} className="card-glass flex flex-col items-center p-6 hover:scale-105 transition">
-                            <img src={skill.icon} alt={skill.name} className="w-16 h-16 mb-2" />
+                            <Image
+                                src={skill.icon}
+                                alt={skill.name}
+                                width={64}
+                                height={64}
+                                className="mb-2"
+                            />
                             <p className="text-muted">{skill.name}</p>
                         </div>
                     ))}

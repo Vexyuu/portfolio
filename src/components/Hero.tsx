@@ -35,7 +35,7 @@ export default function Hero() {
                     {phrases[current]}
                 </p>
                 <div className="flex justify-center md:justify-start gap-4 mt-4">
-                    <a href="@/data/CV_Alternance_Sorbonne_2025.pdf" target="_blank"
+                    <a href="/data/CV_Alternance_Sorbonne_2025.pdf" target="_blank"
                         className="px-6 py-3 font-bold rounded-lg text-white bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-400 hover:scale-105 hover:shadow-xl transition-transform duration-300">
                         Télécharger mon CV
                     </a>
@@ -47,7 +47,7 @@ export default function Hero() {
             <div className="flex-1 mt-10 md:mt-0">
                 <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto">
                     <Image
-                        src="/image/photo.jpg"
+                        src="/data/photo.jpg"
                         alt="Photo Killian Fievet"
                         fill
                         className="rounded-full object-cover shadow-2xl"
