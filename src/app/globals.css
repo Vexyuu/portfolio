@@ -1,26 +1,54 @@
 @import "tailwindcss";
 
+/* Couleurs modernes et variables */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-background: #0f172a; /* sombre */
+  --color-foreground: #f8fafc; /* texte clair */
+  --color-primary: #6366f1; /* violet vif */
+  --color-secondary: #22d3ee; /* cyan */
+  --color-accent: #facc15; /* jaune punch */
+  --color-muted: #94a3b8; /* gris clair */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+[data-theme="light"] {
+  --color-background: #f8fafc;
+  --color-foreground: #1e293b;
+  --color-primary: #6366f1;
+  --color-secondary: #22d3ee;
+  --color-accent: #f59e0b;
+  --color-muted: #64748b;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.4s, color 0.4s;
+}
+
+/* Dégradé animé pour Hero */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-bg {
+  background: linear-gradient(270deg, #6366f1, #22d3ee, #facc15);
+  background-size: 600% 600%;
+  animation: gradientBG 15s ease infinite;
+}
+
+/* Glassmorphism pour cartes */
+.card-glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-glass:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 30px rgba(0,0,0,0.3);
 }
