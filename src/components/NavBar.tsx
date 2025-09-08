@@ -10,7 +10,7 @@ export default function Navbar() {
     const links = [
         { href: "/#about", label: "À propos" },
         { href: "/career", label: "Parcours" },
-        { href: "/#projets", label: "Projets" },
+        { href: "/#projects", label: "Projets" },
         { href: "/#certifications", label: "Certifications" },
         { href: "/#contact", label: "Contact" },
     ];
@@ -50,7 +50,7 @@ export default function Navbar() {
                         >
                             <Link
                                 href={href}
-                                className="relative text-foreground hover:text-primary transition-colors duration-200"
+                                className="relative text-foreground hover:text-primary"
                             >
                                 {label}
                                 {/* Soulignement animé */}

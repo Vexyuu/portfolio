@@ -82,11 +82,11 @@ export default function Career() {
     ];
 
     return (
-        <main className="max-w-6xl mx-auto px-4 py-16">
+        <main className="max-w-6xl mx-auto px-4 py-16 *:min-h-screen *:flex *:flex-col *:justify-center">
             <section id="section-parcours">
                 {/* Titre avec gradient animé */}
                 <h1 className="text-5xl font-extrabold text-center mb-16 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent animate-gradient bg-[length:200%_200%]">
-                    Mon Parcours 🚀
+                    Mon Parcours
                 </h1>
 
                 <div className="flex flex-col md:flex-row gap-12">

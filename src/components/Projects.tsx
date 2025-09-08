@@ -39,26 +39,28 @@ export default function Projects() {
             <div className="max-w-6xl mx-auto text-center">
                 <h2 className="text-3xl md:text-4xl font-bold mb-12">Mes projets</h2>
 
-                <div className="grid md:grid-cols-3 gap-8">
+                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                     {projects.map((project) => (
-                        <Link
+                        <div
                             key={project.title}
-                            href={project.more}
-                            className="card-glass overflow-hidden hover:scale-105 transition-transform duration-300 block"
-                            rel="noopener noreferrer"
+                            className="card-glass overflow-hidden hover:scale-105 transition-transform duration-300"
                         >
-                            <div className="relative w-full h-48 md:h-56">
-                                <Image
-                                    src={project.image}
-                                    alt={`Aperçu du projet ${project.title}`}
-                                    fill
-                                    className="object-cover"
-                                    priority={true}
-                                />
-                            </div>
+                            <Link href={project.more} rel="noopener noreferrer">
+                                <div className="relative w-full h-48 md:h-56">
+                                    <Image
+                                        src={project.image}
+                                        alt={`Aperçu du projet ${project.title}`}
+                                        fill
+                                        className="object-cover"
+                                        priority={true}
+                                    />
+                                </div>
+                            </Link>
 
                             <div className="p-6 text-left">
-                                <h3 className="text-xl font-bold text-primary mb-2">{project.title}</h3>
+                                <Link href={project.more} rel="noopener noreferrer">
+                                    <h3 className="text-xl font-bold text-primary mb-2 hover:underline">{project.title}</h3>
+                                </Link>
 
                                 {project.isFinite ? (
                                     <span className="inline-block bg-accent text-background text-xs font-semibold px-2 py-1 rounded-full mb-2">
@@ -99,8 +101,9 @@ export default function Projects() {
                                         )}
                                     </div>
                                 </div>
+
                             </div>
-                        </Link>
+                        </div>
                     ))}
                 </div>
 

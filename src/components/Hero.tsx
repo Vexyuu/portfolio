@@ -10,7 +10,7 @@ export const metadata = {
 };
 
 const phrases = [
-    "Développeur web & mobile",
+    "Développeur full-stack",
     "Passionné par l'innovation",
     "Toujours prêt à relever des challenges"
 ];
