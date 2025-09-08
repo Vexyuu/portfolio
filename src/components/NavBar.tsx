@@ -1,32 +1,67 @@
 "use client";
 import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
     const [open, setOpen] = useState(false);
+
+    const links = [
+        { href: "/#about", label: "À propos" },
+        { href: "/career", label: "Parcours" },
+        { href: "/#projets", label: "Projets" },
+        { href: "/#certifications", label: "Certifications" },
+        { href: "/#contact", label: "Contact" },
+    ];
+
     return (
-        <nav className="fixed w-full bg-background/90 backdrop-blur-md shadow z-50">
-            <div className="max-w-6xl mx-auto flex justify-between items-center p-4">
-                <div className="text-xl font-bold text-foreground">Killian Fievet</div>
-                <button className="md:hidden" onClick={() => setOpen(!open)}>
+        <nav className="fixed w-full bg-background/80 backdrop-blur-lg shadow z-50">
+            <div className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+                {/* Logo / Nom */}
+                <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    className="text-2xl font-extrabold tracking-tight text-primary"
+                >
+                    <Link href="/">Killian Fievet</Link>
+                </motion.div>
+
+                {/* Menu burger mobile */}
+                <button
+                    className="md:hidden text-2xl"
+                    onClick={() => setOpen(!open)}
+                >
                     ☰
                 </button>
-                <ul className={`md:flex gap-6 ${open ? "block" : "hidden"} md:block`}>
-                    <li><a href="#about" className="hover:text-primary">À propos</a></li>
-                    <li><a href="#parcours" className="hover:text-primary">Parcours</a></li>
-                    <li className="relative group">
-                        <span className="hover:text-primary cursor-pointer">Projets ▼</span>
-                        <ul className="absolute hidden group-hover:block bg-background border border-muted rounded p-2">
-                            <li><a href="#projetsPersonnels" className="block py-1 px-3 hover:text-primary">Personnels</a></li>
-                            <li><a href="#projetsAcademiques" className="block py-1 px-3 hover:text-primary">Académiques</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#veille" className="hover:text-primary">Veille tech</a></li>
-                    <li><a href="#E5" className="hover:text-primary">Synthèse</a></li>
-                    <li><a href="#certifications" className="hover:text-primary">Certifications</a></li>
-                    <li><a href="#contact" className="hover:text-primary">Contact</a></li>
+
+                {/* Liens */}
+                <ul
+                    className={`absolute md:static top-16 right-0 md:flex items-center gap-8 
+                    bg-background md:bg-transparent shadow-md md:shadow-none 
+                    p-6 md:p-0 rounded-lg md:rounded-none
+                    transition-all duration-300 ease-in-out 
+                    ${open ? "block" : "hidden"} md:block`}
+                >
+                    {links.map(({ href, label }) => (
+                        <motion.li
+                            key={href}
+                            whileHover={{ scale: 1.1 }}
+                            className="font-medium"
+                        >
+                            <Link
+                                href={href}
+                                className="relative text-foreground hover:text-primary transition-colors duration-200"
+                            >
+                                {label}
+                                {/* Soulignement animé */}
+                                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                            </Link>
+                        </motion.li>
+                    ))}
                 </ul>
-                <div className="ml-4">
+
+                {/* Bouton thème */}
+                <div className="ml-6">
                     <ThemeToggle />
                 </div>
             </div>

@@ -3,6 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 
+export const metadata = {
+    title: "Projets - Killian Fievet",
+    description: "Découvrez mes projets réalisés en développement web et mobile.",
+};
+
 const projects = [
     {
         title: "Billy.IA - Assistant IA",
@@ -31,35 +36,31 @@ const projects = [
         demo: "#",
         isFinite: true,
     },
-];
+]
 
 export default function Projects() {
     return (
         <section id="projects" className="py-20 px-6 bg-background text-foreground">
             <div className="max-w-6xl mx-auto text-center">
                 <h2 className="text-3xl md:text-4xl font-bold mb-12">Mes projets</h2>
-
                 <div className="grid md:grid-cols-3 gap-8">
-                    {projects.map((project) => (
+                    {projects.map(project => (
                         <Link
                             key={project.title}
                             href={project.more}
-                            className="card-glass overflow-hidden hover:scale-105 transition-transform duration-300 block"
+                            className="card-glass overflow-hidden hover:scale-105 transition-transform duration-300"
                             rel="noopener noreferrer"
                         >
                             <div className="relative w-full h-48 md:h-56">
                                 <Image
                                     src={project.image}
-                                    alt={`Aperçu du projet ${project.title}`}
-                                    fill
-                                    className="object-cover"
-                                    priority={true}
+                                    alt={project.title}
+                                    layout="fill" // You can customize this based on your design
+                                    objectFit="cover" // To maintain aspect ratio
                                 />
                             </div>
-
                             <div className="p-6 text-left">
                                 <h3 className="text-xl font-bold text-primary mb-2">{project.title}</h3>
-
                                 {project.isFinite ? (
                                     <span className="inline-block bg-accent text-background text-xs font-semibold px-2 py-1 rounded-full mb-2">
                                         Projet fini
@@ -71,43 +72,26 @@ export default function Projects() {
                                 )}
 
                                 <p className="text-muted">{project.description}</p>
+                                <div className="mt-4 flex justify-between items-center">
+                                    <Link href={project.more} className="text-accent hover:underline">En savoir plus</Link>
 
-                                <div className="mt-4 flex justify-between items-center text-sm">
-                                    <Link href={project.more} className="text-accent hover:underline">
-                                        En savoir plus
-                                    </Link>
-
-                                    <div className="flex gap-3">
+                                    {project.isFinite && (
                                         <Link
-                                            href={project.link}
+                                            href={project.demo}
                                             className="text-accent hover:underline"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                         >
-                                            GitHub
+                                            Voir la démo
                                         </Link>
-
-                                        {project.isFinite && (
-                                            <Link
-                                                href={project.demo}
-                                                className="text-accent hover:underline"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                Démo
-                                            </Link>
-                                        )}
-                                    </div>
+                                    )}
                                 </div>
                             </div>
                         </Link>
                     ))}
                 </div>
-
                 <div className="mt-8">
-                    <Link href="/projects" rel="noopener noreferrer" className="text-accent hover:underline">
-                        Voir plus ici
-                    </Link>
+                    <Link href="/projects" rel="noopener noreferrer" className="text-accent hover:underline">Voir plus ici</Link>
                 </div>
             </div>
         </section>

@@ -1,0 +1,25 @@
+src/
+│
+├─ app/
+│   ├─ career/                  # Page détaillée carrière
+│   │   └─ page.tsx
+│   │
+│   ├─ projects/                # Pages détaillées projets (optionnel)
+│   │   └─ [projectName]/       # Exemple : app/projects/portfolio-tool/
+│   │       └─ page.tsx
+│   │
+│   ├─ globals.css
+│   ├─ layout.tsx               # Layout global : NavBar + Footer + ThemeToggle
+│   └─ page.tsx                 # Page principale / Home (scroll infini)
+│
+└─ components/                  # Composants réutilisables
+    ├─ Hero.tsx                 # Intro / nom + punchline
+    ├─ NavBar.tsx               # Menu avec liens encrages
+    ├─ About.tsx                # À propos / bio / compétences
+    ├─ Skills.tsx               # Compétences techniques détaillées
+    ├─ Projects.tsx             # Section projets avec mini-cards
+    │   └─ ProjectCard.tsx      # Carte projet réutilisable
+    ├─ Testimonials.tsx         # Avis / recommandations
+    ├─ Contact.tsx              # Formulaire et infos de contact
+    ├─ Footer.tsx               # Footer global
+    └─ ThemeToggle.tsx          # Switch clair / sombre

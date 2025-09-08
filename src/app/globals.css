@@ -26,11 +26,19 @@ body {
   transition: background-color 0.4s, color 0.4s;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Dégradé animé pour Hero */
 @keyframes gradientBG {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  animation: gradient 5s ease infinite;
 }
 
 .hero-bg {
