@@ -7,9 +7,9 @@ const nextConfig: NextConfig = {
   },
   publicRuntimeConfig: {
     basePath: "/portfolio",
-  },
-  basePath: "/portfolio",
-  assetPrefix: "/portfolio/",
+  }
+  // basePath: "/portfolio",
+  // assetPrefix: "/portfolio/",
 };
 
 export default nextConfig;
