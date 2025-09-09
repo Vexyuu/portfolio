@@ -1,4 +1,6 @@
 // src/components/Skills.tsx
+
+import { getAssetPath } from "@/utils/paths";
 import Image from "next/image";
 
 export const metadata = {
@@ -7,12 +9,12 @@ export const metadata = {
 };
 
 const skills = [
-    { name: "HTML", icon: "/data/images/HTML.png" },
-    { name: "CSS", icon: "/data/images/CSS.png" },
-    { name: "JavaScript", icon: "/data/images/JavaScript.png" },
-    { name: "React", icon: "/data/images/React.png" },
-    { name: "PHP", icon: "/data/images/PHP.png" },
-    { name: "Python", icon: "/data/images/Python.png" },
+    { name: "HTML", icon: getAssetPath("/data/images/HTML.png") },
+    { name: "CSS", icon: getAssetPath("/data/images/CSS.png") },
+    { name: "JavaScript", icon: getAssetPath("/data/images/JavaScript.png") },
+    { name: "React", icon: getAssetPath("/data/images/React.png") },
+    { name: "PHP", icon: getAssetPath("/data/images/PHP.png") },
+    { name: "Python", icon: getAssetPath("/data/images/Python.png") },
 ];
 
 export default function Skills() {

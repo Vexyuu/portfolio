@@ -5,8 +5,11 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true, // évite les soucis avec l'optimisation Next sur GitHub Pages
   },
-  basePath: process.env.NODE_ENV === "production" ? "/portfolio" : "",
-  assetPrefix: process.env.NODE_ENV === "production" ? "/portfolio/" : "",
+  publicRuntimeConfig: {
+    basePath: "/portfolio",
+  },
+  basePath: "/portfolio",
+  assetPrefix: "/portfolio/",
 };
 
 export default nextConfig;

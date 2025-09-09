@@ -1,5 +1,6 @@
 // src/components/Projects.tsx
 
+import { getAssetPath } from "@/utils/paths";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,8 +9,8 @@ const projects = [
         title: "Billy.IA - Assistant IA",
         description: "Un assistant personnel propulsé par l'IA pour répondre à vos questions.",
         link: "https://github.com/Vexyuu/portfolio",
-        more: "/projects/billy-ia",
-        image: "/data/projects/BillyIA_1.webp",
+        more: getAssetPath("/projects/billy-ia"),
+        image: getAssetPath("/data/projects/BillyIA_1.webp"),
         demo: "#",
         isFinite: false,
     },
@@ -17,8 +18,8 @@ const projects = [
         title: "Application Recettes",
         description: "Une app interactive type TikTok pour partager des recettes.",
         link: "https://github.com/Vexyuu/cookme",
-        more: "/projects/cookme",
-        image: "/data/projects/cookme.png",
+        more: getAssetPath("/projects/cookme"),
+        image: getAssetPath("/data/projects/cookme.png"),
         demo: "#",
         isFinite: false,
     },
@@ -26,8 +27,8 @@ const projects = [
         title: "Générateur de mots de passe",
         description: "Un petit outil pratique pour créer des mots de passe sécurisés.",
         link: "https://github.com/Vexyuu/password-generator",
-        more: "/projects/password-generator",
-        image: "/data/projects/password-generator.png",
+        more: getAssetPath("/projects/password-generator"),
+        image: getAssetPath("/data/projects/password-generator.png"),
         demo: "#",
         isFinite: true,
     },

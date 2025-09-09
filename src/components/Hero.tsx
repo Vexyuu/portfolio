@@ -1,5 +1,6 @@
 // src/components/Hero.tsx
 "use client";
+import { getAssetPath } from "@/utils/paths";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
@@ -47,7 +48,7 @@ export default function Hero() {
             <div className="flex-1 mt-10 md:mt-0">
                 <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto">
                     <Image
-                        src="/data/photo.jpg"
+                        src={getAssetPath("/data/photo.jpg")}
                         alt="Photo Killian Fievet"
                         fill
                         className="rounded-full object-cover shadow-2xl"

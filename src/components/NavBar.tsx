@@ -1,4 +1,7 @@
+// src/components/NavBar.tsx
+
 "use client";
+import { getAssetPath } from "@/utils/paths";
 import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import Link from "next/link";
@@ -8,11 +11,11 @@ export default function Navbar() {
     const [open, setOpen] = useState(false);
 
     const links = [
-        { href: "/#about", label: "À propos" },
-        { href: "/career", label: "Parcours" },
-        { href: "/#projects", label: "Projets" },
-        { href: "/#certifications", label: "Certifications" },
-        { href: "/#contact", label: "Contact" },
+        { href: getAssetPath("/#about"), label: "À propos" },
+        { href: getAssetPath("/career"), label: "Parcours" },
+        { href: getAssetPath("/#projects"), label: "Projets" },
+        { href: getAssetPath("/#certifications"), label: "Certifications" },
+        { href: getAssetPath("/#contact"), label: "Contact" },
     ];
 
     return (
@@ -23,7 +26,7 @@ export default function Navbar() {
                     whileHover={{ scale: 1.05 }}
                     className="text-2xl font-extrabold tracking-tight text-primary"
                 >
-                    <Link href="/">Killian Fievet</Link>
+                    <Link href={getAssetPath("/")}>Killian Fievet</Link>
                 </motion.div>
 
                 {/* Menu burger mobile */}
