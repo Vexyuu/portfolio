@@ -1,9 +1,9 @@
 // src/components/Hero.tsx
 "use client";
-import { getAssetPath } from "@/utils/paths";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-
+import Link from "next/link";
+import { FaDownload, FaEnvelope } from "react-icons/fa";
 
 export const metadata = {
     title: "Accueil - Killian Fievet",
@@ -13,7 +13,8 @@ export const metadata = {
 const phrases = [
     "Développeur full-stack",
     "Passionné par l'innovation",
-    "Toujours prêt à relever des challenges"
+    "Toujours prêt à relever des défis",
+    "Votre futur développeur",
 ];
 
 export default function Hero() {
@@ -27,30 +28,38 @@ export default function Hero() {
     }, []);
 
     return (
-        <section className="hero-bg h-screen flex flex-col md:flex-row justify-center items-center text-center md:text-left px-6">
+        <section className="hero-bg min-h-screen pt-20 flex flex-col md:flex-row justify-center items-center text-center md:text-left px-6">
             <div className="flex-1 space-y-6">
                 <h1 className="text-5xl md:text-6xl font-bold text-foreground">
                     Bonjour, je suis <span className="text-primary">Killian Fievet</span>
                 </h1>
-                <p className="text-xl md:text-2xl text-muted h-8 transition-all">
+                <p
+                    key={current}
+                    className="text-xl md:text-2xl text-muted h-8 transition-opacity duration-600 ease-in-out opacity-100"
+                >
                     {phrases[current]}
                 </p>
                 <div className="flex justify-center md:justify-start gap-4 mt-4">
-                    <a href="/data/CV_Alternance_Sorbonne_2025.pdf" target="_blank"
-                        className="px-6 py-3 font-bold rounded-lg text-white bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-400 hover:scale-105 hover:shadow-xl transition-transform duration-300">
+                    <Link href="/data/CV_Alternance_Sorbonne_2025.pdf" target="_blank"
+                        aria-label="Télécharger le CV de Killian Fievet"
+                        className="px-6 py-3 group font-bold rounded-lg text-white bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-400 hover:scale-105 hover:shadow-xl transition"
+                    >
+                        <FaDownload className="inline mr-2" />
                         Télécharger mon CV
-                    </a>
-                    <a href="#contact" className="px-6 py-3 rounded-lg border-2 border-primary text-primary hover:bg-primary hover:text-white transition">
+                    </Link>
+                    <Link href="#contact" className="px-6 py-3 rounded-lg border-2 border-primary text-primary hover:bg-primary hover:text-white transition">
+                        <FaEnvelope className="inline mr-2" />
                         Me contacter
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div className="flex-1 mt-10 md:mt-0">
                 <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto">
                     <Image
-                        src={getAssetPath("/data/photo.jpg")}
+                        src={"/data/photo.jpg"}
                         alt="Photo Killian Fievet"
                         fill
+                        priority
                         className="rounded-full object-cover shadow-2xl"
                     />
                 </div>

@@ -1,55 +1,70 @@
-// import { Geist, Geist_Mono } from "next/font/google";
-// import { Inter } from "next/font/google";
+// src/app/layout.tsx
 import "./globals.css";
 import Navbar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
-
-// const inter = Inter({ subsets: ["latin"] });
+import { ThemeProvider } from "next-themes";
 
 export const metadata = {
-  title: "Portfolio Killian Fievet",
-  description: "Découvrez le portfolio de Killian Fievet, développeur passionné. Projets, compétences et contact.",
+  title: {
+    default: "Portfolio Killian Fievet",
+    template: "%s | Killian Fievet"
+  },
+  description: "Découvrez le portfolio de Killian Fievet, développeur web passionné spécialisé en React, Next.js et développement moderne.",
+  keywords: ["Killian Fievet", "portfolio développeur", "React", "Next.js", "Tailwind", "développeur web", "freelance"],
+  authors: [{ name: "Killian Fievet" }],
+  creator: "Killian Fievet",
+  publisher: "Killian Fievet",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "fr_FR",
+    url: "https://vexyuu.github.io/portfolio",
+    siteName: "Portfolio Killian Fievet",
+    title: "Portfolio Killian Fievet - Développeur Web",
+    description: "Découvrez mes projets et compétences en développement web moderne.",
+    images: [
+      {
+        url: "https://vexyuu.github.io/portfolio/icon1.png",
+        width: 1200,
+        height: 630,
+        alt: "Portfolio Killian Fievet",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Portfolio Killian Fievet",
+    description: "Développeur web passionné spécialisé en React et Next.js",
+    images: ["https://vexyuu.github.io/portfolio/og-image.png"],
+  },
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
+  metadataBase: new URL("https://vexyuu.github.io/portfolio"),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr">
+    <html lang="fr" suppressHydrationWarning>
       <body>
-        <Navbar />
-        {children}
-        <Footer />
+        {/* Ajout du provider global */}
+        <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem>
+          <Navbar />
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
 }
-
-// export default function RootLayout({
-//   children,
-// }: Readonly<{
-//   children: React.ReactNode;
-// }>) {
-//   return (
-//     <html lang="fr">
-//       <body
-//         // className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100`}
-//         className={`antialiased bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100`}
-//       >
-//         {children}
-//       </body>
-//     </html>
-//   );
-// }

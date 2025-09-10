@@ -2,6 +2,26 @@
 "use client";
 import { motion } from "framer-motion";
 
+export const metadata = {
+    title: "Parcours & Carrière - Killian Fievet",
+    description: "Découvrez le parcours scolaire et professionnel de Killian Fievet : expériences, stages et alternances en développement web et systèmes d’information.",
+    keywords: ["Killian Fievet", "carrière développeur", "expérience professionnelle", "alternance informatique", "développeur web", "portfolio"],
+    openGraph: {
+        title: "Carrière de Killian Fievet",
+        description: "Découvrez mes expériences académiques et professionnelles en informatique.",
+        url: "https://vexyuu.github.io/portfolio/career",
+        type: "profile",
+        images: [
+            {
+                url: "https://vexyuu.github.io/portfolio/og-career.png",
+                width: 1200,
+                height: 630,
+                alt: "Carrière de Killian Fievet",
+            },
+        ],
+    },
+};
+
 export default function Career() {
     const schoolTimeline = [
         {

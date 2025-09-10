@@ -19,6 +19,8 @@ export default function Contact() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [responseMessage, setResponseMessage] = useState("");
 
+    const isFormIncomplete = !formData.name || !formData.email || !formData.message;
+
     // Gérer le changement des valeurs du formulaire
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -33,12 +35,20 @@ export default function Contact() {
         try {
             const result = await emailjs.sendForm(
                 "service_q23dtpe",    // Service ID
-                "template_njitjak",   // Template ID
+                "template_wbcsc7d",   // Template ID
                 e.target as HTMLFormElement, // Utilisation du formulaire dans la soumission
                 "8EGel7H_ryggwHh1h"     // User ID
             );
             console.log(result.text);
             setResponseMessage("Message envoyé avec succès !");
+
+            setTimeout(() => {
+                setResponseMessage("");
+            }, 5000); // 5 secondes
+
+            // Réinitialiser le formulaire
+            setFormData({ name: "", email: "", message: "" });
+
         } catch (error) {
             console.error("Erreur d'envoi", error);
             setResponseMessage("Erreur lors de l'envoi du message.");
@@ -80,12 +90,16 @@ export default function Contact() {
                     <button
                         type="submit"
                         className="px-6 py-3 font-bold rounded-lg text-white bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-400 hover:scale-105 hover:shadow-xl transition-transform duration-300"
-                        disabled={isSubmitting}
+                        disabled={isSubmitting || isFormIncomplete}
                     >
                         {isSubmitting ? "Envoi..." : "Envoyer"}
                     </button>
                 </form>
-                {responseMessage && <p className="mt-4">{responseMessage}</p>}
+                {responseMessage && (
+                    <p className={`mt-4 text-lg font-medium transition-opacity duration-500 ${responseMessage.includes("succès") ? "text-green-500" : "text-red-500"}`}>
+                        {responseMessage}
+                    </p>
+                )}
                 <div className="mt-12 flex justify-center gap-6">
                     <Link href="mailto:killianfievetpro@gmail.com" className="text-primary hover:underline">
                         <FaEnvelope className="inline-block mr-2" />

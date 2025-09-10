@@ -1,11 +1,25 @@
 // src/app/projects/billy-ia/page.tsx
-
 import { getAssetPath } from "@/utils/paths";
 import ProjectCard from "@/components/ProjectCard";
 
 export const metadata = {
-    title: "Billy.IA - Assistant IA",
-    description: "Détails du projet Billy.IA - Assistant IA par Killian Fievet",
+    title: "Billy.IA - Assistant IA local",
+    description: "Billy.IA, un assistant personnel basé sur TensorFlow et Python, conçu pour fonctionner en local sans dépendance externe.",
+    keywords: ["IA locale", "assistant IA", "TensorFlow", "Python", "Killian Fievet", "portfolio projet"],
+    openGraph: {
+        title: "Projet Billy.IA - Assistant IA local",
+        description: "Assistant personnel propulsé par l’IA, développé avec Python, TensorFlow et Pandas.",
+        url: "https://vexyuu.github.io/portfolio/projects/billy-ia",
+        type: "article",
+        images: [
+            {
+                url: "https://vexyuu.github.io/portfolio/data/projects/BillyIA_1.webp",
+                width: 1200,
+                height: 630,
+                alt: "Billy.IA - Assistant IA",
+            },
+        ],
+    },
 };
 
 export default function BillyIA() {
