@@ -7,9 +7,10 @@ const nextConfig: NextConfig = {
   },
   publicRuntimeConfig: {
     basePath: "/portfolio",
-  }
-  // basePath: "/portfolio",
-  // assetPrefix: "/portfolio/",
+  },
+  basePath: "/portfolio",
+  assetPrefix: "/portfolio/",
+  trailingSlash: true,
 };
 
 export default nextConfig;
