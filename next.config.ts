@@ -5,9 +5,6 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true, // évite les soucis avec l'optimisation Next sur GitHub Pages
   },
-  publicRuntimeConfig: {
-    basePath: "/portfolio",
-  },
   basePath: "/portfolio",
   assetPrefix: "/portfolio/",
   trailingSlash: true,
