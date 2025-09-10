@@ -57,6 +57,13 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" suppressHydrationWarning>
+      <head>
+        {/* ✅ la meta de Google Search Console */}
+        <meta
+          name="google-site-verification"
+          content="5pd-z3HzxVHsbikp2ERm4HR-ddUabKTS7YMLk_Z9bMc"
+        />
+      </head>
       <body>
         {/* Ajout du provider global */}
         <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem>
