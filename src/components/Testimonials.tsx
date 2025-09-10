@@ -2,23 +2,23 @@
 "use client";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+// import Image from "next/image";
+import { RxAvatar } from "react-icons/rx";
 
 const testimonials = [
     {
         name: "M. Halimi",
-        role: "Professeur",
-        avatar: "/avatar-placeholder.png",
-        quote: "Killian est un étudiant sérieux, curieux et très impliqué dans ses projets. Sa capacité à apprendre vite et à appliquer ses connaissances est remarquable.",
+        role: "Professeur d’informatique",
+        // avatar: "/avatar-placeholder.png",
+        quote: `Je suis professeur en développement logiciel à l’école Aurlom. J’ai la chance d’enseigner le développement procédural, Web, et la Programmation Orientée Objet à Mr Killian Fievet.
+        Killian est un étudiant très sérieux, motivé dans ses études, avec un réel talent dans la résolution de problèmes complexes reposants sur des paradigmes variés.`,
     },
     {
         name: "M. Dupont",
         role: "Professeur",
-        avatar: "/avatar-placeholder.png",
+        // avatar: "/avatar-placeholder.png",
         quote: "Killian est un étudiant sérieux, curieux et très impliqué dans ses projets. Sa capacité à apprendre vite et à appliquer ses connaissances est remarquable.",
     },
-
-    // tu peux ajouter d'autres avis ici
 ];
 
 export default function Testimonials() {
@@ -65,13 +65,9 @@ export default function Testimonials() {
                                 className="min-w-[300px] max-w-xs p-6 bg-background/50 backdrop-blur-md rounded-2xl shadow-lg flex-shrink-0"
                             >
                                 <div className="flex items-center gap-4 mb-4">
-                                    {t.avatar && (
-                                        <Image
-                                            src={t.avatar}
-                                            alt={t.name}
-                                            className="w-12 h-12 rounded-full object-cover"
-                                        />
-                                    )}
+                                    <RxAvatar
+                                        className="w-12 h-12 rounded-full object-cover"
+                                    />
                                     <div className="text-left">
                                         <p className="font-semibold">{t.name}</p>
                                         <p className="text-xs text-muted-foreground">{t.role}</p>
