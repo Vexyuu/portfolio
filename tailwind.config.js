@@ -1,22 +1,21 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    darkMode: ["class", '[data-theme="dark"]'],
-    content: ["./src/**/*.{js,ts,jsx,tsx}"],
+    content: [
+        './pages/**/*.{js,ts,jsx,tsx,mdx}',
+        './components/**/*.{js,ts,jsx,tsx,mdx}',
+        './app/**/*.{js,ts,jsx,tsx,mdx}',
+    ],
     theme: {
         extend: {
             colors: {
-                background: "var(--background)",
-                foreground: "var(--foreground)",
-                primary: "var(--primary)",
-                secondary: "var(--secondary)",
-                accent: "var(--accent)",
-                muted: "var(--muted)",
-            },
-            fontFamily: {
-                sans: "var(--font-sans)",
-                mono: "var(--font-mono)",
+                background: 'hsl(var(--background))',
+                foreground: 'hsl(var(--foreground))',
+                primary: 'hsl(var(--primary))',
+                secondary: 'hsl(var(--secondary))',
+                accent: 'hsl(var(--accent))',
+                muted: 'hsl(var(--muted))',
             },
         },
     },
     plugins: [],
-};
+}
