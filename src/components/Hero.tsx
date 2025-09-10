@@ -59,7 +59,6 @@ export default function Hero() {
                         src={"/data/photo.jpg"}
                         alt="Photo Killian Fievet"
                         fill
-                        priority
                         className="rounded-full object-cover shadow-2xl"
                     />
                 </div>

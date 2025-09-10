@@ -2,6 +2,7 @@
 "use client";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 const testimonials = [
     {
@@ -65,7 +66,7 @@ export default function Testimonials() {
                             >
                                 <div className="flex items-center gap-4 mb-4">
                                     {t.avatar && (
-                                        <img
+                                        <Image
                                             src={t.avatar}
                                             alt={t.name}
                                             className="w-12 h-12 rounded-full object-cover"
