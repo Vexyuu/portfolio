@@ -17,41 +17,36 @@ export default function ProjectsPage() {
 
     const categories = ["all", "IA", "Web", "Mobile", "Outils"];
 
-    // Fuse.js setup
+    // Fuse.js recherche avancée
     const fuse = new Fuse(projects, {
         keys: ["title", "description", "category"],
-        threshold: 0.3, // fuzzy strength
+        threshold: 0.3,
     });
 
-    // Recherche avancée avec fuse.js
     const searchResults = search.trim()
         ? fuse.search(search).map((res) => res.item)
         : projects;
 
-    // Filtrage
+    // --- FILTRAGE ---
     const filtered = useMemo(() => {
-        let arr = [...searchResults];
-
-        if (filter === "finished") arr = arr.filter((p) => p.isFinite);
-        if (filter === "progress") arr = arr.filter((p) => !p.isFinite);
-
-        if (activeCategory !== "all") {
-            arr = arr.filter((p) => p.category === activeCategory);
-        }
-
-        return arr;
+        return searchResults
+            .filter((p) => {
+                if (filter === "finished") return p.isFinite;
+                if (filter === "progress") return !p.isFinite;
+                return true;
+            })
+            .filter((p) => activeCategory === "all" || p.category === activeCategory);
     }, [searchResults, filter, activeCategory]);
 
-    // Tri
+    // --- TRI ---
     const sorted = useMemo(() => {
-        let arr = [...filtered];
-
-        if (sort === "recent") arr.sort((a, b) => b.year - a.year);
-        if (sort === "old") arr.sort((a, b) => a.year - b.year);
-        if (sort === "az") arr.sort((a, b) => a.title.localeCompare(b.title));
-        if (sort === "za") arr.sort((a, b) => b.title.localeCompare(a.title));
-
-        return arr;
+        return [...filtered].sort((a, b) => {
+            if (sort === "recent") return b.year - a.year;
+            if (sort === "old") return a.year - b.year;
+            if (sort === "az") return a.title.localeCompare(b.title);
+            if (sort === "za") return b.title.localeCompare(a.title);
+            return 0;
+        });
     }, [sort, filtered]);
 
     const displayed = sorted.slice(0, visibleCount);
@@ -157,7 +152,11 @@ export default function ProjectsPage() {
                                             En savoir plus
                                         </Link>
 
-                                        <Link href={project.link} target="_blank" className="text-accent hover:underline">
+                                        <Link
+                                            href={project.link}
+                                            target="_blank"
+                                            className="text-accent hover:underline"
+                                        >
                                             GitHub
                                         </Link>
                                     </div>
