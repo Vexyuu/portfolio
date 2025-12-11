@@ -54,7 +54,7 @@ export default function Projects() {
                         <div
                             key={project.title}
                             // Application de la classe Glassmorphism
-                            className="card-glass overflow-hidden hover:scale-105 transition-transform duration-300"
+                            className="card-glass card-shine overflow-hidden hover:scale-105 transition-transform duration-300"
                         >
                             <Link href={project.more} rel="noopener noreferrer">
                                 <div className="relative w-full h-48 md:h-56">

@@ -27,7 +27,7 @@ export default function Skills() {
                     {skills.map((skill) => (
                         <div
                             key={skill.name}
-                            className="card-glass flex flex-col items-center p-6 hover:scale-105 transition-transform duration-300"
+                            className="card-glass card-shine flex flex-col items-center p-6 hover:scale-105 transition-transform duration-300"
                         >
                             <Image
                                 src={skill.icon}

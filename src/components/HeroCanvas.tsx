@@ -1,7 +1,4 @@
 // src/components/HeroCanvas.tsx
-// ------------------------------
-// NeuralNet.tsx
-// ------------------------------
 "use client";
 
 import React, { useRef, useMemo, Suspense } from "react";

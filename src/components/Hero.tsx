@@ -36,7 +36,7 @@ export default function Hero() {
             <HeroCanvas />
 
             {/* 2. Le Contenu Textuel et Boutons (z-10 pour passer devant la 3D) */}
-            <div className="relative z-10 p-8 card-glass max-w-xl flex flex-col justify-center items-center md:items-start text-center md:text-left">
+            <div className="relative z-10 p-8 card-glass card-shine max-w-xl flex flex-col justify-center items-center md:items-start text-center md:text-left">
                 <h1 className="text-5xl md:text-6xl font-bold text-foreground">
                     Bonjour, je suis <span className="text-primary">Killian Fievet</span>
                 </h1>

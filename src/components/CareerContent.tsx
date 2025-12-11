@@ -40,7 +40,7 @@ export default function CareerContent() {
                                     className="mb-10 ml-6"
                                 >
                                     {/* Glassmorphism card pour l'événement */}
-                                    <div className="card-glass p-4 transition-all duration-300 hover:shadow-primary/50">
+                                    <div className="card-glass card-shine p-4 transition-all duration-300 hover:shadow-primary/50">
                                         {/* Point de la timeline (Bullet) */}
                                         <div className="absolute flex items-center justify-center w-6 h-6 bg-primary text-white rounded-full -left-[37px] top-1/2 -translate-y-1/2 border-2 border-background shadow-md">
                                             {item.icon}
@@ -72,7 +72,7 @@ export default function CareerContent() {
                                     className="mb-10 ml-6"
                                 >
                                     {/* Glassmorphism card pour l'événement */}
-                                    <div className="card-glass p-4 transition-all duration-300 hover:shadow-secondary/50">
+                                    <div className="card-glass card-shine p-4 transition-all duration-300 hover:shadow-secondary/50">
                                         {/* Point de la timeline (Bullet) */}
                                         <div className="absolute flex items-center justify-center w-6 h-6 bg-secondary text-background rounded-full -left-[37px] top-1/2 -translate-y-1/2 border-2 border-background shadow-md">
                                             {item.icon}

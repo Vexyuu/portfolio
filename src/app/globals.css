@@ -1,27 +1,40 @@
+/* src/app/globals.css */
 @import "tailwindcss";
-/* @import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities"; */
 
 /* Couleurs modernes et variables */
 :root {
-  /* Sombre (dark) - Base */
-  --color-background: #0f172a; /* Slate-900 */
-  --color-foreground: #f8fafc; /* Slate-50 */
-  --color-primary: #6366f1; /* Indigo-500 (Violet vif) */
-  --color-secondary: #22d3ee; /* Cyan-400 (Cyan) */
-  --color-accent: #facc15; /* Yellow-400 (Jaune punch) */
-  --color-muted: #94a3b8; /* Slate-400 (Gris clair) */
+  /* Sombre (dark) - Base (#0f172a = 15, 23, 42) */
+  --color-background: #0f172a; 
+  --color-foreground: #f8fafc; 
+  --color-primary: #6366f1; 
+  --color-secondary: #22d3ee; 
+  --color-accent: #facc15; 
+  --color-muted: #94a3b8; 
+
+  /* Définition des couleurs primaires/secondaires en HSL pour la fonction color-mix */
+  --color-primary-h: 239; 
+  --color-primary-s: 89%;
+  --color-primary-l: 67%;
+  --color-secondary-h: 187;
+  --color-secondary-s: 89%;
+  --color-secondary-l: 54%;
 }
 
 [data-theme="light"] {
-  /* Clair (light) */
+  /* Clair (light) - Base (#f8fafc = 248, 250, 252) */
   --color-background: #f8fafc;
   --color-foreground: #1e293b;
   --color-primary: #6366f1;
   --color-secondary: #22d3ee;
   --color-accent: #f59e0b;
   --color-muted: #64748b;
+
+  --color-primary-h: 239; 
+  --color-primary-s: 89%;
+  --color-primary-l: 67%;
+  --color-secondary-h: 187;
+  --color-secondary-s: 89%;
+  --color-secondary-l: 54%;
 }
 
 body {
@@ -34,32 +47,150 @@ html {
   scroll-behavior: smooth;
 }
 
-.animate-gradient {
-  background-size: 200% 200%;
-  animation: gradientBG 6s ease infinite;
-  }
-
+/* Dégradé animé pour Hero (pour le titre) */
 @keyframes gradientBG {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* Glassmorphism pour cartes */
+.animate-gradient {
+  animation: gradientBG 6s ease infinite;
+  background-size: 200% 200%;
+}
+
+/* Glassmorphism pour cartes (Effet Apple "Givré") */
 .card-glass {
-  /* Mix de la couleur de fond avec de la transparence (couleur adaptative grâce au mix) */
-  background: color-mix(in srgb, var(--color-background) 80%, transparent); 
-  backdrop-filter: blur(15px); /* Flou plus prononcé */
-  /* Bordure très subtile basée sur la couleur du texte foreground/clair */
-  border: 1px solid color-mix(in srgb, var(--color-foreground) 10%, transparent); 
+  position: relative; 
+  overflow: hidden; /* Empêche le pseudo-élément de déborder */
+  /* Moins de couleur de fond (60% au lieu de 80%) pour plus de transparence */
+  background: color-mix(in srgb, var(--color-background) 10%, transparent); 
+  /* Flou augmenté (25px au lieu de 15px) pour l'effet givré ("frosted") */
+  backdrop-filter: blur(25px); 
+  /* Bordure plus fine et moins opaque pour un look plus "Apple" */
+  border: 1px solid color-mix(in srgb, var(--color-foreground) 5%, transparent); 
   border-radius: 1.5rem; /* Un peu plus d'arrondi */
-  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s; /* Temps de transition réduit */
 }
 
 .card-glass:hover {
-  transform: translateY(-8px); /* Mouvement plus notable */
-  /* Double ombre : une pour l'élévation, l'autre pour le "glow" avec la couleur primaire */
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 35px var(--color-primary); 
-  /* Le contour s'illumine aussi */
+  transform: translateY(-4px); /* Mouvement réduit (-4px au lieu de -8px) pour être plus subtil */
+  /* Ombre simplifiée : retrait de l'ombre foncée (rgba) et conservation d'un léger "glow" */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1), 0 0 15px var(--color-primary); 
+  /* Le contour s'illumine légèrement */
   border-color: var(--color-primary);
+}
+
+/* --- Nouvelles règles pour l'effet de lumière animée --- */
+
+/* Définition de l'animation de déplacement aléatoire pour un effet "plasma" */
+@keyframes movingParticles {
+  0% { 
+    /* Point de départ très dispersé */
+    background-position: 0% 0%, 50% 100%, 100% 50%, 25% 25%, 75% 75%, 10% 90%; 
+  }
+  50% { 
+    /* Mi-chemin : autre position aléatoire */
+    background-position: 100% 10%, 0% 90%, 20% 40%, 80% 60%, 40% 10%, 60% 90%; 
+  }
+  100% { 
+    /* Retour au point de départ */
+    background-position: 0% 0%, 50% 100%, 100% 50%, 25% 25%, 75% 75%, 10% 90%; 
+  }
+}
+
+/* Classe à appliquer à toutes les cartes pour l'effet de brillance */
+.card-shine {
+  z-index: 1; 
+}
+
+.card-shine::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1; 
+  pointer-events: none;
+  
+  /* Définition du background avec BEAUCOUP plus de gradients (particules) */
+  background: 
+    /* Particule 1 (Primaire - Gros) */
+    radial-gradient(circle at top left, 
+      hsla(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.25) 0%, 
+      transparent 30%
+    ),
+    /* Particule 2 (Secondaire - Gros) */
+    radial-gradient(circle at bottom right, 
+      hsla(var(--color-secondary-h), var(--color-secondary-s), var(--color-secondary-l), 0.25) 0%, 
+      transparent 30%
+    ),
+    /* Particule 3 (Primaire - Moyen) */
+    radial-gradient(circle at 75% 10%, 
+      hsla(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.15) 0%, 
+      transparent 20%
+    ),
+    /* Particule 4 (Secondaire - Moyen) */
+    radial-gradient(circle at 10% 80%, 
+      hsla(var(--color-secondary-h), var(--color-secondary-s), var(--color-secondary-l), 0.15) 0%, 
+      transparent 25%
+    ),
+    /* Particule 5 (Primaire - Petit) */
+    radial-gradient(circle at 40% 60%, 
+      hsla(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l), 0.1) 0%, 
+      transparent 15%
+    ),
+    /* Particule 6 (Secondaire - Petit) */
+    radial-gradient(circle at 90% 90%, 
+      hsla(var(--color-secondary-h), var(--color-secondary-s), var(--color-secondary-l), 0.1) 0%, 
+      transparent 10%
+    );
+
+  /* Tailles variées pour plus de texture */
+  background-size: 200% 200%, 150% 150%, 180% 180%, 120% 120%, 160% 160%, 210% 210%;
+  
+  /* Utilisation des variables pour la désynchronisation (voir ci-dessous) */
+  animation: movingParticles var(--shine-duration, 15s) linear var(--shine-delay, 0s) infinite alternate;
+  
+  opacity: 0.5; 
+  filter: saturate(1.5); 
+}
+
+/* Au survol, on accélère */
+.card-shine:hover::before {
+  opacity: 0.8;
+  animation-duration: 10s; 
+  animation-direction: normal; 
+}
+
+
+/* --- Désynchronisation des animations --- */
+
+/* Utilisation des sélecteurs n-th-child pour donner à chaque carte
+   des durées et des délais différents (d'où l'intérêt des variables CSS)
+*/
+.card-shine:nth-child(2) {
+  --shine-duration: 12s;
+  --shine-delay: 2s;
+}
+
+.card-shine:nth-child(3) {
+  --shine-duration: 17s;
+  --shine-delay: 5s;
+}
+
+.card-shine:nth-child(4) {
+  --shine-duration: 11s;
+  --shine-delay: 1s;
+}
+
+.card-shine:nth-child(5) {
+  --shine-duration: 16s;
+  --shine-delay: 4s;
+}
+
+.card-shine:nth-child(6) {
+  --shine-duration: 13s;
+  --shine-delay: 3s;
 }
