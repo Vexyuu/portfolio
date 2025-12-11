@@ -25,8 +25,7 @@
 }
 
 body {
-  /* Poppins est chargé via le layout, on s'assure qu'il est la base */
-  background-color: var(--color-background);
+  /* background-color: var(--color-background); */
   color: var(--color-foreground);
   transition: background-color 0.4s, color 0.4s;
 }
@@ -35,41 +34,32 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Dégradé animé pour Hero (pour le titre) */
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientBG 6s ease infinite;
+  }
+
 @keyframes gradientBG {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-.animate-gradient {
-  /* Utilisez `animate-gradient` pour des animations plus fluides et longues (comme le titre) */
-  animation: gradientBG 6s ease infinite;
-  background-size: 200% 200%;
-}
-
-/* Glassmorphism pour cartes (AMÉLIORÉ) */
+/* Glassmorphism pour cartes */
 .card-glass {
   /* Mix de la couleur de fond avec de la transparence (couleur adaptative grâce au mix) */
   background: color-mix(in srgb, var(--color-background) 80%, transparent); 
-  
   backdrop-filter: blur(15px); /* Flou plus prononcé */
-  
   /* Bordure très subtile basée sur la couleur du texte foreground/clair */
   border: 1px solid color-mix(in srgb, var(--color-foreground) 10%, transparent); 
-  
   border-radius: 1.5rem; /* Un peu plus d'arrondi */
   transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s;
 }
 
 .card-glass:hover {
   transform: translateY(-8px); /* Mouvement plus notable */
-  
   /* Double ombre : une pour l'élévation, l'autre pour le "glow" avec la couleur primaire */
-  box-shadow: 
-    0 15px 30px rgba(0, 0, 0, 0.4),
-    0 0 35px var(--color-primary); 
-    
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 35px var(--color-primary); 
   /* Le contour s'illumine aussi */
   border-color: var(--color-primary);
 }

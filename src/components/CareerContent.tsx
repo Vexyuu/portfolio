@@ -21,7 +21,7 @@ export default function CareerContent() {
         <main className="max-w-6xl mx-auto px-4 py-20 cursor-default">
             <section id="section-parcours">
                 {/* Titre avec l'animation gradient pour la cohérence */}
-                <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-16 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent animate-gradient bg-[length:200%_200%]">
+                <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-16 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent bg-[length:200%_200%]">
                     Mon Parcours
                 </h1>
 

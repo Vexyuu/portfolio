@@ -42,8 +42,8 @@ export default function Hero() {
                 </h1>
                 <p
                     key={current}
-                    className="text-xl md:text-2xl text-muted h-8 transition-opacity duration-600 ease-in-out opacity-100 mt-4 mb-8"
-                >
+                    // className="text-xl md:text-2xl text-muted h-8 transition-opacity duration-600 ease-in-out opacity-100 mt-4 mb-8" >
+                    className="text-xl md:text-2xl text-muted h-8 ease-in-out opacity-100 mt-4 mb-8" >
                     {phrases[current]}
                 </p>
 
@@ -51,17 +51,16 @@ export default function Hero() {
                 <div className="flex justify-center md:justify-start gap-4 mt-4">
                     <Link href={getAssetPath("/data/CV_Alternance_Sorbonne_2025.pdf")} target="_blank"
                         aria-label="Télécharger le CV de Killian Fievet"
-                        className="px-6 py-3 group font-bold rounded-full text-white bg-gradient-to-r from-primary to-accent
-                        hover:scale-[1.03] shadow-lg shadow-primary/50 transition-transform duration-300"
-                    >
+                        // className="px-6 py-3 group font-bold rounded-full text-white bg-gradient-to-r from-primary to-accent
+                        // hover:scale-[1.03]  shadow-primary/50 transition-transform duration-300 shadow-lg" >
+                        className="px-6 py-3 rounded-full border-2 border-secondary text-secondary hover:bg-secondary hover:text-white hover:scale-[1.03] shadow-lg" >
                         <FaDownload className="inline mr-2" />
                         Télécharger mon CV
                     </Link>
 
                     {/* Bouton Secondaire (Outline + Hover coloré) */}
                     <Link href="#contact" className="px-6 py-3 rounded-full border-2 border-secondary text-secondary
-                    hover:bg-secondary hover:text-white hover:scale-[1.03] transition-all duration-300 shadow-lg"
-                    >
+                    hover:bg-secondary hover:text-white hover:scale-[1.03] shadow-lg" >
                         <FaEnvelope className="inline mr-2" />
                         Me contacter
                     </Link>

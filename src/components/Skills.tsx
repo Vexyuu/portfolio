@@ -12,7 +12,8 @@ const skills = [
     { name: "HTML", icon: getAssetPath("/data/images/HTML.png") },
     { name: "CSS", icon: getAssetPath("/data/images/CSS.png") },
     { name: "JavaScript", icon: getAssetPath("/data/images/JavaScript.png") },
-    { name: "React", icon: getAssetPath("/data/images/React.png") },
+    { name: "React", icon: getAssetPath("/data/images/React_native.png") },
+    { name: "Next.js", icon: getAssetPath("/data/images/NextJS.png") },
     { name: "PHP", icon: getAssetPath("/data/images/PHP.png") },
     { name: "Python", icon: getAssetPath("/data/images/Python.png") },
 ];

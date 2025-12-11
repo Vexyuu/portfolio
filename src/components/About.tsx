@@ -10,7 +10,7 @@ export default function About() {
         <section id="about" className="py-20 px-6 bg-background text-foreground">
             <div className="max-w-5xl mx-auto text-center space-y-12">
                 {/* Titre */}
-                <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient bg-[length:200%_200%]">
+                <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent bg-[length:200%_200%]">
                     À propos de moi
                 </h2>
 
@@ -51,25 +51,6 @@ export default function About() {
                     </div>
                 </div>
             </div>
-
-            {/* Animation gradient */}
-            <style jsx>{`
-                .animate-gradient {
-                    background-size: 200% 200%;
-                    animation: gradient 6s ease infinite;
-                }
-                @keyframes gradient {
-                    0% {
-                        background-position: 0% 50%;
-                    }
-                    50% {
-                        background-position: 100% 50%;
-                    }
-                    100% {
-                        background-position: 0% 50%;
-                    }
-                }
-            `}</style>
         </section>
     );
 }

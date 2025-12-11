@@ -45,7 +45,7 @@ export default function Testimonials() {
     return (
         <section id="testimonials" className="py-20 bg-background text-foreground">
             <div className="max-w-6xl mx-auto text-center space-y-12">
-                <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient bg-[length:200%_200%]">
+                <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent bg-[length:200%_200%]">
                     Ce qu’ils pensent de moi
                 </h2>
 
@@ -89,18 +89,6 @@ export default function Testimonials() {
                     ))}
                 </div>
             </div>
-
-            <style jsx>{`
-                .animate-gradient {
-                    background-size: 200% 200%;
-                    animation: gradient 6s ease infinite;
-                }
-                @keyframes gradient {
-                    0% { background-position: 0% 50%; }
-                    50% { background-position: 100% 50%; }
-                    100% { background-position: 0% 50%; }
-                }
-            `}</style>
         </section>
     );
 }
