@@ -4,53 +4,52 @@
 import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import Fuse from "fuse.js";
 import { projects } from "@/data/projects";
 
 export default function ProjectsPage() {
     const [filter, setFilter] = useState("all");
     const [sort, setSort] = useState("recent");
     const [search, setSearch] = useState("");
-    const [visibleCount, setVisibleCount] = useState(6);
     const [activeCategory, setActiveCategory] = useState("all");
+    const [visibleCount, setVisibleCount] = useState(9);
 
-    // Listes des catégories existantes
     const categories = ["all", "IA", "Web", "Mobile", "Outils"];
 
-    // --- FILTRES ---
+    // Fuse.js setup
+    const fuse = new Fuse(projects, {
+        keys: ["title", "description", "category"],
+        threshold: 0.3, // fuzzy strength
+    });
+
+    // Recherche avancée avec fuse.js
+    const searchResults = search.trim()
+        ? fuse.search(search).map((res) => res.item)
+        : projects;
+
+    // Filtrage
     const filtered = useMemo(() => {
-        let arr = [...projects];
+        let arr = [...searchResults];
 
-        // Filtre par statut (fini / pas fini)
-        if (filter === "finished") {
-            arr = arr.filter((p) => p.isFinite);
-        } else if (filter === "progress") {
-            arr = arr.filter((p) => !p.isFinite);
-        }
+        if (filter === "finished") arr = arr.filter((p) => p.isFinite);
+        if (filter === "progress") arr = arr.filter((p) => !p.isFinite);
 
-        // Filtre par catégorie
         if (activeCategory !== "all") {
             arr = arr.filter((p) => p.category === activeCategory);
         }
 
-        // Recherche
-        if (search.trim() !== "") {
-            arr = arr.filter((p) =>
-                p.title.toLowerCase().includes(search.toLowerCase())
-            );
-        }
-
         return arr;
-    }, [filter, activeCategory, search]);
+    }, [searchResults, filter, activeCategory]);
 
-    // --- TRI ---
+    // Tri
     const sorted = useMemo(() => {
         let arr = [...filtered];
 
-        if (sort === "az") arr.sort((a, b) => a.title.localeCompare(b.title));
-        if (sort === "za") arr.sort((a, b) => b.title.localeCompare(a.title));
         if (sort === "recent") arr.sort((a, b) => b.year - a.year);
         if (sort === "old") arr.sort((a, b) => a.year - b.year);
+        if (sort === "az") arr.sort((a, b) => a.title.localeCompare(b.title));
+        if (sort === "za") arr.sort((a, b) => b.title.localeCompare(a.title));
 
         return arr;
     }, [sort, filtered]);
@@ -70,19 +69,19 @@ export default function ProjectsPage() {
                     {count} projets trouvés
                 </p>
 
-                {/* --- CONTROLES : Recherche + Filtres + Tri --- */}
+                {/* --- CONTROLES --- */}
                 <div className="flex flex-wrap justify-center gap-4 mb-10">
 
-                    {/* Recherche */}
+                    {/* Search */}
                     <input
                         type="text"
-                        placeholder="Rechercher un projet..."
+                        placeholder="Recherche avancée..."
                         className="bg-card border border-border px-3 py-2 rounded-md w-64"
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                     />
 
-                    {/* Filtre statut */}
+                    {/* Statut */}
                     <select
                         value={filter}
                         onChange={(e) => setFilter(e.target.value)}
@@ -101,12 +100,12 @@ export default function ProjectsPage() {
                     >
                         <option value="recent">Plus récents</option>
                         <option value="old">Plus anciens</option>
-                        <option value="az">Titre A → Z</option>
-                        <option value="za">Titre Z → A</option>
+                        <option value="az">A → Z</option>
+                        <option value="za">Z → A</option>
                     </select>
                 </div>
 
-                {/* --- TAGS / CHIPS --- */}
+                {/* TAGS */}
                 <div className="flex justify-center gap-3 mb-10 flex-wrap">
                     {categories.map((cat) => (
                         <button
@@ -122,67 +121,45 @@ export default function ProjectsPage() {
                     ))}
                 </div>
 
-                {/* --- GRILLE DES PROJETS AVEC ANIMATION --- */}
-                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {/* --- MASONRY LAYOUT --- */}
+                <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
                     <AnimatePresence>
                         {displayed.map((project) => (
                             <motion.div
                                 key={project.title}
-                                initial={{ opacity: 0, y: 30 }}
+                                layout
+                                initial={{ opacity: 0, y: 40 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 transition={{ duration: 0.25 }}
-                                className="card-glass card-shine overflow-hidden hover:scale-105 transition-transform duration-300"
+                                className="break-inside-avoid card-glass card-shine rounded-lg overflow-hidden shadow-lg hover:scale-[1.01] transition"
                             >
-                                <Link href={project.more}>
-                                    <div className="relative w-full h-48 md:h-56">
-                                        <Image
-                                            src={project.image}
-                                            alt={project.title}
-                                            fill
-                                            className="object-cover"
-                                        />
-                                    </div>
-                                </Link>
+                                <ParallaxImage
+                                    src={project.image}
+                                    alt={project.title}
+                                />
 
                                 <div className="p-6">
                                     <h3 className="text-xl font-bold text-primary mb-2">
                                         {project.title}
                                     </h3>
 
-                                    <span
-                                        className={`inline-block text-xs font-semibold px-2 py-1 rounded-full mb-2 ${project.isFinite
-                                                ? "bg-accent text-background"
-                                                : "bg-secondary text-background"
-                                            }`}
-                                    >
-                                        {project.isFinite ? "Fini" : "En cours"}
+                                    <span className="text-xs text-muted-foreground block mb-2">
+                                        {project.category} • {project.year}
                                     </span>
 
-                                    <p className="text-muted mb-2">
+                                    <p className="text-muted mb-4">
                                         {project.description}
                                     </p>
 
-                                    <span className="text-xs text-muted-foreground">
-                                        Année : {project.year}
-                                    </span>
-
-                                    <div className="mt-4 flex justify-between items-center text-sm">
+                                    <div className="flex justify-between text-sm">
                                         <Link href={project.more} className="text-accent hover:underline">
                                             En savoir plus
                                         </Link>
 
-                                        <div className="flex gap-3">
-                                            <Link href={project.link} target="_blank" className="text-accent hover:underline">
-                                                GitHub
-                                            </Link>
-
-                                            {project.demo && project.isFinite && (
-                                                <Link href={project.demo} target="_blank" className="text-accent hover:underline">
-                                                    Démo
-                                                </Link>
-                                            )}
-                                        </div>
+                                        <Link href={project.link} target="_blank" className="text-accent hover:underline">
+                                            GitHub
+                                        </Link>
                                     </div>
                                 </div>
                             </motion.div>
@@ -190,7 +167,7 @@ export default function ProjectsPage() {
                     </AnimatePresence>
                 </div>
 
-                {/* --- PAGINATION / LOAD MORE --- */}
+                {/* PAGINATION */}
                 {visibleCount < count && (
                     <div className="text-center mt-12">
                         <button
@@ -201,13 +178,27 @@ export default function ProjectsPage() {
                         </button>
                     </div>
                 )}
-
-                <div className="text-center mt-12">
-                    <Link href="/" className="text-accent hover:underline text-sm">
-                        ← Retour à l’accueil
-                    </Link>
-                </div>
             </div>
         </section>
+    );
+}
+
+/* --- IMAGE PARALLAX COMPONENT --- */
+function ParallaxImage({ src, alt }: { src: string; alt: string }) {
+    const { scrollY } = useScroll();
+    const y = useTransform(scrollY, [0, 300], [0, -30]);
+
+    return (
+        <motion.div className="relative w-full h-56 overflow-hidden">
+            <motion.div style={{ y }}>
+                <Image
+                    src={src}
+                    alt={alt}
+                    width={600}
+                    height={400}
+                    className="object-cover w-full h-56"
+                />
+            </motion.div>
+        </motion.div>
     );
 }
