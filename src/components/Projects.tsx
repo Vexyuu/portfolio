@@ -32,6 +32,15 @@ const projects = [
         demo: "#",
         isFinite: true,
     },
+    {
+        title: "Nuit de l'info 2025 - Projet NDI",
+        description: "Projet développé pour la Nuit de l'info 2025. Découvrez notre solution innovante.",
+        link: "https://404-not-found-krir-nuitdelinfo.great-site.net",
+        more: "/projects/ndi-2025",
+        image: getAssetPath("/data/projects/ndi-2025.png"),
+        demo: "https://404-not-found-krir-nuitdelinfo.great-site.net",
+        isFinite: false,
+    },
 ];
 
 export default function Projects() {
