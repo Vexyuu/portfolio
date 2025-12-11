@@ -1,16 +1,21 @@
 @import "tailwindcss";
+/* @import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities"; */
 
 /* Couleurs modernes et variables */
 :root {
-  --color-background: #0f172a; /* sombre */
-  --color-foreground: #f8fafc; /* texte clair */
-  --color-primary: #6366f1; /* violet vif */
-  --color-secondary: #22d3ee; /* cyan */
-  --color-accent: #facc15; /* jaune punch */
-  --color-muted: #94a3b8; /* gris clair */
+  /* Sombre (dark) - Base */
+  --color-background: #0f172a; /* Slate-900 */
+  --color-foreground: #f8fafc; /* Slate-50 */
+  --color-primary: #6366f1; /* Indigo-500 (Violet vif) */
+  --color-secondary: #22d3ee; /* Cyan-400 (Cyan) */
+  --color-accent: #facc15; /* Yellow-400 (Jaune punch) */
+  --color-muted: #94a3b8; /* Slate-400 (Gris clair) */
 }
 
 [data-theme="light"] {
+  /* Clair (light) */
   --color-background: #f8fafc;
   --color-foreground: #1e293b;
   --color-primary: #6366f1;
@@ -20,9 +25,9 @@
 }
 
 body {
+  /* Poppins est chargé via le layout, on s'assure qu'il est la base */
   background-color: var(--color-background);
   color: var(--color-foreground);
-  font-family: 'Poppins', sans-serif;
   transition: background-color 0.4s, color 0.4s;
 }
 
@@ -30,7 +35,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Dégradé animé pour Hero */
+/* Dégradé animé pour Hero (pour le titre) */
 @keyframes gradientBG {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -38,26 +43,33 @@ html {
 }
 
 .animate-gradient {
-  animation: gradient 5s ease infinite;
+  /* Utilisez `animate-gradient` pour des animations plus fluides et longues (comme le titre) */
+  animation: gradientBG 6s ease infinite;
+  background-size: 200% 200%;
 }
 
-.hero-bg {
-  background: radial-gradient(circle at center, #1f1c2c, #928DAB);
-  background: linear-gradient(270deg, #6366f1, #22d3ee, #facc15);
-  background-size: 600% 600%;
-  animation: gradientBG 15s ease infinite;
-}
-
-/* Glassmorphism pour cartes */
+/* Glassmorphism pour cartes (AMÉLIORÉ) */
 .card-glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1rem;
-  transition: transform 0.3s, box-shadow 0.3s;
+  /* Mix de la couleur de fond avec de la transparence (couleur adaptative grâce au mix) */
+  background: color-mix(in srgb, var(--color-background) 80%, transparent); 
+  
+  backdrop-filter: blur(15px); /* Flou plus prononcé */
+  
+  /* Bordure très subtile basée sur la couleur du texte foreground/clair */
+  border: 1px solid color-mix(in srgb, var(--color-foreground) 10%, transparent); 
+  
+  border-radius: 1.5rem; /* Un peu plus d'arrondi */
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s;
 }
 
 .card-glass:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 30px rgba(0,0,0,0.3);
+  transform: translateY(-8px); /* Mouvement plus notable */
+  
+  /* Double ombre : une pour l'élévation, l'autre pour le "glow" avec la couleur primaire */
+  box-shadow: 
+    0 15px 30px rgba(0, 0, 0, 0.4),
+    0 0 35px var(--color-primary); 
+    
+  /* Le contour s'illumine aussi */
+  border-color: var(--color-primary);
 }

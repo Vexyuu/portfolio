@@ -1,4 +1,7 @@
+// tailwind.config.js
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme'); // Ajout de l'import pour la police
+
 module.exports = {
     content: [
         './pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -7,13 +10,19 @@ module.exports = {
     ],
     theme: {
         extend: {
+            fontFamily: { // Définition de la police Poppins
+                sans: ['Poppins', ...defaultTheme.fontFamily.sans],
+            },
             colors: {
-                background: 'hsl(var(--background))',
-                foreground: 'hsl(var(--foreground))',
-                primary: 'hsl(var(--primary))',
-                secondary: 'hsl(var(--secondary))',
-                accent: 'hsl(var(--accent))',
-                muted: 'hsl(var(--muted))',
+                // Mappage des variables CSS dans Tailwind, sans la fonction hsl()
+                'background': 'hsl(var(--color-background))',
+                'foreground': 'hsl(var(--color-foreground))',
+                'primary': 'hsl(var(--color-primary))',
+                'secondary': 'hsl(var(--color-secondary))',
+                'accent': 'hsl(var(--color-accent))',
+                'muted': 'hsl(var(--color-muted))',
+                // Ajout des couleurs du mode clair pour les textes mutés dans About.tsx
+                'muted-foreground': 'hsl(var(--color-muted-foreground))',
             },
         },
     },
