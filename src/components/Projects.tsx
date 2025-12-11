@@ -1,56 +1,20 @@
 // src/components/Projects.tsx
 
-import { getAssetPath } from "@/utils/paths";
 import Image from "next/image";
 import Link from "next/link";
-
-const projects = [
-    {
-        title: "Billy.IA - Assistant IA",
-        description: "Un assistant personnel propulsé par l'IA pour répondre à vos questions.",
-        link: "https://github.com/Vexyuu/portfolio",
-        more: "/projects/billy-ia",
-        image: getAssetPath("/data/projects/BillyIA_1.webp"),
-        demo: "#",
-        isFinite: false,
-    },
-    {
-        title: "Application Recettes",
-        description: "Une app interactive type TikTok pour partager des recettes.",
-        link: "https://github.com/Vexyuu/cookme",
-        more: "/projects/cookme",
-        image: getAssetPath("/data/projects/cookme.png"),
-        demo: "#",
-        isFinite: false,
-    },
-    {
-        title: "Générateur de mots de passe",
-        description: "Un petit outil pratique pour créer des mots de passe sécurisés.",
-        link: "https://github.com/Vexyuu/password-generator",
-        more: "/projects/password-generator",
-        image: getAssetPath("/data/projects/password-generator.png"),
-        demo: "#",
-        isFinite: true,
-    },
-    {
-        title: "Nuit de l'info 2025 - Projet NDI",
-        description: "Projet développé pour la Nuit de l'info 2025. Découvrez notre solution innovante.",
-        link: "https://404-not-found-krir-nuitdelinfo.great-site.net",
-        more: "/projects/ndi-2025",
-        image: getAssetPath("/data/projects/ndi-2025.png"),
-        demo: "https://404-not-found-krir-nuitdelinfo.great-site.net",
-        isFinite: false,
-    },
-];
+import { projects } from "@/data/projects";
 
 export default function Projects() {
     return (
         <section id="projects" className="py-20 px-6 bg-background text-foreground">
             <div className="max-w-6xl mx-auto text-center">
                 <h2 className="text-3xl md:text-4xl font-bold mb-12">Mes projets</h2>
+                <p className="text-muted-foreground mb-8">
+                    Total : {projects.length} projets
+                </p>
 
                 <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                    {projects.map((project) => (
+                    {projects.slice(0, 3).map((project) => (
                         <div
                             key={project.title}
                             // Application de la classe Glassmorphism
