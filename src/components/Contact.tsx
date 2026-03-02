@@ -69,7 +69,7 @@ export default function Contact() {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="Votre nom"
-                        className="p-4 rounded-lg border border-gray-600 bg-background text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary transition"
+                        className="p-4 rounded-xl bg-muted/5 border border-muted-foreground/20 text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
                     />
                     <input
                         type="email"
@@ -77,7 +77,7 @@ export default function Contact() {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="Votre email"
-                        className="p-4 rounded-lg border border-gray-600 bg-background text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary transition"
+                        className="p-4 rounded-xl bg-muted/5 border border-muted-foreground/20 text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
                     />
                     <textarea
                         name="message"
@@ -85,14 +85,14 @@ export default function Contact() {
                         onChange={handleChange}
                         placeholder="Votre message"
                         rows={5}
-                        className="p-4 rounded-lg border border-gray-600 bg-background text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary transition"
+                        className="p-4 rounded-xl bg-muted/5 border border-muted-foreground/20 text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all resize-none"
                     />
                     <button
                         type="submit"
-                        className="px-6 py-3 font-bold rounded-lg text-white bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-400 hover:scale-105 hover:shadow-xl transition-transform duration-300"
+                        className="px-6 py-4 font-medium rounded-xl text-white bg-primary hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/30 disabled:opacity-50 disabled:hover:scale-100 disabled:hover:shadow-none transition-all duration-300 transform hover:-translate-y-1"
                         disabled={isSubmitting || isFormIncomplete}
                     >
-                        {isSubmitting ? "Envoi..." : "Envoyer"}
+                        {isSubmitting ? "Envoi en cours..." : "Envoyer le message"}
                     </button>
                 </form>
                 {responseMessage && (
@@ -100,17 +100,17 @@ export default function Contact() {
                         {responseMessage}
                     </p>
                 )}
-                <div className="mt-12 flex justify-center gap-6">
-                    <Link href="mailto:killianfievetpro@gmail.com" className="text-primary hover:underline">
-                        <FaEnvelope className="inline-block mr-2" />
+                <div className="mt-12 flex flex-wrap justify-center gap-4">
+                    <Link href="mailto:killianfievetpro@gmail.com" className="px-5 py-2.5 flex items-center gap-2 rounded-full border border-muted-foreground/30 text-foreground hover:bg-muted/10 transition-colors">
+                        <FaEnvelope />
                         Email
                     </Link>
-                    <Link href="https://github.com/Vexyuu?tab=repositories" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline">
-                        <FaGithub className="inline-block mr-2" />
+                    <Link href="https://github.com/Vexyuu" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 flex items-center gap-2 rounded-full border border-muted-foreground/30 text-foreground hover:bg-muted/10 transition-colors">
+                        <FaGithub />
                         GitHub
                     </Link>
-                    <Link href="https://www.linkedin.com/in/killian-fievet-4a3788287" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
-                        <FaLinkedin className="inline-block mr-2" />
+                    <Link href="https://www.linkedin.com/in/killian-fievet-4a3788287" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 flex items-center gap-2 rounded-full border border-muted-foreground/30 text-foreground hover:bg-muted/10 transition-colors">
+                        <FaLinkedin />
                         LinkedIn
                     </Link>
                 </div>

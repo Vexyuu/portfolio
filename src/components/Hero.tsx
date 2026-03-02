@@ -48,35 +48,34 @@ export default function Hero() {
                 </p>
 
                 {/* Boutons Améliorés */}
-                <div className="flex justify-center md:justify-start gap-4 mt-4">
+                <div className="flex justify-center md:justify-start gap-4 mt-6">
                     <Link href={getAssetPath("/data/CV_Alternance_Sorbonne_2025.pdf")} target="_blank"
                         aria-label="Télécharger le CV de Killian Fievet"
-                        // className="px-6 py-3 group font-bold rounded-full text-white bg-gradient-to-r from-primary to-accent
-                        // hover:scale-[1.03]  shadow-primary/50 transition-transform duration-300 shadow-lg" >
-                        className="px-6 py-3 rounded-full border-2 border-secondary text-secondary hover:bg-secondary hover:text-white hover:scale-[1.03] shadow-lg" >
-                        <FaDownload className="inline mr-2" />
+                        className="px-6 py-3 rounded-full bg-primary text-white font-medium hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center" >
+                        <FaDownload className="mr-2" />
                         Télécharger mon CV
                     </Link>
 
-                    {/* Bouton Secondaire (Outline + Hover coloré) */}
-                    <Link href="#contact" className="px-6 py-3 rounded-full border-2 border-secondary text-secondary
-                    hover:bg-secondary hover:text-white hover:scale-[1.03] shadow-lg" >
-                        <FaEnvelope className="inline mr-2" />
+                    {/* Bouton Secondaire */}
+                    <Link href="#contact" className="px-6 py-3 rounded-full border border-muted-foreground/30 text-foreground font-medium hover:bg-muted/10 hover:border-muted-foreground/50 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center" >
+                        <FaEnvelope className="mr-2" />
                         Me contacter
                     </Link>
                 </div>
             </div>
 
-            {/* Image de profil (avec un contour et une ombre) */}
+            {/* Image de profil (avec un contour et une ombre premium) */}
             <div className="flex-1 mt-10 md:mt-0 relative z-10 flex justify-center md:justify-end">
-                <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto border-4 border-primary rounded-full shadow-2xl shadow-primary/50">
-                    <Image
-                        src={getAssetPath("/data/photo.jpg")}
-                        alt="Photo Killian Fievet"
-                        fill
-                        priority
-                        className="rounded-full object-cover"
-                    />
+                <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto rounded-full p-2 bg-gradient-to-tr from-primary/20 via-primary/5 to-transparent backdrop-blur-sm border border-primary/20 shadow-2xl shadow-primary/20 transition-transform duration-500 hover:scale-105">
+                    <div className="relative w-full h-full rounded-full overflow-hidden border border-foreground/10">
+                        <Image
+                            src={getAssetPath("/data/photo.jpg")}
+                            alt="Photo Killian Fievet"
+                            fill
+                            priority
+                            className="object-cover"
+                        />
+                    </div>
                 </div>
             </div>
         </section>

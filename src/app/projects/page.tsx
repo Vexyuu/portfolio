@@ -5,6 +5,7 @@ import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { Search } from "lucide-react";
 import Fuse from "fuse.js";
 import { projects } from "@/data/projects";
 
@@ -65,50 +66,56 @@ export default function ProjectsPage() {
                 </p>
 
                 {/* --- CONTROLES --- */}
-                <div className="flex flex-wrap justify-center gap-4 mb-10">
-
+                <div className="flex flex-col md:flex-row flex-wrap items-center justify-center gap-4 mb-8">
                     {/* Search */}
-                    <input
-                        type="text"
-                        placeholder="Recherche avancée..."
-                        className="bg-card border border-border px-3 py-2 rounded-md w-64"
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                    />
+                    <div className="relative w-full md:w-auto">
+                        <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none text-muted-foreground">
+                            <Search size={18} />
+                        </div>
+                        <input
+                            type="text"
+                            placeholder="Recherche avancée..."
+                            className="w-full md:w-72 bg-muted/5 border border-muted-foreground/20 text-foreground px-10 py-2.5 rounded-full focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-muted-foreground"
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
+                        />
+                    </div>
 
-                    {/* Statut */}
-                    <select
-                        value={filter}
-                        onChange={(e) => setFilter(e.target.value)}
-                        className="bg-card border border-border px-3 py-2 rounded-md"
-                    >
-                        <option value="all">Tous</option>
-                        <option value="progress">En cours</option>
-                        <option value="finished">Finis</option>
-                    </select>
+                    <div className="flex gap-4 w-full md:w-auto">
+                        {/* Statut */}
+                        <select
+                            value={filter}
+                            onChange={(e) => setFilter(e.target.value)}
+                            className="flex-1 md:flex-none appearance-none bg-muted/5 border border-muted-foreground/20 text-foreground px-4 py-2.5 rounded-full focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all cursor-pointer"
+                        >
+                            <option value="all">Tous les statuts</option>
+                            <option value="progress">En cours</option>
+                            <option value="finished">Finis</option>
+                        </select>
 
-                    {/* Tri */}
-                    <select
-                        value={sort}
-                        onChange={(e) => setSort(e.target.value)}
-                        className="bg-card border border-border px-3 py-2 rounded-md"
-                    >
-                        <option value="recent">Plus récents</option>
-                        <option value="old">Plus anciens</option>
-                        <option value="az">A → Z</option>
-                        <option value="za">Z → A</option>
-                    </select>
+                        {/* Tri */}
+                        <select
+                            value={sort}
+                            onChange={(e) => setSort(e.target.value)}
+                            className="flex-1 md:flex-none appearance-none bg-muted/5 border border-muted-foreground/20 text-foreground px-4 py-2.5 rounded-full focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all cursor-pointer"
+                        >
+                            <option value="recent">Plus récents</option>
+                            <option value="old">Plus anciens</option>
+                            <option value="az">A → Z</option>
+                            <option value="za">Z → A</option>
+                        </select>
+                    </div>
                 </div>
 
                 {/* TAGS */}
-                <div className="flex justify-center gap-3 mb-10 flex-wrap">
+                <div className="flex justify-center gap-3 mb-12 flex-wrap">
                     {categories.map((cat) => (
                         <button
                             key={cat}
                             onClick={() => setActiveCategory(cat)}
-                            className={`px-4 py-1 rounded-full text-sm border transition ${activeCategory === cat
-                                    ? "bg-primary text-background"
-                                    : "bg-card border-border hover:bg-muted"
+                            className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeCategory === cat
+                                ? "bg-primary text-white shadow-md shadow-primary/30 transform scale-105"
+                                : "bg-muted/10 text-muted-foreground hover:bg-muted/20 hover:text-foreground border border-muted-foreground/10"
                                 }`}
                         >
                             {cat}
@@ -117,7 +124,7 @@ export default function ProjectsPage() {
                 </div>
 
                 {/* --- MASONRY LAYOUT --- */}
-                <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+                <div className="columns-1 sm:columns-2 lg:columns-2 gap-6 space-y-6">
                     <AnimatePresence>
                         {displayed.map((project) => (
                             <motion.div
@@ -147,15 +154,15 @@ export default function ProjectsPage() {
                                         {project.description}
                                     </p>
 
-                                    <div className="flex justify-between text-sm">
-                                        <Link href={project.more} className="text-accent hover:underline">
+                                    <div className="flex flex-wrap justify-between items-center gap-2">
+                                        <Link href={project.more} className="px-4 py-2 text-sm font-medium rounded-md bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
                                             En savoir plus
                                         </Link>
 
                                         <Link
                                             href={project.link}
                                             target="_blank"
-                                            className="text-accent hover:underline"
+                                            className="px-4 py-2 text-sm font-medium rounded-md border border-muted-foreground/30 text-foreground hover:bg-muted/10 transition-colors"
                                         >
                                             GitHub
                                         </Link>

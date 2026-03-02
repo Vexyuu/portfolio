@@ -18,7 +18,7 @@ export default function Navbar() {
     ];
 
     return (
-        <nav className="fixed w-full bg-background/80 backdrop-blur-lg shadow z-50">
+        <nav className="fixed w-full bg-background/60 backdrop-blur-xl border-b border-muted-foreground/10 shadow-sm z-50 transition-all duration-300">
             <div className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
                 {/* Logo */}
                 <motion.div
@@ -40,7 +40,7 @@ export default function Navbar() {
                 <ul className="hidden md:flex items-center gap-8">
                     {links.map(({ href, label }) => (
                         <motion.li key={href} whileHover={{ scale: 1.1 }} className="font-medium">
-                            <Link href={href} className="relative text-foreground hover:text-primary">
+                            <Link href={href} className="relative text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                                 {label}
                             </Link>
                         </motion.li>
@@ -56,7 +56,7 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.2 }}
-                    className="flex flex-col gap-6 px-6 pb-6 md:hidden bg-background/80 backdrop-blur-lg shadow"
+                    className="flex flex-col gap-6 px-6 pb-6 md:hidden bg-background/80 backdrop-blur-xl border-b border-muted-foreground/10 shadow-lg"
                 >
                     {links.map(({ href, label }) => (
                         <li key={href}>

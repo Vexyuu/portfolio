@@ -10,8 +10,8 @@ module.exports = {
     ],
     theme: {
         extend: {
-            fontFamily: { // Définition de la police Poppins
-                sans: ['Poppins', ...defaultTheme.fontFamily.sans],
+            fontFamily: { // Définition de la police Inter
+                sans: ['Inter', ...defaultTheme.fontFamily.sans],
             },
             colors: {
                 // Mappage des variables CSS dans Tailwind, sans la fonction hsl()

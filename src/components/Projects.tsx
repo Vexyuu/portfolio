@@ -38,26 +38,26 @@ export default function Projects() {
                                 </Link>
 
                                 {project.isFinite ? (
-                                    <span className="inline-block bg-accent text-background text-xs font-semibold px-2 py-1 rounded-full mb-2">
+                                    <span className="inline-block bg-green-500/10 border border-green-500/20 text-green-500 text-xs font-semibold px-2 py-1 rounded-full mb-3">
                                         Projet fini
                                     </span>
                                 ) : (
-                                    <span className="inline-block bg-secondary text-background text-xs font-semibold px-2 py-1 rounded-full mb-2">
+                                    <span className="inline-block bg-amber-500/10 border border-amber-500/20 text-amber-500 text-xs font-semibold px-2 py-1 rounded-full mb-3">
                                         En cours
                                     </span>
                                 )}
 
                                 <p className="text-muted">{project.description}</p>
 
-                                <div className="mt-4 flex justify-between items-center text-sm">
-                                    <Link href={project.more} className="text-accent hover:underline">
+                                <div className="mt-6 flex flex-wrap justify-between items-center gap-2">
+                                    <Link href={project.more} className="px-4 py-2 text-sm font-medium rounded-md bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
                                         En savoir plus
                                     </Link>
 
-                                    <div className="flex gap-3">
+                                    <div className="flex gap-2">
                                         <Link
                                             href={project.link}
-                                            className="text-accent hover:underline"
+                                            className="px-3 py-2 text-sm font-medium rounded-md border border-muted-foreground/30 text-foreground hover:bg-muted/10 transition-colors"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                         >
@@ -67,7 +67,7 @@ export default function Projects() {
                                         {project.isFinite && (
                                             <Link
                                                 href={project.demo}
-                                                className="text-accent hover:underline"
+                                                className="px-3 py-2 text-sm font-medium rounded-md border border-muted-foreground/30 text-foreground hover:bg-muted/10 transition-colors"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >

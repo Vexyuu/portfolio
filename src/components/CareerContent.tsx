@@ -21,7 +21,7 @@ export default function CareerContent() {
         <main className="max-w-6xl mx-auto px-4 py-20 cursor-default">
             <section id="section-parcours">
                 {/* Titre avec l'animation gradient pour la cohérence */}
-                <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-16 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent bg-[length:200%_200%]">
+                <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-16 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent bg-[length:200%_200%]">
                     Mon Parcours
                 </h1>
 
@@ -33,25 +33,25 @@ export default function CareerContent() {
                             {schoolTimeline.map((item, i) => (
                                 <motion.div
                                     key={i}
-                                    initial={{ opacity: 0, x: -50 }} // Animation d'entrée latérale
+                                    initial={{ opacity: 0, x: -50 }}
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.6, delay: i * 0.2 }}
-                                    className="mb-10 ml-6"
+                                    className="mb-10 ml-6 relative"
                                 >
-                                    {/* Glassmorphism card pour l'événement */}
-                                    <div className="card-glass card-shine p-4 transition-all duration-300 hover:shadow-primary/50">
-                                        {/* Point de la timeline (Bullet) */}
-                                        <div className="absolute flex items-center justify-center w-6 h-6 bg-primary text-white rounded-full -left-[37px] top-1/2 -translate-y-1/2 border-2 border-background shadow-md">
-                                            {item.icon}
-                                        </div>
+                                    {/* Point de la timeline (Bullet) OUTSIDE card-glass to prevent clipping */}
+                                    <div className="absolute flex items-center justify-center w-10 h-10 bg-primary/20 text-primary rounded-full -left-[45px] top-4 border-2 border-background shadow-md backdrop-blur-sm z-10">
+                                        <span className="text-lg">{item.icon}</span>
+                                    </div>
+                                    {/* Glassmorphism card */}
+                                    <div className="card-glass p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/20">
                                         <div className="flex flex-col">
-                                            <p className="font-semibold text-foreground">{item.title}</p>
-                                            <span className="text-sm text-muted">
+                                            <p className="font-semibold text-foreground text-lg mb-1">{item.title}</p>
+                                            <span className="text-sm text-primary font-medium mb-3">
                                                 {item.place} • {item.date}
                                             </span>
                                         </div>
-                                        <p className="mt-2 text-sm text-foreground/80">{item.desc}</p>
+                                        <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
                                     </div>
                                 </motion.div>
                             ))}
@@ -65,30 +65,32 @@ export default function CareerContent() {
                             {workTimeline.map((item, i) => (
                                 <motion.div
                                     key={i}
-                                    initial={{ opacity: 0, x: 50 }} // Animation d'entrée latérale opposée
+                                    initial={{ opacity: 0, x: 50 }}
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.6, delay: i * 0.2 }}
-                                    className="mb-10 ml-6"
+                                    className="mb-10 ml-6 relative"
                                 >
-                                    {/* Glassmorphism card pour l'événement */}
-                                    <div className="card-glass card-shine p-4 transition-all duration-300 hover:shadow-secondary/50">
-                                        {/* Point de la timeline (Bullet) */}
-                                        <div className="absolute flex items-center justify-center w-6 h-6 bg-secondary text-background rounded-full -left-[37px] top-1/2 -translate-y-1/2 border-2 border-background shadow-md">
-                                            {item.icon}
-                                        </div>
+                                    {/* Point de la timeline (Bullet) */}
+                                    <div className="absolute flex items-center justify-center w-10 h-10 bg-secondary/20 text-secondary rounded-full -left-[45px] top-4 border-2 border-background shadow-md backdrop-blur-sm z-10">
+                                        <span className="text-lg">{item.icon}</span>
+                                    </div>
+                                    {/* Glassmorphism card */}
+                                    <div className="card-glass p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-secondary/20">
                                         <div className="flex flex-col">
-                                            <p className="font-semibold text-foreground">{item.title} — <span className="text-secondary">{item.place}</span></p>
-                                            <span className="text-sm text-muted">{item.date}</span>
+                                            <p className="font-semibold text-foreground text-lg mb-1">
+                                                {item.title} <span className="text-secondary font-medium block md:inline md:ml-2">— {item.place}</span>
+                                            </p>
+                                            <span className="text-sm text-secondary font-medium mb-4">{item.date}</span>
                                         </div>
-                                        <div className="mt-2 text-sm space-y-1">
+                                        <div className="text-sm text-muted-foreground leading-relaxed space-y-2">
                                             {item.desc.map((d, idx) => <p key={idx}>{d}</p>)}
                                         </div>
-                                        {/* Tags améliorés (Glassmorphism + couleur secondaire) */}
-                                        <div className="flex flex-wrap gap-2 mt-3">
+                                        {/* Tags améliorés */}
+                                        <div className="flex flex-wrap gap-2 mt-5 pt-4 border-t border-muted-foreground/10">
                                             {item.skills.map((skill, idx) => (
                                                 <span key={idx}
-                                                    className="px-3 py-1 text-xs font-medium text-secondary border border-secondary rounded-full bg-secondary/20 hover:bg-secondary/40 transition"
+                                                    className="px-3 py-1 text-xs font-medium text-secondary bg-secondary/10 border border-secondary/20 rounded-full hover:bg-secondary/20 transition-colors"
                                                 >
                                                     {skill}
                                                 </span>

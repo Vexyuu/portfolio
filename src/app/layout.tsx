@@ -3,6 +3,9 @@ import "./globals.css";
 import Navbar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "next-themes";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata = {
   title: {
@@ -56,7 +59,7 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" suppressHydrationWarning>
+    <html lang="fr" suppressHydrationWarning className={inter.className}>
       <head>
         {/* ✅ la meta de Google Search Console */}
         <meta

@@ -3,10 +3,10 @@
 
 /* Couleurs modernes et variables */
 :root {
-  /* Sombre (dark) - Base (#0f172a = 15, 23, 42) */
-  --color-background: #0f172a; 
+  /* Sombre (dark) - Base très sombre pour un effet premium (#020617 = Slate 950) */
+  --color-background: #020617; 
   --color-foreground: #f8fafc; 
-  --color-primary: #6366f1; 
+  --color-primary: #818cf8; /* Indigo 400 plus vibrant en sombre */
   --color-secondary: #22d3ee; 
   --color-accent: #facc15; 
   --color-muted: #94a3b8; 
@@ -21,12 +21,12 @@
 }
 
 [data-theme="light"] {
-  /* Clair (light) - Base (#f8fafc = 248, 250, 252) */
-  --color-background: #f8fafc;
-  --color-foreground: #1e293b;
-  --color-primary: #6366f1;
-  --color-secondary: #22d3ee;
-  --color-accent: #f59e0b;
+  /* Clair (light) - Base pure pour contraster (#fafafa) */
+  --color-background: #fafafa;
+  --color-foreground: #020617;
+  --color-primary: #4f46e5; /* Indigo 600 */
+  --color-secondary: #0891b2; /* Cyan 600 */
+  --color-accent: #eab308;
   --color-muted: #64748b;
 
   --color-primary-h: 239; 
@@ -62,23 +62,20 @@ html {
 /* Glassmorphism pour cartes (Effet Apple "Givré") */
 .card-glass {
   position: relative; 
-  overflow: hidden; /* Empêche le pseudo-élément de déborder */
-  /* Moins de couleur de fond (60% au lieu de 80%) pour plus de transparence */
-  background: color-mix(in srgb, var(--color-background) 10%, transparent); 
-  /* Flou augmenté (25px au lieu de 15px) pour l'effet givré ("frosted") */
-  backdrop-filter: blur(25px); 
-  /* Bordure plus fine et moins opaque pour un look plus "Apple" */
-  border: 1px solid color-mix(in srgb, var(--color-foreground) 5%, transparent); 
-  border-radius: 1.5rem; /* Un peu plus d'arrondi */
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s; /* Temps de transition réduit */
+  overflow: hidden; 
+  background: color-mix(in srgb, var(--color-foreground) 3%, transparent); 
+  backdrop-filter: blur(40px); 
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid color-mix(in srgb, var(--color-foreground) 8%, transparent); 
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 6px -1px color-mix(in srgb, black 10%, transparent), 0 2px 4px -2px color-mix(in srgb, black 10%, transparent);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
 }
 
 .card-glass:hover {
-  transform: translateY(-4px); /* Mouvement réduit (-4px au lieu de -8px) pour être plus subtil */
-  /* Ombre simplifiée : retrait de l'ombre foncée (rgba) et conservation d'un léger "glow" */
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1), 0 0 15px var(--color-primary); 
-  /* Le contour s'illumine légèrement */
-  border-color: var(--color-primary);
+  transform: translateY(-4px); 
+  box-shadow: 0 10px 25px -5px color-mix(in srgb, black 15%, transparent), 0 8px 10px -6px color-mix(in srgb, black 10%, transparent);
+  border-color: color-mix(in srgb, var(--color-primary) 50%, transparent);
 }
 
 /* --- Nouvelles règles pour l'effet de lumière animée --- */
