@@ -2,6 +2,8 @@
 import "./globals.css";
 import Navbar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import CustomCursor from "@/components/CustomCursor";
+import AuraBackground from "@/components/AuraBackground";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 
@@ -70,6 +72,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {/* Ajout du provider global */}
         <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem>
+          <AuraBackground />
+          <CustomCursor />
           <Navbar />
           {children}
           <Footer />

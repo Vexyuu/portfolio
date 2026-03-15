@@ -2,6 +2,8 @@
 
 import { getAssetPath } from "@/utils/paths";
 import Image from "next/image";
+import SpotlightCard from "./SpotlightCard";
+import TextReveal from "./TextReveal";
 
 export const metadata = {
     title: "Compétences - Killian Fievet",
@@ -22,12 +24,12 @@ export default function Skills() {
     return (
         <section id="skills" className="py-20 px-6 bg-background text-foreground">
             <div className="max-w-6xl mx-auto text-center">
-                <h2 className="text-3xl md:text-4xl font-bold mb-12">Mes compétences</h2>
+                <TextReveal text="Mes compétences" className="text-3xl md:text-4xl font-bold mb-12 justify-center" />
                 <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-4 md:gap-6 cursor-default">
                     {skills.map((skill) => (
-                        <div
+                        <SpotlightCard
                             key={skill.name}
-                            className="card-glass card-shine flex flex-col items-center justify-center p-4 hover:scale-105 hover:-translate-y-1 transition-all duration-300 gap-2"
+                            className="card-glass card-shine flex flex-col items-center justify-center p-4 hover:scale-105 hover:-translate-y-1 transition-all duration-300 gap-2 rounded-2xl"
                         >
                             <div className="relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
                                 <Image
@@ -41,7 +43,7 @@ export default function Skills() {
                                 />
                             </div>
                             <p className="text-foreground text-xs md:text-sm font-medium text-center">{skill.name}</p>
-                        </div>
+                        </SpotlightCard>
                     ))}
                 </div>
             </div>

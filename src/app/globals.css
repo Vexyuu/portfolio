@@ -41,6 +41,16 @@ body {
   /* background-color: var(--color-background); */
   color: var(--color-foreground);
   transition: background-color 0.4s, color 0.4s;
+  cursor: none; /* Cache le curseur par défaut pour afficher le CustomCursor */
+}
+
+a, button, input, select, textarea {
+  /* Réaffiche le curseur pointeur système sur les éléments interactifs *au cas où* le custom cursor a un raté, mais reste caché par défaut */
+  cursor: pointer;
+}
+
+input[type="text"], input[type="email"], textarea {
+  cursor: text;
 }
 
 html {

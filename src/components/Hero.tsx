@@ -6,6 +6,7 @@ import Link from "next/link";
 import { FaDownload, FaEnvelope } from "react-icons/fa";
 import { getAssetPath } from "@/utils/paths";
 import HeroCanvas from "./HeroCanvas"; // Composant 3D
+import TextReveal from "./TextReveal";
 
 export const metadata = {
     title: "Accueil - Killian Fievet",
@@ -36,30 +37,31 @@ export default function Hero() {
             <HeroCanvas />
 
             {/* 2. Le Contenu Textuel et Boutons (z-10 pour passer devant la 3D) */}
-            <div className="relative z-10 p-8 card-glass card-shine max-w-xl flex flex-col justify-center items-center md:items-start text-center md:text-left">
-                <h1 className="text-5xl md:text-6xl font-bold text-foreground">
-                    Bonjour, je suis <span className="text-primary">Killian Fievet</span>
-                </h1>
-                <p
-                    key={current}
-                    // className="text-xl md:text-2xl text-muted h-8 transition-opacity duration-600 ease-in-out opacity-100 mt-4 mb-8" >
-                    className="text-xl md:text-2xl text-muted h-8 ease-in-out opacity-100 mt-4 mb-8" >
-                    {phrases[current]}
-                </p>
+            <div className="relative z-10 p-8 card-glass card-shine max-w-xl flex flex-col justify-center items-center md:items-start text-center md:text-left gap-4">
+
+                <div className="text-5xl md:text-6xl font-bold text-foreground">
+                    <TextReveal text="Bonjour, je suis" className="justify-center md:justify-start" delay={0} />
+                    <TextReveal text="Killian Fievet" className="justify-center md:justify-start text-primary mt-2" delay={3} />
+                </div>
+
+                <div className="text-xl md:text-2xl text-muted h-8 mt-4 mb-4">
+                    {/* Clé pour forcer le re-render du composant TextReveal à chaque changement de phrase */}
+                    <TextReveal key={current} text={phrases[current]} className="justify-center md:justify-start" delay={0} />
+                </div>
 
                 {/* Boutons Améliorés */}
-                <div className="flex justify-center md:justify-start gap-4 mt-6">
+                <div className="flex justify-center md:justify-start gap-4 mt-6 w-full">
                     <Link href={getAssetPath("/data/CV_Alternance_Sorbonne_2025.pdf")} target="_blank"
                         aria-label="Télécharger le CV de Killian Fievet"
-                        className="px-6 py-3 rounded-full bg-primary text-white font-medium hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center" >
+                        className="px-6 py-3 rounded-full bg-primary text-white font-medium hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center flex-1 md:flex-none" >
                         <FaDownload className="mr-2" />
-                        Télécharger mon CV
+                        CV
                     </Link>
 
                     {/* Bouton Secondaire */}
-                    <Link href="#contact" className="px-6 py-3 rounded-full border border-muted-foreground/30 text-foreground font-medium hover:bg-muted/10 hover:border-muted-foreground/50 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center" >
+                    <Link href="#contact" className="px-6 py-3 rounded-full border border-muted-foreground/30 text-foreground font-medium hover:bg-muted/10 hover:border-muted-foreground/50 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center flex-1 md:flex-none" >
                         <FaEnvelope className="mr-2" />
-                        Me contacter
+                        Contact
                     </Link>
                 </div>
             </div>

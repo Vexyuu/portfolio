@@ -8,6 +8,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import { Search } from "lucide-react";
 import Fuse from "fuse.js";
 import { projects } from "@/data/projects";
+import TiltCard from "@/components/TiltCard";
 
 export default function ProjectsPage() {
     const [filter, setFilter] = useState("all");
@@ -134,40 +135,44 @@ export default function ProjectsPage() {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 transition={{ duration: 0.25 }}
-                                className="break-inside-avoid card-glass card-shine rounded-lg overflow-hidden shadow-lg hover:scale-[1.01] transition"
+                                className="break-inside-avoid shadow-lg mb-6"
                             >
-                                <ParallaxImage
-                                    src={project.image}
-                                    alt={project.title}
-                                />
+                                <TiltCard className="h-full">
+                                    <div className="card-glass card-shine rounded-lg overflow-hidden h-full flex flex-col transition">
+                                        <ParallaxImage
+                                            src={project.image}
+                                            alt={project.title}
+                                        />
 
-                                <div className="p-6">
-                                    <h3 className="text-xl font-bold text-primary mb-2">
-                                        {project.title}
-                                    </h3>
+                                        <div className="p-6 flex-grow flex flex-col">
+                                            <h3 className="text-xl font-bold text-primary mb-2">
+                                                {project.title}
+                                            </h3>
 
-                                    <span className="text-xs text-muted-foreground block mb-2">
-                                        {project.category} • {project.year}
-                                    </span>
+                                            <span className="text-xs text-muted-foreground block mb-2">
+                                                {project.category} • {project.year}
+                                            </span>
 
-                                    <p className="text-muted mb-4">
-                                        {project.description}
-                                    </p>
+                                            <p className="text-muted mb-4 flex-grow">
+                                                {project.description}
+                                            </p>
 
-                                    <div className="flex flex-wrap justify-between items-center gap-2">
-                                        <Link href={project.more} className="px-4 py-2 text-sm font-medium rounded-md bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
-                                            En savoir plus
-                                        </Link>
+                                            <div className="mt-auto flex flex-wrap justify-between items-center gap-2">
+                                                <Link href={project.more} className="px-4 py-2 text-sm font-medium rounded-md bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
+                                                    En savoir plus
+                                                </Link>
 
-                                        <Link
-                                            href={project.link}
-                                            target="_blank"
-                                            className="px-4 py-2 text-sm font-medium rounded-md border border-muted-foreground/30 text-foreground hover:bg-muted/10 transition-colors"
-                                        >
-                                            GitHub
-                                        </Link>
+                                                <Link
+                                                    href={project.link}
+                                                    target="_blank"
+                                                    className="px-4 py-2 text-sm font-medium rounded-md border border-muted-foreground/30 text-foreground hover:bg-muted/10 transition-colors"
+                                                >
+                                                    GitHub
+                                                </Link>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                </TiltCard>
                             </motion.div>
                         ))}
                     </AnimatePresence>
