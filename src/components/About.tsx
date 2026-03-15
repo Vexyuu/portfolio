@@ -1,25 +1,28 @@
 // src/components/About.tsx
 "use client";
-import Image from "next/image";
+import { motion } from "framer-motion";
 import { FaGraduationCap, FaNetworkWired, FaLightbulb } from "react-icons/fa";
 import SpotlightCard from "./SpotlightCard";
-import TextReveal from "./TextReveal";
 
-export const metadata = {
-    title: "À propos de moi - Killian Fievet",
-    description: "En savoir plus sur moi, mes compétences et mon parcours.",
-};
 
 export default function About() {
     return (
-        <section id="about" className="py-20 px-6 bg-background text-foreground">
-            <div className="max-w-5xl mx-auto text-center space-y-12">
+        <section id="about" className="py-32 px-6 bg-background text-foreground overflow-hidden w-full flex flex-col items-center">
+            <motion.div 
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="max-w-6xl w-full text-center space-y-16"
+            >
                 {/* Titre */}
-                <TextReveal text="À propos de moi" className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent bg-[length:200%_200%] justify-center" />
+                <h2 className="text-5xl md:text-8xl font-black tracking-tighter mb-16 py-4">
+                    <span className="bg-mask-text inline-block">À PROPOS DE MOI</span>
+                </h2>
 
                 {/* Texte principal */}
-                <div className="flex flex-col justify-center text-left">
-                    <p className="text-lg text-muted-foreground leading-relaxed mb-6 font-medium">
+                <div className="flex flex-col justify-center text-center max-w-3xl mx-auto">
+                    <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-10 font-medium tracking-tight">
                         Étudiant en <span className="text-secondary font-semibold">Licence MIAGE à l&apos;Université Paris 1 Panthéon-Sorbonne</span>, je suis passionné par l&apos;informatique depuis toujours. Curieux et autonome, j&apos;aime concevoir des architectures robustes et développer des applications web modernes, fluides et intuitives.
                     </p>
                     <p className="text-lg text-muted-foreground leading-relaxed mb-8">
@@ -44,7 +47,7 @@ export default function About() {
                         </SpotlightCard>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 }

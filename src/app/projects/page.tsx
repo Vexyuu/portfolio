@@ -1,10 +1,9 @@
-// src/app/projects/page.tsx
 "use client";
 
 import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Search } from "lucide-react";
 import Fuse from "fuse.js";
 import { projects } from "@/data/projects";
@@ -55,50 +54,59 @@ export default function ProjectsPage() {
     const count = sorted.length;
 
     return (
-        <section className="py-20 px-6 bg-background text-foreground">
-            <div className="max-w-6xl mx-auto">
+        <section className="py-32 px-6 bg-background text-foreground relative overflow-hidden min-h-screen">
+            <div className="max-w-7xl mx-auto relative z-10">
+                
+                {/* --- HEADER --- */}
+                <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-center mb-20"
+                >
+                    <h2 className="text-secondary font-black tracking-[0.4em] uppercase text-xs mb-4">Showcase complet</h2>
+                    <h1 className="text-5xl md:text-8xl font-black tracking-tighter mb-6 bg-mask-text py-2">
+                        TOUS MES PROJETS.
+                    </h1>
+                    <div className="w-24 h-[2px] bg-secondary mx-auto rounded-full mb-8 shadow-[0_0_15px_rgba(217,119,6,0.5)]" />
+                    <p className="text-muted-foreground max-w-2xl mx-auto text-xl font-medium tracking-tight">
+                        Explorez l&apos;univers de mes créations, du développement Web à l&apos;Intelligence Artificielle. 
+                    </p>
+                </motion.div>
 
-                <h1 className="text-3xl md:text-4xl font-bold text-center mb-4">
-                    Tous mes projets
-                </h1>
-
-                <p className="text-muted-foreground text-center mb-12">
-                    {count} projets trouvés
-                </p>
-
-                {/* --- CONTROLES --- */}
-                <div className="flex flex-col md:flex-row flex-wrap items-center justify-center gap-4 mb-8">
-                    {/* Search */}
-                    <div className="relative w-full md:w-auto">
-                        <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none text-muted-foreground">
-                            <Search size={18} />
-                        </div>
+                {/* --- CONTROLES (PEPS STYLE) --- */}
+                <motion.div 
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="flex flex-col md:flex-row flex-wrap items-center justify-center gap-6 mb-12 p-10 card-glass rounded-[3.5rem]"
+                >
+                    {/* Search Field */}
+                    <div className="relative w-full md:w-96 group">
+                        <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within:text-secondary transition-colors" size={20} />
                         <input
                             type="text"
-                            placeholder="Recherche avancée..."
-                            className="w-full md:w-72 bg-muted/5 border border-muted-foreground/20 text-foreground px-10 py-2.5 rounded-full focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-muted-foreground"
+                            placeholder="RECHERCHER UN PROJET..."
+                            className="w-full bg-background/50 border border-white/5 text-foreground pl-14 pr-8 py-5 rounded-full focus:outline-none focus:ring-2 focus:ring-secondary/40 focus:border-secondary/40 transition-all placeholder:text-muted-foreground/30 text-xs font-black uppercase tracking-widest"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                         />
                     </div>
 
                     <div className="flex gap-4 w-full md:w-auto">
-                        {/* Statut */}
                         <select
                             value={filter}
                             onChange={(e) => setFilter(e.target.value)}
-                            className="flex-1 md:flex-none appearance-none bg-muted/5 border border-muted-foreground/20 text-foreground px-4 py-2.5 rounded-full focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all cursor-pointer"
+                            className="flex-1 md:w-48 bg-background/50 border border-white/5 text-foreground px-8 py-5 rounded-full focus:outline-none focus:ring-2 focus:ring-secondary/40 transition-all cursor-pointer text-xs font-black uppercase tracking-widest appearance-none text-center"
                         >
-                            <option value="all">Tous les statuts</option>
+                            <option value="all">Statuts</option>
                             <option value="progress">En cours</option>
                             <option value="finished">Finis</option>
                         </select>
 
-                        {/* Tri */}
                         <select
                             value={sort}
                             onChange={(e) => setSort(e.target.value)}
-                            className="flex-1 md:flex-none appearance-none bg-muted/5 border border-muted-foreground/20 text-foreground px-4 py-2.5 rounded-full focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all cursor-pointer"
+                            className="flex-1 md:w-48 bg-background/50 border border-white/5 text-foreground px-8 py-5 rounded-full focus:outline-none focus:ring-2 focus:ring-secondary/40 transition-all cursor-pointer text-xs font-black uppercase tracking-widest appearance-none text-center"
                         >
                             <option value="recent">Plus récents</option>
                             <option value="old">Plus anciens</option>
@@ -106,68 +114,105 @@ export default function ProjectsPage() {
                             <option value="za">Z → A</option>
                         </select>
                     </div>
-                </div>
+                </motion.div>
 
-                {/* TAGS */}
-                <div className="flex justify-center gap-3 mb-12 flex-wrap">
+                {/* CATEGORY TAGS (NEON PILLS) */}
+                <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                    className="flex justify-center gap-4 mb-20 flex-wrap"
+                >
                     {categories.map((cat) => (
                         <button
                             key={cat}
                             onClick={() => setActiveCategory(cat)}
-                            className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeCategory === cat
-                                ? "bg-primary text-white shadow-md shadow-primary/30 transform scale-105"
-                                : "bg-muted/10 text-muted-foreground hover:bg-muted/20 hover:text-foreground border border-muted-foreground/10"
-                                }`}
+                            className={`px-10 py-4 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-500 border-2 ${
+                                activeCategory === cat
+                                ? "bg-secondary border-secondary text-background shadow-[0_0_30px_rgba(217,119,6,0.3)] scale-110"
+                                : "bg-white/5 border-white/5 text-muted-foreground hover:border-secondary/50 hover:text-foreground hover:bg-white/10"
+                            }`}
                         >
                             {cat}
                         </button>
                     ))}
-                </div>
+                </motion.div>
 
-                {/* --- MASONRY LAYOUT --- */}
-                <div className="columns-1 sm:columns-2 lg:columns-2 gap-6 space-y-6">
-                    <AnimatePresence>
-                        {displayed.map((project) => (
+                <p className="text-muted-foreground text-center mb-12 text-sm font-medium tracking-wide italic">
+                    {count} pépites dénichées dans mes archives
+                </p>
+
+                {/* --- PROJECTS GRID --- */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <AnimatePresence mode="popLayout">
+                        {displayed.map((project, index) => (
                             <motion.div
                                 key={project.title}
                                 layout
-                                initial={{ opacity: 0, y: 40 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, scale: 0.9 }}
-                                transition={{ duration: 0.25 }}
-                                className="break-inside-avoid shadow-lg mb-6"
+                                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
+                                transition={{ 
+                                    duration: 0.5, 
+                                    delay: index * 0.05,
+                                    type: "spring",
+                                    stiffness: 100,
+                                    damping: 20
+                                }}
                             >
                                 <TiltCard className="h-full">
-                                    <div className="card-glass card-shine rounded-lg overflow-hidden h-full flex flex-col transition">
-                                        <ParallaxImage
-                                            src={project.image}
-                                            alt={project.title}
-                                        />
+                                    <div className="card-glass card-shine rounded-[2.5rem] overflow-hidden h-full flex flex-col group relative border-muted-foreground/5 scale-[0.98] hover:scale-100 transition-transform duration-500">
+                                        <div className="relative w-full h-64 overflow-hidden">
+                                            <Image
+                                                src={project.image}
+                                                alt={project.title}
+                                                fill
+                                                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
+                                            
+                                            {/* Badge Statut */}
+                                            <div className="absolute top-6 right-6">
+                                                {project.isFinite ? (
+                                                    <span className="bg-green-500/20 text-green-400 text-[10px] uppercase font-black px-4 py-1.5 rounded-full backdrop-blur-xl border border-green-500/30">Ready</span>
+                                                ) : (
+                                                    <span className="bg-amber-500/20 text-amber-400 text-[10px] uppercase font-black px-4 py-1.5 rounded-full backdrop-blur-xl border border-amber-500/30">In Progress</span>
+                                                )}
+                                            </div>
+                                        </div>
 
-                                        <div className="p-6 flex-grow flex flex-col">
-                                            <h3 className="text-xl font-bold text-primary mb-2">
+                                        <div className="p-10 flex-grow flex flex-col relative z-10">
+                                            <div className="flex items-center gap-2 mb-4">
+                                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-secondary">
+                                                    {project.category}
+                                                </span>
+                                                <span className="w-1 h-1 rounded-full bg-muted-foreground/30" />
+                                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">
+                                                    {project.year}
+                                                </span>
+                                            </div>
+
+                                            <h3 className="text-3xl font-black text-foreground mb-4 leading-none tracking-tighter group-hover:text-primary transition-colors duration-300">
                                                 {project.title}
                                             </h3>
 
-                                            <span className="text-xs text-muted-foreground block mb-2">
-                                                {project.category} • {project.year}
-                                            </span>
-
-                                            <p className="text-muted mb-4 flex-grow">
+                                            <p className="text-muted-foreground text-sm leading-relaxed mb-8 flex-grow">
                                                 {project.description}
                                             </p>
 
-                                            <div className="mt-auto flex flex-wrap justify-between items-center gap-2">
-                                                <Link href={project.more} className="px-4 py-2 text-sm font-medium rounded-md bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
-                                                    En savoir plus
+                                            <div className="flex items-center gap-4 mt-auto">
+                                                <Link 
+                                                    href={project.more} 
+                                                    className="px-8 py-3 rounded-full bg-foreground text-background font-black text-[10px] uppercase tracking-widest hover:bg-primary hover:text-white transition-all duration-300"
+                                                >
+                                                    Exploration
                                                 </Link>
-
                                                 <Link
                                                     href={project.link}
                                                     target="_blank"
-                                                    className="px-4 py-2 text-sm font-medium rounded-md border border-muted-foreground/30 text-foreground hover:bg-muted/10 transition-colors"
+                                                    className="p-3 rounded-full border border-muted-foreground/20 text-foreground hover:border-primary/50 hover:text-primary transition-all duration-300"
                                                 >
-                                                    GitHub
+                                                    <Search size={16} />
                                                 </Link>
                                             </div>
                                         </div>
@@ -178,38 +223,23 @@ export default function ProjectsPage() {
                     </AnimatePresence>
                 </div>
 
-                {/* PAGINATION */}
+                {/* --- PAGINATION (SIGNATURE STYLE) --- */}
                 {visibleCount < count && (
-                    <div className="text-center mt-12">
+                    <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="text-center mt-32"
+                    >
                         <button
                             onClick={() => setVisibleCount(visibleCount + 6)}
-                            className="px-6 py-2 bg-primary text-background rounded-md hover:opacity-90 transition"
+                            className="group relative px-16 py-6 bg-secondary text-background rounded-full font-black text-xs uppercase tracking-[0.3em] hover:shadow-[0_0_50px_rgba(217,119,6,0.3)] transition-all duration-500 overflow-hidden shadow-2xl shadow-black/40"
                         >
-                            Voir plus
+                            <span className="relative z-10">Charger plus de projets</span>
+                            <div className="absolute inset-0 bg-gradient-to-r from-secondary via-amber-300 to-secondary translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                         </button>
-                    </div>
+                    </motion.div>
                 )}
             </div>
         </section>
-    );
-}
-
-/* --- IMAGE PARALLAX COMPONENT --- */
-function ParallaxImage({ src, alt }: { src: string; alt: string }) {
-    const { scrollY } = useScroll();
-    const y = useTransform(scrollY, [0, 300], [0, -30]);
-
-    return (
-        <motion.div className="relative w-full h-56 overflow-hidden">
-            <motion.div style={{ y }}>
-                <Image
-                    src={src}
-                    alt={alt}
-                    width={600}
-                    height={400}
-                    className="object-cover w-full h-56"
-                />
-            </motion.div>
-        </motion.div>
     );
 }

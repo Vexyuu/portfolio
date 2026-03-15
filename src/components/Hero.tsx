@@ -1,7 +1,6 @@
-// src/components/Hero.tsx
 "use client";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { FaDownload, FaEnvelope } from "react-icons/fa";
 import { getAssetPath } from "@/utils/paths";
@@ -31,55 +30,70 @@ export default function Hero() {
     }, []);
 
     return (
-        // <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <section className="relative min-h-screen pt-20 flex flex-col md:flex-row justify-center items-center text-center md:text-left px-6">
-            {/* 1. Le Canavas Three.js en arrière-plan (z-0) */}
+        <section className="relative min-h-screen pt-32 flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+            {/* 1. Le Canavas Three.js en arrière-plan */}
             <HeroCanvas />
 
-            {/* 2. Le Contenu Textuel et Boutons (z-10 pour passer devant la 3D) */}
-            <div className="relative z-10 p-8 card-glass card-shine max-w-xl flex flex-col justify-center items-center md:items-start text-center md:text-left gap-4">
-
-                <div className="text-5xl md:text-6xl font-bold text-foreground">
-                    <TextReveal text="Bonjour, je suis" className="justify-center md:justify-start" delay={0} />
-                    <TextReveal text="Killian Fievet" className="justify-center md:justify-start text-primary mt-2" delay={3} />
-                </div>
-
-                <div className="text-xl md:text-2xl text-muted h-8 mt-4 mb-4">
-                    {/* Clé pour forcer le re-render du composant TextReveal à chaque changement de phrase */}
-                    <TextReveal key={current} text={phrases[current]} className="justify-center md:justify-start" delay={0} />
-                </div>
-
-                {/* Boutons Améliorés */}
-                <div className="flex justify-center md:justify-start gap-4 mt-6 w-full">
-                    <Link href={getAssetPath("/data/CV_Alternance_Sorbonne_2025.pdf")} target="_blank"
-                        aria-label="Télécharger le CV de Killian Fievet"
-                        className="px-6 py-3 rounded-full bg-primary text-white font-medium hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center flex-1 md:flex-none" >
-                        <FaDownload className="mr-2" />
-                        CV
-                    </Link>
-
-                    {/* Bouton Secondaire */}
-                    <Link href="#contact" className="px-6 py-3 rounded-full border border-muted-foreground/30 text-foreground font-medium hover:bg-muted/10 hover:border-muted-foreground/50 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center flex-1 md:flex-none" >
-                        <FaEnvelope className="mr-2" />
-                        Contact
-                    </Link>
-                </div>
-            </div>
-
-            {/* Image de profil (avec un contour et une ombre premium) */}
-            <div className="flex-1 mt-10 md:mt-0 relative z-10 flex justify-center md:justify-end">
-                <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto rounded-full p-2 bg-gradient-to-tr from-primary/20 via-primary/5 to-transparent backdrop-blur-sm border border-primary/20 shadow-2xl shadow-primary/20 transition-transform duration-500 hover:scale-105">
-                    <div className="relative w-full h-full rounded-full overflow-hidden border border-foreground/10">
-                        <Image
-                            src={getAssetPath("/data/photo.jpg")}
-                            alt="Photo Killian Fievet"
-                            fill
-                            priority
-                            className="object-cover"
-                        />
+            {/* 2. Contenu Principal */}
+            <div className="relative z-10 flex flex-col items-center gap-8 max-w-4xl">
+                
+                <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="space-y-4"
+                >
+                    <h2 className="text-xs uppercase tracking-[0.4em] font-black text-secondary mb-4 bg-secondary/10 border border-secondary/20 px-4 py-2 rounded-full inline-block backdrop-blur-md">
+                        Disponible pour de nouveaux projets
+                    </h2>
+                    
+                    <div className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] select-none">
+                        <TextReveal text="VOTRE VISION," className="justify-center" delay={0} />
+                        <motion.div 
+                            whileHover={{ scale: 1.05, rotate: -0.5 }}
+                            className="bg-mask-text py-2 cursor-default"
+                        >
+                             <TextReveal text="MON CODE." className="justify-center" delay={0.5} />
+                        </motion.div>
                     </div>
+                </motion.div>
+
+                <div className="text-xl md:text-2xl text-muted-foreground font-black tracking-tighter uppercase h-8">
+                     <TextReveal key={current} text={phrases[current]} className="justify-center" delay={0} />
                 </div>
+
+                {/* Boutons Premium */}
+                <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1, duration: 1 }}
+                    className="flex flex-wrap justify-center gap-6 mt-12"
+                >
+                    <Link href={getAssetPath("/data/CV_Alternance_Sorbonne_2025.pdf")} target="_blank"
+                        className="group relative px-10 py-5 rounded-full bg-secondary text-background font-black text-xs uppercase tracking-widest overflow-hidden transition-all duration-500 hover:shadow-[0_0_50px_rgba(217,119,6,0.3)] shadow-xl shadow-black/20" >
+                        <span className="relative z-10 flex items-center gap-2">
+                            <FaDownload /> Télécharger CV
+                        </span>
+                        <div className="absolute inset-0 bg-gradient-to-r from-secondary via-amber-300 to-secondary translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                    </Link>
+
+                    <Link href="#contact" 
+                        className="px-10 py-5 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl text-foreground font-black text-xs uppercase tracking-widest hover:bg-white/10 transition-all duration-500 flex items-center gap-2 shadow-xl shadow-black/10" >
+                        <FaEnvelope /> Contact
+                    </Link>
+                </motion.div>
             </div>
+
+            {/* Scroll Indicator */}
+            <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 2, duration: 1 }}
+                className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+            >
+                <span className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground">Scroll</span>
+                <div className="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent animate-bounce" />
+            </motion.div>
         </section>
     );
-}
+}

@@ -21,14 +21,17 @@ export default function CareerContent() {
         <main className="max-w-6xl mx-auto px-4 py-20 cursor-default">
             <section id="section-parcours">
                 {/* Titre avec l'animation gradient pour la cohérence */}
-                <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-16 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent bg-[length:200%_200%]">
-                    Mon Parcours
+                <h1 className="text-6xl md:text-9xl font-black tracking-tighter text-center mb-24 py-4">
+                    <span className="bg-mask-text">MON PARCOURS.</span>
                 </h1>
 
-                <div className="flex flex-col md:flex-row gap-12">
+                <div className="flex flex-col lg:flex-row gap-16">
                     {/* Parcours scolaire */}
                     <div className="flex-1">
-                        <h2 className="text-2xl font-semibold mb-6 text-primary">📚 Parcours scolaire</h2>
+                        <div className="flex items-center gap-4 mb-10">
+                            <span className="w-12 h-[2px] bg-primary rounded-full" />
+                            <h2 className="text-xl font-black uppercase tracking-[0.3em] text-primary">Parcours scolaire</h2>
+                        </div>
                         <div className="relative border-l-2 border-primary">
                             {schoolTimeline.map((item, i) => (
                                 <motion.div
@@ -60,8 +63,11 @@ export default function CareerContent() {
 
                     {/* Parcours pro */}
                     <div className="flex-1">
-                        <h2 className="text-2xl font-semibold mb-6 text-secondary">💼 Parcours professionnel</h2>
-                        <div className="relative border-l-2 border-secondary">
+                        <div className="flex items-center gap-4 mb-10">
+                            <span className="w-12 h-[2px] bg-secondary rounded-full" />
+                            <h2 className="text-xl font-black uppercase tracking-[0.4em] text-secondary">Parcours pro</h2>
+                        </div>
+                        <div className="relative border-l-2 border-secondary/30">
                             {workTimeline.map((item, i) => (
                                 <motion.div
                                     key={i}

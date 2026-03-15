@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { motion, useSpring, useMotionValue } from "framer-motion";
 
 export default function CustomCursor() {
@@ -11,8 +11,8 @@ export default function CustomCursor() {
     const cursorX = useMotionValue(-100);
     const cursorY = useMotionValue(-100);
 
-    // Smooth springs to trail the mouse
-    const springConfig = { damping: 25, stiffness: 200, mass: 0.5 };
+    // Smooth springs to trail the mouse (Higher stiffness/lower damping = more snappy)
+    const springConfig = { damping: 20, stiffness: 450, mass: 0.1 };
     const cursorXSpring = useSpring(cursorX, springConfig);
     const cursorYSpring = useSpring(cursorY, springConfig);
 
@@ -79,7 +79,7 @@ export default function CustomCursor() {
         <>
             {/* Central Dot */}
             <motion.div
-                className="fixed top-0 left-0 w-2 h-2 bg-primary rounded-full pointer-events-none z-[100] transform -translate-x-1/2 -translate-y-1/2 shadow-lg shadow-primary/50 mix-blend-difference"
+                className="fixed top-0 left-0 w-1.5 h-1.5 bg-primary rounded-full pointer-events-none z-[100] transform -translate-x-1/2 -translate-y-1/2 shadow-[0_0_10px_rgba(99,102,241,0.8)]"
                 style={{
                     x: cursorX,
                     y: cursorY,
@@ -92,18 +92,32 @@ export default function CustomCursor() {
             />
             {/* Outer Ring */}
             <motion.div
-                className="fixed top-0 left-0 w-8 h-8 border-[1.5px] border-primary/50 rounded-full pointer-events-none z-[100] transform -translate-x-1/2 -translate-y-1/2 backdrop-blur-[1px]"
+                className="fixed top-0 left-0 w-10 h-10 border-[1px] border-primary/30 rounded-full pointer-events-none z-[100] transform -translate-x-1/2 -translate-y-1/2"
                 style={{
                     x: cursorXSpring,
                     y: cursorYSpring,
                 }}
                 animate={{
-                    scale: isHovering ? 1.5 : 1,
-                    backgroundColor: isHovering ? "rgba(var(--color-primary-rgb), 0.1)" : "transparent",
-                    borderColor: isHovering ? "var(--color-primary)" : "rgba(var(--color-primary-rgb), 0.5)",
+                    scale: isHovering ? 2 : 1,
+                    backgroundColor: isHovering ? "rgba(99, 102, 241, 0.1)" : "transparent",
+                    borderColor: isHovering ? "var(--color-primary)" : "rgba(99, 102, 241, 0.3)",
+                    borderWidth: isHovering ? "2px" : "1px",
                 }}
-                transition={{ duration: 0.15 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
             />
+            
+            {/* Hover Glow Effect */}
+            {isHovering && (
+                <motion.div
+                    className="fixed top-0 left-0 w-20 h-20 bg-primary/5 blur-xl rounded-full pointer-events-none z-[90] transform -translate-x-1/2 -translate-y-1/2"
+                    style={{
+                        x: cursorXSpring,
+                        y: cursorYSpring,
+                    }}
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                />
+            )}
         </>
     );
 }

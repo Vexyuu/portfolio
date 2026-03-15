@@ -2,20 +2,20 @@
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 export default function Footer() {
     return (
-        <footer className="py-10 text-center bg-background/80 backdrop-blur-md border-t border-muted-foreground/10">
-            <div className="flex justify-center gap-6 mt-2 mb-6">
-                <a href="mailto:killianfievetpro@gmail.com" className="p-3 bg-muted/10 text-foreground border border-muted-foreground/20 rounded-full hover:bg-muted/20 hover:text-primary transition-colors">
-                    <FaEnvelope size={20} />
+        <footer className="py-20 text-center bg-background border-t border-white/5 relative z-10">
+            <div className="flex justify-center gap-8 mb-10">
+                <a href="mailto:killianfievetpro@gmail.com" className="p-4 bg-white/5 text-white/50 border border-white/10 rounded-full hover:bg-secondary hover:text-background hover:border-secondary transition-all duration-500 shadow-xl shadow-black/20">
+                    <FaEnvelope size={22} />
                 </a>
-                <a href="https://www.linkedin.com/in/killian-fievet-4a3788287" target="_blank" className="p-3 bg-muted/10 text-foreground border border-muted-foreground/20 rounded-full hover:bg-muted/20 hover:text-secondary transition-colors">
-                    <FaLinkedin size={20} />
+                <a href="https://www.linkedin.com/in/killian-fievet-4a3788287" target="_blank" className="p-4 bg-white/5 text-white/50 border border-white/10 rounded-full hover:bg-secondary hover:text-background hover:border-secondary transition-all duration-500 shadow-xl shadow-black/20">
+                    <FaLinkedin size={22} />
                 </a>
-                <a href="https://github.com/Vexyuu" target="_blank" className="p-3 bg-muted/10 text-foreground border border-muted-foreground/20 rounded-full hover:bg-muted/20 hover:text-accent transition-colors">
-                    <FaGithub size={20} />
+                <a href="https://github.com/Vexyuu" target="_blank" className="p-4 bg-white/5 text-white/50 border border-white/10 rounded-full hover:bg-secondary hover:text-background hover:border-secondary transition-all duration-500 shadow-xl shadow-black/20">
+                    <FaGithub size={22} />
                 </a>
             </div>
-            <p className="text-sm text-muted-foreground">
-                © {new Date().getFullYear()} Portfolio Killian Fievet - Tous droits réservés
+            <p className="text-xs font-black uppercase tracking-[0.4em] text-muted-foreground/40">
+                © {new Date().getFullYear()} <span className="text-secondary/60">KILLIAN F.</span> - SIGNATURE EXPERIENCE
             </p>
         </footer>
     );
