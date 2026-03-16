@@ -1,9 +1,9 @@
-// src/components/Contact.tsx
 "use client";
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
 import Link from "next/link";
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import Button from "./ui/Button";
 
 export const metadata = {
     title: "Contact - Killian Fievet",
@@ -20,6 +20,8 @@ export default function Contact() {
     const [responseMessage, setResponseMessage] = useState("");
 
     const isFormIncomplete = !formData.name || !formData.email || !formData.message;
+
+    const LinkClass = "px-5 py-2.5 flex items-center gap-2 rounded-full border border-muted-foreground/30 text-foreground hover:bg-muted/10 transition-colors";
 
     // Gérer le changement des valeurs du formulaire
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -58,11 +60,51 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" className="py-20 px-6 bg-background text-foreground">
-            <div className="max-w-3xl mx-auto text-center">
-                <h2 className="text-3xl md:text-4xl font-bold mb-8">Contactez-moi</h2>
-                <p className="text-muted mb-8">Vous pouvez m&apos;envoyer un message directement via ce formulaire.</p>
-                <form onSubmit={handleSubmit} className="grid gap-6">
+        <section id="contact" className="py-32 px-6 bg-background text-foreground relative overflow-hidden">
+             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/5 blur-[120px] rounded-full pointer-events-none" />
+             
+            <div className="max-w-5xl mx-auto">
+                <div className="flex flex-col items-center text-center mb-16 gap-6">
+                    <h2 className="text-xs uppercase tracking-[0.4em] font-black text-secondary px-6 py-2 bg-secondary/10 border border-secondary/20 rounded-full inline-block backdrop-blur-md">Contact</h2>
+                    <h3 className="text-5xl md:text-8xl font-black tracking-tighter">
+                        <span className="bg-mask-text uppercase">Travaillons ensemble</span>
+                    </h3>
+                    <p className="text-muted-foreground max-w-2xl font-medium text-xl tracking-tight mt-4">
+                        Vous avez un projet en tête ou une question ? N&apos;hésitez pas à m&apos;envoyer un message.
+                    </p>
+                </div>
+
+                <div className="grid md:grid-cols-5 gap-8">
+                    {/* Infos de contact */}
+                    <div className="md:col-span-2 space-y-4">
+                        <div className="card-glass p-8 rounded-[2rem] space-y-8">
+                            <div>
+                                <h4 className="text-sm uppercase tracking-widest text-muted-foreground font-bold mb-4">Mes réseaux</h4>
+                                <div className="flex flex-col gap-3">
+                                    <Link href="https://github.com/Vexyuu" target="_blank" className="group flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                                        <FaGithub className="text-2xl text-white/50 group-hover:text-white transition-colors" />
+                                        <span className="font-bold">GitHub</span>
+                                    </Link>
+                                    <Link href="https://www.linkedin.com/in/killian-fievet-4a3788287" target="_blank" className="group flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                                        <FaLinkedin className="text-2xl text-white/50 group-hover:text-blue-400 transition-colors" />
+                                        <span className="font-bold">LinkedIn</span>
+                                    </Link>
+                                    <Link href="mailto:killianfievetpro@gmail.com" className="group flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                                        <FaEnvelope className="text-2xl text-white/50 group-hover:text-secondary transition-colors" />
+                                        <span className="font-bold">Email</span>
+                                    </Link>
+                                </div>
+                            </div>
+
+                            <div className="pt-8 border-t border-white/10 text-sm text-muted-foreground leading-relaxed">
+                                <p>Disponible pour des opportunités en <span className="text-secondary font-bold">alternance</span> ou des projets <span className="text-primary font-bold">freelance</span>.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Formulaire */}
+                    <div className="md:col-span-3">
+                        <form onSubmit={handleSubmit} className="card-glass p-8 md:p-12 rounded-[2rem] grid gap-6">
                     <input
                         type="text"
                         name="name"
@@ -87,32 +129,23 @@ export default function Contact() {
                         rows={5}
                         className="p-4 rounded-xl bg-muted/5 border border-muted-foreground/20 text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all resize-none"
                     />
-                    <button
+                    <Button
                         type="submit"
-                        className="px-6 py-4 font-medium rounded-xl text-white bg-primary hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/30 disabled:opacity-50 disabled:hover:scale-100 disabled:hover:shadow-none transition-all duration-300 transform hover:-translate-y-1"
+                        variant="primary"
+                        size="lg"
+                        className="w-full py-4"
                         disabled={isSubmitting || isFormIncomplete}
+                        isLoading={isSubmitting}
                     >
-                        {isSubmitting ? "Envoi en cours..." : "Envoyer le message"}
-                    </button>
+                        Envoyer le message
+                    </Button>
+                    {responseMessage && (
+                        <p className={`mt-4 text-lg font-medium transition-opacity duration-500 ${responseMessage.includes("succès") ? "text-green-500" : "text-red-500"}`}>
+                            {responseMessage}
+                        </p>
+                    )}
                 </form>
-                {responseMessage && (
-                    <p className={`mt-4 text-lg font-medium transition-opacity duration-500 ${responseMessage.includes("succès") ? "text-green-500" : "text-red-500"}`}>
-                        {responseMessage}
-                    </p>
-                )}
-                <div className="mt-12 flex flex-wrap justify-center gap-4">
-                    <Link href="mailto:killianfievetpro@gmail.com" className="px-5 py-2.5 flex items-center gap-2 rounded-full border border-muted-foreground/30 text-foreground hover:bg-muted/10 transition-colors">
-                        <FaEnvelope />
-                        Email
-                    </Link>
-                    <Link href="https://github.com/Vexyuu" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 flex items-center gap-2 rounded-full border border-muted-foreground/30 text-foreground hover:bg-muted/10 transition-colors">
-                        <FaGithub />
-                        GitHub
-                    </Link>
-                    <Link href="https://www.linkedin.com/in/killian-fievet-4a3788287" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 flex items-center gap-2 rounded-full border border-muted-foreground/30 text-foreground hover:bg-muted/10 transition-colors">
-                        <FaLinkedin />
-                        LinkedIn
-                    </Link>
+                </div>
                 </div>
             </div>
         </section>

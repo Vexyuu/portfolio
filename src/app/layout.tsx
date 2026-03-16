@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import AuraBackground from "@/components/AuraBackground";
+import CustomCursor from "@/components/CustomCursor";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 
@@ -68,9 +69,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           content="5pd-z3HzxVHsbikp2ERm4HR-ddUabKTS7YMLk_Z9bMc"
         />
       </head>
-      <body className="antialiased">
+      <body className="antialiased hide-cursor">
         {/* Ajout du provider global */}
         <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark">
+          {/* <CustomCursor /> */}
           <AuraBackground />
           <Navbar />
           <main className="w-full flex flex-col items-center relative z-10">
