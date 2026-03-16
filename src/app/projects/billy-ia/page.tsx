@@ -33,6 +33,7 @@ export default function BillyIA() {
             stack={["Python", "TensorFlow", "Pandas", "Tkinter"]}
             github="https://github.com/Vexyuu/portfolio"
             demo="#"
+            category="IA"
         />
     );
 }

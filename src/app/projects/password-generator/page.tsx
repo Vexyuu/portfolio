@@ -33,6 +33,7 @@ export default function PasswordGenerator() {
             stack={["HTML", "CSS", "JavaScript"]}
             github="https://github.com/Vexyuu/password-generator"
             demo="https://vexyuu.github.io/password-generator/"
+            category="Outils"
         />
     );
 }

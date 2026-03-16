@@ -33,6 +33,7 @@ export default function NDI2025() {
             stack={["PHP", "CSS", "JavaScript", 'SQL']}
             github="https://404-not-found-krir-nuitdelinfo.great-site.net"
             demo="https://404-not-found-krir-nuitdelinfo.great-site.net"
+            category="Web"
         />
     );
 }

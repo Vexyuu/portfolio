@@ -6,6 +6,8 @@ import { ArrowLeft, Github, ExternalLink, Cpu, Target, Layout } from "lucide-rea
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
+import ProjectLiveFeed from "./ProjectLiveFeed";
+
 export type ProjectProps = {
     title: string;
     description: string;
@@ -15,9 +17,10 @@ export type ProjectProps = {
     stack: string[];
     github: string;
     demo?: string;
+    category?: string;
 };
 
-export default function ProjectCard({ title, description, longDescription, objective, image, stack, github, demo }: ProjectProps) {
+export default function ProjectCard({ title, description, longDescription, objective, image, stack, github, demo, category }: ProjectProps) {
     const router = useRouter();
 
     const containerVariants = {
@@ -173,13 +176,8 @@ export default function ProjectCard({ title, description, longDescription, objec
                             ))}
                         </div>
                         
-                        <div className="mt-12 pt-8 border-t border-white/5">
-                            <p className="text-xs font-black uppercase tracking-widest text-muted-foreground mb-4">Statut</p>
-                            <div className="flex items-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)] animate-pulse" />
-                                <span className="text-sm font-bold text-foreground">Projet Audité & Vérifié</span>
-                            </div>
-                        </div>
+                        {/* Simulated Live Feed */}
+                        <ProjectLiveFeed category={category} />
                     </motion.div>
                 </div>
             </motion.div>
