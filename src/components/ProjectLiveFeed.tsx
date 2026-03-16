@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Terminal } from "lucide-react";
 
@@ -53,7 +53,7 @@ export default function ProjectLiveFeed({ category = "Web" }: ProjectLiveFeedPro
     const [logs, setLogs] = useState<string[]>([]);
     const containerRef = useRef<HTMLDivElement>(null);
 
-    const generateLog = () => {
+    const generateLog = useCallback(() => {
         const pool = [...genericLogs, ...(categoryLogs[category] || categoryLogs["Web"])];
         let log = pool[Math.floor(Math.random() * pool.length)];
 
@@ -64,7 +64,7 @@ export default function ProjectLiveFeed({ category = "Web" }: ProjectLiveFeedPro
         log = log.replace("{conf}", (95 + Math.random() * 4).toFixed(1));
 
         return `[${new Date().toLocaleTimeString()}] ${log}`;
-    };
+    }, [category]);
 
     useEffect(() => {
         // Initial logs
@@ -79,7 +79,7 @@ export default function ProjectLiveFeed({ category = "Web" }: ProjectLiveFeedPro
         }, 3000 + Math.random() * 2000);
 
         return () => clearInterval(interval);
-    }, [category]);
+    }, [generateLog]);
 
     useEffect(() => {
         if (containerRef.current) {
@@ -126,7 +126,7 @@ export default function ProjectLiveFeed({ category = "Web" }: ProjectLiveFeedPro
             </div>
             
             <p className="mt-3 text-[9px] text-muted-foreground text-center animate-pulse">
-                Données simulées pour démontrer l'infrastructure
+                Données simulées pour démontrer l&apos;infrastructure
             </p>
         </div>
     );
