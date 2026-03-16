@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { FaDownload, FaEnvelope } from "react-icons/fa";
-import { getAssetPath } from "@/utils/paths";
 import TextReveal from "./TextReveal";
 import Button from "./ui/Button";
 
@@ -67,7 +66,7 @@ export default function Hero() {
                     transition={{ delay: 1, duration: 1 }}
                     className="flex flex-wrap justify-center gap-6 mt-12"
                 >
-                    <Link href={getAssetPath("/data/CV_Alternance_Sorbonne_2025.pdf")} target="_blank">
+                    <Link href="/data/CV_Alternance_Sorbonne_2026_FR.pdf" target="_blank">
                         <Button variant="secondary" size="lg" disabled={false} onClick={() => { }}>
                             <FaDownload /> Télécharger CV
                         </Button>
