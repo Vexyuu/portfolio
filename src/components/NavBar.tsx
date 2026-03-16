@@ -1,13 +1,11 @@
 // src/components/NavBar.tsx
 
 "use client";
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { FaUser, FaBriefcase, FaLayerGroup, FaAward, FaEnvelope, FaHome } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { FaUser, FaBriefcase, FaLayerGroup, FaEnvelope, FaHome } from "react-icons/fa";
 
 export default function Navbar() {
-    const [open, setOpen] = useState(false);
 
     const links = [
         { href: "/", label: "Accueil", icon: <FaHome /> },

@@ -2,7 +2,6 @@
 import { getAssetPath } from "@/utils/paths";
 import Image from "next/image";
 import SpotlightCard from "./SpotlightCard";
-import TextReveal from "./TextReveal";
 import { motion } from "framer-motion";
 
 const skills = [

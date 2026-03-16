@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { projects } from "@/data/projects";
-import TiltCard from "./TiltCard";
 
 export default function Projects() {
     return (

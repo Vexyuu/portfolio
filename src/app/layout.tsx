@@ -3,7 +3,6 @@ import "./globals.css";
 import Navbar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import AuraBackground from "@/components/AuraBackground";
-import CustomCursor from "@/components/CustomCursor";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 

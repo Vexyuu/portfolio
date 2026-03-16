@@ -1,6 +1,6 @@
 // src/components/ui/button.tsx
-import { ButtonHTMLAttributes, ReactNode, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { ReactNode, useRef, useState } from 'react';
+import { motion, HTMLMotionProps } from 'framer-motion';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -8,7 +8,7 @@ function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
 }
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends HTMLMotionProps<"button"> {
     children: ReactNode;
     variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
     size?: 'sm' | 'md' | 'lg';
@@ -54,7 +54,7 @@ export default function Button({ children, className, variant = 'primary', size 
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             whileHover={{ y: -2 }}
-            {...props as any}
+            {...props}
         >
             {/* Spotlight Effect */}
             <motion.div

@@ -21,8 +21,6 @@ export default function Contact() {
 
     const isFormIncomplete = !formData.name || !formData.email || !formData.message;
 
-    const LinkClass = "px-5 py-2.5 flex items-center gap-2 rounded-full border border-muted-foreground/30 text-foreground hover:bg-muted/10 transition-colors";
-
     // Gérer le changement des valeurs du formulaire
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
