@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 import Link from "next/link";
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import Button from "./ui/Button";
