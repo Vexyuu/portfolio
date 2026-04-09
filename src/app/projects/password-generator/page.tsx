@@ -9,16 +9,19 @@ export const metadata = {
     openGraph: {
         title: "Projet Générateur de mots de passe - Killian Fievet",
         description: "Outil de génération de mots de passe robustes avec options d’inclusion de symboles, chiffres et majuscules.",
-        url: "https://vexyuu.github.io/portfolio/projects/password-generator",
+        url: "https://killianfievet.com/projects/password-generator",
         type: "article",
         images: [
             {
-                url: "https://vexyuu.github.io/portfolio/data/projects/password-generator.png",
+                url: "https://killianfievet.com/data/projects/password-generator.png",
                 width: 1200,
                 height: 630,
                 alt: "Générateur de mots de passe",
             },
         ],
+    },
+    alternates: {
+        canonical: "https://killianfievet.com/projects/password-generator",
     },
 };
 

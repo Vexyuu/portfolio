@@ -6,7 +6,7 @@ import AuraBackground from "@/components/AuraBackground";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"], display: "swap" });
+const baseUrl = "https://killianfievet.com";
 
 export const metadata = {
   title: {
@@ -32,13 +32,13 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    url: "https://vexyuu.github.io/portfolio",
+    url: baseUrl,
     siteName: "Portfolio Killian Fievet",
     title: "Portfolio Killian Fievet - Développeur Web",
     description: "Découvrez mes projets et compétences en développement web moderne.",
     images: [
       {
-        url: "https://vexyuu.github.io/portfolio/icon1.png",
+        url: `${baseUrl}/icon1.png`,
         width: 1200,
         height: 630,
         alt: "Portfolio Killian Fievet",
@@ -49,14 +49,33 @@ export const metadata = {
     card: "summary_large_image",
     title: "Portfolio Killian Fievet",
     description: "Développeur web passionné spécialisé en React et Next.js",
-    images: ["https://vexyuu.github.io/portfolio/og-image.png"],
+    images: [`${baseUrl}/og-image.png`],
   },
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
-  metadataBase: new URL("https://vexyuu.github.io/portfolio"),
+  metadataBase: new URL(baseUrl),
+  verification: {
+    google: "6BDn5Y_D6qLr8TTu9tryKW3xzzpuomMKES5-sa_8pts",
+  },
 };
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Killian Fievet",
+  "url": baseUrl,
+  "jobTitle": "Développeur Web",
+  "sameAs": [
+    "https://github.com/Vexyuu",
+    "https://www.linkedin.com/in/killian-fievet-4a3788287"
+  ],
+  "image": `${baseUrl}/icon1.png`,
+  "description": "Développeur web passionné spécialisé en React et Next.js"
+};
+
+const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -65,7 +84,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* ✅ la meta de Google Search Console */}
         <meta
           name="google-site-verification"
-          content="5pd-z3HzxVHsbikp2ERm4HR-ddUabKTS7YMLk_Z9bMc"
+          content="6BDn5Y_D6qLr8TTu9tryKW3xzzpuomMKES5-sa_8pts"
+        />
+        {/* Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body className="antialiased hide-cursor">

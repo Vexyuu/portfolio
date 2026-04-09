@@ -9,16 +9,19 @@ export const metadata = {
     openGraph: {
         title: "Projet Billy.IA - Assistant IA local",
         description: "Assistant personnel propulsé par l’IA, développé avec Python, TensorFlow et Pandas.",
-        url: "https://vexyuu.github.io/portfolio/projects/billy-ia",
+        url: "https://killianfievet.com/projects/billy-ia",
         type: "article",
         images: [
             {
-                url: "https://vexyuu.github.io/portfolio/data/projects/BillyIA_1.webp",
+                url: "https://killianfievet.com/data/projects/BillyIA_1.webp",
                 width: 1200,
                 height: 630,
                 alt: "Billy.IA - Assistant IA",
             },
         ],
+    },
+    alternates: {
+        canonical: "https://killianfievet.com/projects/billy-ia",
     },
 };
 

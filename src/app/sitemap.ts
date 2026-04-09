@@ -4,7 +4,7 @@ import { MetadataRoute } from "next";
 export const dynamic = "force-static"; // ✅ obligatoire avec output: "export"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = "https://vexyuu.github.io/portfolio";
+    const baseUrl = "https://killianfievet.com";
 
     return [
         {

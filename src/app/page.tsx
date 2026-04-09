@@ -13,11 +13,11 @@ export const metadata = {
   openGraph: {
     title: "Portfolio - Killian Fievet",
     description: "Développeur web et mobile passionné. Découvrez mes projets et compétences.",
-    url: "https://vexyuu.github.io/portfolio",
+    url: "https://killianfievet.com",
     type: "website",
   },
   alternates: {
-    canonical: "https://vexyuu.github.io/portfolio",
+    canonical: "https://killianfievet.com",
   },
 };
 

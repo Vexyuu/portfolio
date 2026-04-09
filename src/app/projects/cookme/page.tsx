@@ -6,6 +6,23 @@ export const metadata = {
     title: "CookMe - Application de Recettes Interactive",
     description: "Une application type TikTok pour découvrir et partager des recettes de cuisine de manière ludique.",
     keywords: ["Recettes", "TikTok-like", "Mobile App", "React Native", "Killian Fievet", "portfolio projet"],
+    openGraph: {
+        title: "CookMe - Application de Recettes Interactive",
+        description: "Application type TikTok pour découvrir et partager des recettes.",
+        url: "https://killianfievet.com/projects/cookme",
+        type: "article",
+        images: [
+            {
+                url: "https://killianfievet.com/data/projects/cookme.png",
+                width: 1200,
+                height: 630,
+                alt: "CookMe - Application Recettes",
+            },
+        ],
+    },
+    alternates: {
+        canonical: "https://killianfievet.com/projects/cookme",
+    },
 };
 
 export default function CookMe() {

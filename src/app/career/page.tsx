@@ -14,8 +14,11 @@ export const metadata = {
     openGraph: {
         title: "Carrière de Killian Fievet",
         description: "Découvrez mes expériences académiques et professionnelles en informatique.",
-        url: "https://vexyuu.github.io/portfolio/career",
+        url: "https://killianfievet.com/career",
         type: "profile",
+    },
+    alternates: {
+        canonical: "https://killianfievet.com/career",
     },
 };
 

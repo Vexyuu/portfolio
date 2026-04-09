@@ -6,6 +6,23 @@ export const metadata = {
     title: "Shakello - Site de Recettes de Cocktails",
     description: "Découvrez Shakello, un site web dédié aux recettes de cocktails artisanaux. Plus de 55 créations pour éveiller vos sens.",
     keywords: ["Cocktails", "Recettes", "Mixologie", "Site Web", "Shakello", "Killian Fievet", "portfolio projet"],
+    openGraph: {
+        title: "Shakello - Site de Recettes de Cocktails",
+        description: "Découvrez plus de 55 recettes de cocktails sur Shakello.",
+        url: "https://killianfievet.com/projects/shakello",
+        type: "article",
+        images: [
+            {
+                url: "https://killianfievet.com/data/projects/shakello.png",
+                width: 1200,
+                height: 630,
+                alt: "Shakello - Recettes de Cocktails",
+            },
+        ],
+    },
+    alternates: {
+        canonical: "https://killianfievet.com/projects/shakello",
+    },
 };
 
 export default function Shakello() {
