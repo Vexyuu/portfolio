@@ -14,17 +14,6 @@ export const projects = [
         year: 2025,
     },
     {
-        title: "Application Recettes",
-        description: "Une app interactive type TikTok pour partager des recettes.",
-        link: "https://github.com/Vexyuu/cookme",
-        more: "/projects/cookme",
-        image: getAssetPath("/data/projects/cookme.png"),
-        demo: "#",
-        isFinite: false,
-        category: "Mobile",
-        year: 2024,
-    },
-    {
         title: "Générateur de mots de passe",
         description: "Un petit outil pratique pour créer des mots de passe sécurisés.",
         link: "https://github.com/Vexyuu/password-generator",

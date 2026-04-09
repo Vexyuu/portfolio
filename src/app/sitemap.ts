@@ -38,12 +38,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.7,
         },
         {
-            url: `${baseUrl}/projects/cookme`,
-            lastModified: new Date(),
-            changeFrequency: "yearly",
-            priority: 0.7,
-        },
-        {
             url: `${baseUrl}/projects/ndi-2025`,
             lastModified: new Date(),
             changeFrequency: "yearly",
