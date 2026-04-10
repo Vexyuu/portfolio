@@ -1,4 +1,5 @@
 import CareerContent from "@/components/CareerContent";
+import { BASE_URL } from "@/utils/env";
 
 export const metadata = {
     title: "Parcours & Carrière - Killian Fievet",
@@ -14,11 +15,11 @@ export const metadata = {
     openGraph: {
         title: "Carrière de Killian Fievet",
         description: "Découvrez mes expériences académiques et professionnelles en informatique.",
-        url: "https://killianfievet.com/career",
+        url: `${BASE_URL}/career`,
         type: "profile",
     },
     alternates: {
-        canonical: "https://killianfievet.com/career",
+        canonical: `${BASE_URL}/career`,
     },
 };
 

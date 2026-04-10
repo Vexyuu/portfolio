@@ -1,6 +1,6 @@
-// src/app/projects/shakello/page.tsx
 import { getAssetPath } from "@/utils/paths";
 import ProjectCard from "@/components/ProjectCard";
+import { BASE_URL } from "@/utils/env";
 
 export const metadata = {
     title: "Shakello - Site de Recettes de Cocktails",
@@ -9,11 +9,11 @@ export const metadata = {
     openGraph: {
         title: "Shakello - Site de Recettes de Cocktails",
         description: "Découvrez plus de 55 recettes de cocktails sur Shakello.",
-        url: "https://killianfievet.com/projects/shakello",
+        url: `${BASE_URL}/projects/shakello`,
         type: "article",
         images: [
             {
-                url: "https://killianfievet.com/data/projects/shakello.png",
+                url: `${BASE_URL}/data/projects/shakello.png`,
                 width: 1200,
                 height: 630,
                 alt: "Shakello - Recettes de Cocktails",
@@ -21,7 +21,7 @@ export const metadata = {
         ],
     },
     alternates: {
-        canonical: "https://killianfievet.com/projects/shakello",
+        canonical: `${BASE_URL}/projects/shakello`,
     },
 };
 

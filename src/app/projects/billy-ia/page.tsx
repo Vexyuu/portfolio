@@ -1,6 +1,6 @@
-// src/app/projects/billy-ia/page.tsx
 import { getAssetPath } from "@/utils/paths";
 import ProjectCard from "@/components/ProjectCard";
+import { BASE_URL } from "@/utils/env";
 
 export const metadata = {
     title: "Billy.IA - Assistant IA local",
@@ -9,11 +9,11 @@ export const metadata = {
     openGraph: {
         title: "Projet Billy.IA - Assistant IA local",
         description: "Assistant personnel propulsé par l’IA, développé avec Python, TensorFlow et Pandas.",
-        url: "https://killianfievet.com/projects/billy-ia",
+        url: `${BASE_URL}/projects/billy-ia`,
         type: "article",
         images: [
             {
-                url: "https://killianfievet.com/data/projects/BillyIA_1.webp",
+                url: `${BASE_URL}/data/projects/BillyIA_1.webp`,
                 width: 1200,
                 height: 630,
                 alt: "Billy.IA - Assistant IA",
@@ -21,7 +21,7 @@ export const metadata = {
         ],
     },
     alternates: {
-        canonical: "https://killianfievet.com/projects/billy-ia",
+        canonical: `${BASE_URL}/projects/billy-ia`,
     },
 };
 

@@ -1,10 +1,10 @@
-// src/app/page.tsx
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 // import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
+import { BASE_URL } from "@/utils/env";
 
 export const metadata = {
   title: "Accueil",
@@ -13,11 +13,11 @@ export const metadata = {
   openGraph: {
     title: "Portfolio - Killian Fievet",
     description: "Développeur web et mobile passionné. Découvrez mes projets et compétences.",
-    url: "https://killianfievet.com",
+    url: BASE_URL,
     type: "website",
   },
   alternates: {
-    canonical: "https://killianfievet.com",
+    canonical: BASE_URL,
   },
 };
 

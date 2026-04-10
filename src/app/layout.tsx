@@ -5,8 +5,9 @@ import Footer from "@/components/Footer";
 import AuraBackground from "@/components/AuraBackground";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
+import { BASE_URL } from "@/utils/env";
 
-const baseUrl = "https://killianfievet.com";
+const baseUrl = BASE_URL;
 
 export const metadata = {
   title: {

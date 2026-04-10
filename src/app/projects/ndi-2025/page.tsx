@@ -1,6 +1,6 @@
-// src/app/projects/password-generator/page.tsx
 import { getAssetPath } from "@/utils/paths";
 import ProjectCard from "@/components/ProjectCard";
+import { BASE_URL } from "@/utils/env";
 
 export const metadata = {
     title: "Nuit de l'info 2025 - Projet NDI",
@@ -9,11 +9,11 @@ export const metadata = {
     openGraph: {
         title: "Projet Nuit de l'info 2025 - Killian Fievet",
         description: "Projet développé pour la Nuit de l'info 2025. Découvrez notre solution innovante.",
-        url: "https://killianfievet.com/projects/ndi-2025",
+        url: `${BASE_URL}/projects/ndi-2025`,
         type: "article",
         images: [
             {
-                url: "https://killianfievet.com/data/projects/NDI_2025.png",
+                url: `${BASE_URL}/data/projects/NDI_2025.png`,
                 width: 1200,
                 height: 630,
                 alt: "Projet Nuit de l'info 2025 - Killian Fievet",
@@ -21,7 +21,7 @@ export const metadata = {
         ],
     },
     alternates: {
-        canonical: "https://killianfievet.com/projects/ndi-2025",
+        canonical: `${BASE_URL}/projects/ndi-2025`,
     },
 };
 

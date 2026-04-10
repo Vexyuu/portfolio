@@ -1,4 +1,5 @@
-// src/app/projects/layout.tsx
+import { BASE_URL } from "@/utils/env";
+
 export const metadata = {
     title: "Projets - Killian Fievet",
     description: "Découvrez l'ensemble de mes projets en développement web, mobile et intelligence artificielle.",
@@ -6,11 +7,11 @@ export const metadata = {
     openGraph: {
         title: "Projets de Killian Fievet",
         description: "Showcase de mes créations et réalisations techniques.",
-        url: "https://killianfievet.com/projects",
+        url: `${BASE_URL}/projects`,
         type: "website",
     },
     alternates: {
-        canonical: "https://killianfievet.com/projects",
+        canonical: `${BASE_URL}/projects`,
     },
 };
 
