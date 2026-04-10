@@ -17,6 +17,14 @@ export const metadata = {
         description: "Découvrez mes expériences académiques et professionnelles en informatique.",
         url: `${BASE_URL}/career`,
         type: "profile",
+        images: [
+            {
+                url: `${BASE_URL}/og-image.png`,
+                width: 1200,
+                height: 630,
+                alt: "Carrière - Killian Fievet",
+            },
+        ],
     },
     alternates: {
         canonical: `${BASE_URL}/career`,

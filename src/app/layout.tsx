@@ -39,7 +39,7 @@ export const metadata = {
     description: "Découvrez mes projets et compétences en développement web moderne.",
     images: [
       {
-        url: `${baseUrl}/icon1.png`,
+        url: `${baseUrl}/og-image.png`,
         width: 1200,
         height: 630,
         alt: "Portfolio Killian Fievet",
