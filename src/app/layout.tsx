@@ -6,6 +6,7 @@ import AuraBackground from "@/components/AuraBackground";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 import { BASE_URL } from "@/utils/env";
+import { GoogleTagManager } from '@next/third-parties/google';
 
 const baseUrl = BASE_URL;
 
@@ -94,6 +95,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="antialiased hide-cursor">
+        <GoogleTagManager gtmId="GTM-WRBS4SJ3" />
+        <noscript>
+          <iframe 
+            src="https://www.googletagmanager.com/ns.html?id=GTM-WRBS4SJ3"
+            height="0" 
+            width="0" 
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
         {/* Ajout du provider global */}
         <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark">
           {/* <CustomCursor /> */}
