@@ -1,6 +1,6 @@
 // src/utils/paths.ts
+import { BASE_PATH } from "./env";
 
 export const getAssetPath = (path: string) => {
-    // Plus besoin de préfixe sur killianfievet.com
-    return path;
+    return `${BASE_PATH}${path}`;
 };

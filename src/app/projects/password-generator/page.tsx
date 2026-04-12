@@ -1,6 +1,6 @@
-// src/app/projects/password-generator/page.tsx
 import { getAssetPath } from "@/utils/paths";
 import ProjectCard from "@/components/ProjectCard";
+import { BASE_URL } from "@/utils/env";
 
 export const metadata = {
     title: "Générateur de mots de passe sécurisé",
@@ -9,11 +9,11 @@ export const metadata = {
     openGraph: {
         title: "Projet Générateur de mots de passe - Killian Fievet",
         description: "Outil de génération de mots de passe robustes avec options d’inclusion de symboles, chiffres et majuscules.",
-        url: "https://killianfievet.com/projects/password-generator",
+        url: `${BASE_URL}/projects/password-generator`,
         type: "article",
         images: [
             {
-                url: "https://killianfievet.com/data/projects/password-generator.png",
+                url: `${BASE_URL}/data/projects/password-generator.png`,
                 width: 1200,
                 height: 630,
                 alt: "Générateur de mots de passe",
@@ -21,7 +21,7 @@ export const metadata = {
         ],
     },
     alternates: {
-        canonical: "https://killianfievet.com/projects/password-generator",
+        canonical: `${BASE_URL}/projects/password-generator`,
     },
 };
 
