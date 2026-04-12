@@ -76,7 +76,7 @@ export default function Projects() {
                                             Détails
                                         </Link>
                                         <Link href={project.link} target="_blank" className="px-6 py-2 rounded-full bg-white/10 backdrop-blur-md text-white border border-white/20 font-bold text-sm hover:bg-white/20 transition-colors">
-                                            GitHub
+                                            {project.link.includes("github.com") ? "GitHub" : "Visiter"}
                                         </Link>
                                     </div>
                                 </div>

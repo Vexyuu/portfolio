@@ -15,7 +15,7 @@ export type ProjectProps = {
     objective: string;
     image: string;
     stack: string[];
-    github: string;
+    github?: string;
     demo?: string;
     category?: string;
 };
@@ -36,8 +36,8 @@ export default function ProjectCard({ title, description, longDescription, objec
 
     const itemVariants = {
         hidden: { opacity: 0, y: 30 },
-        visible: { 
-            opacity: 1, 
+        visible: {
+            opacity: 1,
             y: 0,
             transition: { duration: 0.6 }
         }
@@ -47,7 +47,7 @@ export default function ProjectCard({ title, description, longDescription, objec
         <div className="min-h-screen bg-background text-foreground relative overflow-hidden pb-32">
             {/* --- HERO SECTION --- */}
             <div className="relative w-full h-[60vh] md:h-[75vh] min-h-[500px] overflow-hidden">
-                <motion.div 
+                <motion.div
                     initial={{ scale: 1.1, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 1.5 }}
@@ -60,8 +60,8 @@ export default function ProjectCard({ title, description, longDescription, objec
                         className="object-cover"
                         priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/60 to-background" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-transparent hidden md:block" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/40 to-background z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-transparent hidden md:block z-10" />
                 </motion.div>
 
                 {/* Return Button */}
@@ -69,7 +69,7 @@ export default function ProjectCard({ title, description, longDescription, objec
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     onClick={() => router.back()}
-                    className="absolute top-12 left-6 md:left-12 z-50 flex items-center gap-3 px-8 py-4 rounded-full bg-background/30 backdrop-blur-2xl border border-white/5 text-white font-black text-xs uppercase tracking-widest hover:bg-secondary hover:text-background transition-all duration-500 group shadow-2xl shadow-black/40"
+                    className="absolute top-12 left-6 md:left-12 z-50 flex items-center gap-3 px-8 py-4 rounded-full bg-background/40 backdrop-blur-3xl border border-white/10 text-white font-black text-xs uppercase tracking-widest hover:bg-secondary hover:text-background transition-all duration-500 group shadow-2xl shadow-black/60"
                 >
                     <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform duration-300" />
                     <span>Retour</span>
@@ -81,28 +81,32 @@ export default function ProjectCard({ title, description, longDescription, objec
                             initial={{ opacity: 0, y: 50 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.5 }}
+                            className="relative"
                         >
-                            <h2 className="text-secondary font-black tracking-[0.4em] uppercase text-[10px] mb-6 flex items-center gap-4">
+                            <div className="absolute -inset-10 bg-background/20 backdrop-blur-sm rounded-[4rem] -z-10 hidden md:block" />
+                            <h2 className="text-secondary font-black tracking-[0.4em] uppercase text-[10px] mb-4 flex items-center gap-4">
                                 <span className="w-12 h-[2px] bg-secondary rounded-full" />
-                                PROJET SIGNATURE
+                                {category || "PROJET SIGNATURE"}
                             </h2>
-                            <h1 className="text-5xl md:text-9xl font-black tracking-tighter mb-10 bg-mask-text py-2 italic">
+                            <h1 className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8 bg-mask-text py-2 drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
                                 {title.toUpperCase()}
                             </h1>
-                            <div className="flex flex-wrap gap-8">
-                                <Link 
-                                    href={github} 
-                                    target="_blank"
-                                    className="flex items-center gap-3 px-10 py-5 rounded-full bg-foreground text-background font-black text-xs uppercase tracking-[0.2em] hover:bg-secondary transition-all duration-500 group shadow-2xl shadow-black/50"
-                                >
-                                    <Github size={18} />
-                                    <span>Explorer Source</span>
-                                </Link>
-                                {demo && demo !== "#" && (
-                                    <Link 
-                                        href={demo} 
+                            <div className="flex flex-wrap gap-6">
+                                {github && (
+                                    <Link
+                                        href={github}
                                         target="_blank"
-                                        className="flex items-center gap-3 px-10 py-5 rounded-full bg-secondary/10 backdrop-blur-2xl border border-secondary/20 text-secondary font-black text-xs uppercase tracking-[0.2em] hover:bg-secondary hover:text-background transition-all duration-500 shadow-2xl shadow-secondary/5"
+                                        className="flex items-center gap-3 px-10 py-5 rounded-full bg-white text-black font-black text-xs uppercase tracking-[0.2em] hover:bg-secondary transition-all duration-500 group shadow-2xl shadow-black/80"
+                                    >
+                                        <Github size={18} />
+                                        <span>Explorer Source</span>
+                                    </Link>
+                                )}
+                                {demo && demo !== "#" && (
+                                    <Link
+                                        href={demo}
+                                        target="_blank"
+                                        className="flex items-center gap-3 px-10 py-5 rounded-full bg-secondary/10 backdrop-blur-2xl border border-secondary/30 text-secondary font-black text-xs uppercase tracking-[0.2em] hover:bg-secondary hover:text-black transition-all duration-500 shadow-2xl shadow-secondary/10"
                                     >
                                         <ExternalLink size={18} />
                                         <span>Démo Live</span>
@@ -115,27 +119,27 @@ export default function ProjectCard({ title, description, longDescription, objec
             </div>
 
             {/* --- CONTENT SECTION --- */}
-            <motion.div 
+            <motion.div
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="max-w-7xl mx-auto px-6 -mt-10 md:-mt-20 relative z-30 grid grid-cols-1 lg:grid-cols-3 gap-12"
+                className="max-w-7xl mx-auto px-6 -mt-12 md:-mt-16 relative z-30 grid grid-cols-1 lg:grid-cols-3 gap-12"
             >
                 {/* Main Content */}
                 <div className="lg:col-span-2 space-y-12">
-                    <motion.div variants={itemVariants} className="p-8 md:p-12 rounded-[3rem] card-glass border-white/5 shadow-2xl">
-                        <div className="flex items-center gap-4 mb-8">
-                            <div className="p-3 rounded-2xl bg-primary/10 text-primary">
-                                <Layout size={24} />
+                    <motion.div variants={itemVariants} className="p-8 md:p-14 rounded-[3.5rem] card-glass border-white/5 shadow-2xl transition-transform hover:scale-[1.01]">
+                        <div className="flex items-center gap-6 mb-10">
+                            <div className="p-4 rounded-2xl bg-primary/10 text-primary border border-primary/20 shadow-lg shadow-primary/5">
+                                <Layout size={28} />
                             </div>
-                            <h2 className="text-3xl font-black tracking-tight">Vision du Projet</h2>
+                            <h2 className="text-4xl font-black tracking-tight">Vision du Projet</h2>
                         </div>
-                        <p className="text-xl text-foreground font-medium leading-relaxed mb-8 border-l-4 border-primary pl-6 italic">
+                        <p className="text-2xl text-foreground font-medium leading-relaxed mb-10 border-l-8 border-primary pl-8 italic">
                             {description}
                         </p>
                         {longDescription && (
-                            <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
+                            <div className="space-y-8 text-foreground/80 text-xl leading-relaxed font-light">
                                 {longDescription.split('\n').map((para, i) => (
                                     <p key={i}>{para}</p>
                                 ))}
@@ -143,14 +147,14 @@ export default function ProjectCard({ title, description, longDescription, objec
                         )}
                     </motion.div>
 
-                    <motion.div variants={itemVariants} className="p-8 md:p-12 rounded-[3rem] card-glass border-white/5 shadow-2xl">
-                        <div className="flex items-center gap-4 mb-8">
-                            <div className="p-3 rounded-2xl bg-secondary/10 text-secondary">
-                                <Target size={24} />
+                    <motion.div variants={itemVariants} className="p-8 md:p-14 rounded-[3.5rem] card-glass border-white/5 shadow-2xl transition-transform hover:scale-[1.01]">
+                        <div className="flex items-center gap-6 mb-10">
+                            <div className="p-4 rounded-2xl bg-secondary/10 text-secondary border border-secondary/20 shadow-lg shadow-secondary/5">
+                                <Target size={28} />
                             </div>
-                            <h2 className="text-3xl font-black tracking-tight">Objectif Principal</h2>
+                            <h2 className="text-4xl font-black tracking-tight">Objectif Principal</h2>
                         </div>
-                        <p className="text-muted-foreground text-lg leading-relaxed">
+                        <p className="text-foreground/90 text-xl leading-relaxed font-light">
                             {objective}
                         </p>
                     </motion.div>
@@ -158,24 +162,24 @@ export default function ProjectCard({ title, description, longDescription, objec
 
                 {/* Sidebar */}
                 <div className="space-y-8">
-                    <motion.div variants={itemVariants} className="p-8 rounded-[2.5rem] card-glass border-white/5 shadow-2xl sticky top-32">
-                        <div className="flex items-center gap-4 mb-8">
-                            <div className="p-3 rounded-2xl bg-accent/10 text-accent">
-                                <Cpu size={24} />
+                    <motion.div variants={itemVariants} className="p-10 rounded-[3rem] card-glass border-white/5 shadow-2xl sticky top-32">
+                        <div className="flex items-center gap-4 mb-10">
+                            <div className="p-4 rounded-2xl bg-accent/10 text-accent border border-accent/20">
+                                <Cpu size={28} />
                             </div>
                             <h2 className="text-2xl font-black tracking-tight">Tech Stack</h2>
                         </div>
-                        <div className="flex flex-wrap gap-3">
+                        <div className="flex flex-wrap gap-4 mb-10">
                             {stack.map((tech) => (
                                 <span
                                     key={tech}
-                                    className="px-4 py-2 bg-background/50 border border-white/10 rounded-full text-xs font-black uppercase tracking-widest text-foreground hover:border-primary/50 hover:text-primary transition-all duration-300 cursor-default"
+                                    className="px-5 py-3 bg-white/5 border border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] text-foreground/70 hover:border-primary/50 hover:text-primary transition-all duration-300 cursor-default"
                                 >
                                     {tech}
                                 </span>
                             ))}
                         </div>
-                        
+
                         {/* Simulated Live Feed */}
                         <ProjectLiveFeed category={category} />
                     </motion.div>

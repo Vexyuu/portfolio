@@ -19,7 +19,7 @@ export default function Navbar() {
         <>
             {/* --- DEKSTOP NAVBAR (TOP) --- */}
             <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-fit px-4 hidden md:block">
-                <nav className="bg-background/60 backdrop-blur-2xl border border-white/10 px-6 py-3 rounded-full shadow-2xl shadow-primary/5 transition-all duration-500 hover:shadow-primary/10 hover:border-white/20">
+                <nav className="bg-background/90 backdrop-blur-3xl border border-white/20 px-6 py-3 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-500 hover:border-white/40">
                     <div className="flex justify-between items-center gap-8">
                         {/* Logo */}
                         <motion.div

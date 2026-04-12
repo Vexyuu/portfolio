@@ -16,10 +16,10 @@ export const projects = [
     {
         title: "Générateur de mots de passe",
         description: "Un petit outil pratique pour créer des mots de passe sécurisés.",
-        link: "https://github.com/Vexyuu/password-generator",
+        link: "https://passgen.killianfievet.com",
         more: "/projects/password-generator",
         image: getAssetPath("/data/projects/password-generator.png"),
-        demo: "#",
+        demo: "https://passgen.killianfievet.com",
         isFinite: true,
         category: "Outils",
         year: 2023,

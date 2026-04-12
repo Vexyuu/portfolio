@@ -34,8 +34,8 @@ export default function PasswordGenerator() {
             objective="L’objectif principal de ce projet était de créer un outil simple et efficace pour générer des mots de passe sécurisés, tout en explorant les fonctionnalités de JavaScript liées à la manipulation de chaînes et à la génération aléatoire."
             image={getAssetPath("/data/projects/password-generator.png")}
             stack={["HTML", "CSS", "JavaScript"]}
-            github="https://github.com/Vexyuu/password-generator"
-            demo="https://vexyuu.github.io/password-generator/"
+            //github="https://github.com/Vexyuu/password-generator"
+            demo="https://passgen.killianfievet.com"
             category="Outils"
         />
     );

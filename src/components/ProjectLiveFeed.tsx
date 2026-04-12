@@ -111,9 +111,8 @@ export default function ProjectLiveFeed({ category = "Web" }: ProjectLiveFeedPro
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, scale: 0.95 }}
-                                className="text-white/40 break-all"
                             >
-                                <span className="text-secondary/60">❯</span> {log}
+                                <span className="text-secondary/60">❯</span> <span className="text-foreground/60">{log}</span>
                             </motion.div>
                         ))}
                     </AnimatePresence>

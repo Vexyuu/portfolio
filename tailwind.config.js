@@ -15,14 +15,13 @@ module.exports = {
             },
             colors: {
                 // Mappage des variables CSS dans Tailwind, sans la fonction hsl()
-                'background': 'hsl(var(--color-background))',
-                'foreground': 'hsl(var(--color-foreground))',
-                'primary': 'hsl(var(--color-primary))',
-                'secondary': 'hsl(var(--color-secondary))',
-                'accent': 'hsl(var(--color-accent))',
-                'muted': 'hsl(var(--color-muted))',
-                // Ajout des couleurs du mode clair pour les textes mutés dans About.tsx
-                'muted-foreground': 'hsl(var(--color-muted-foreground))',
+                'background': 'hsl(var(--color-background) / <alpha-value>)',
+                'foreground': 'hsl(var(--color-foreground) / <alpha-value>)',
+                'primary': 'hsl(var(--color-primary) / <alpha-value>)',
+                'secondary': 'hsl(var(--color-secondary) / <alpha-value>)',
+                'accent': 'hsl(var(--color-accent) / <alpha-value>)',
+                'muted': 'hsl(var(--color-muted) / <alpha-value>)',
+                'muted-foreground': 'hsl(var(--color-muted-foreground) / <alpha-value>)',
             },
         },
     },
