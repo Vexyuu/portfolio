@@ -1,7 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { FaDownload, FaEnvelope } from "react-icons/fa";
 import TextReveal from "./TextReveal";
 import Button from "./ui/Button";

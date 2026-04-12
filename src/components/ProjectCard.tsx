@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowLeft, Github, ExternalLink, Cpu, Target, Layout } from "lucide-react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Button from "./ui/Button";
 
@@ -71,10 +70,10 @@ export default function ProjectCard({ title, description, longDescription, objec
                     animate={{ opacity: 1, x: 0 }}
                     className="absolute top-12 left-6 md:left-12 z-50"
                 >
-                    <Button 
-                        variant="glass" 
-                        size="sm" 
-                        onClick={() => router.back()} 
+                    <Button
+                        variant="glass"
+                        size="sm"
+                        onClick={() => router.back()}
                         icon={<ArrowLeft size={14} />}
                     >
                         Retour
@@ -88,10 +87,6 @@ export default function ProjectCard({ title, description, longDescription, objec
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
                         >
-                            <h2 className="text-secondary font-black tracking-[0.5em] uppercase text-[9px] mb-6 flex items-center gap-4">
-                                <span className="w-8 h-[1px] bg-secondary" />
-                                {category || "PROJET SIGNATURE"}
-                            </h2>
                             <h1 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-10 bg-mask-text py-1 drop-shadow-xl">
                                 {title.toUpperCase()}
                             </h1>
@@ -170,6 +165,14 @@ export default function ProjectCard({ title, description, longDescription, objec
                 {/* Sidebar (Right) */}
                 <div className="lg:col-span-4 space-y-12">
                     <motion.div variants={itemVariants} className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 backdrop-blur-sm sticky top-32">
+                        {/* Catégorie */}
+                        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-xl bg-secondary/10 border border-secondary/20 backdrop-blur-md mb-8">
+                            <div className="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_10px_rgba(217,119,6,0.5)]" />
+                            <h2 className="text-secondary font-black tracking-[0.3em] uppercase text-[10px]">
+                                {category || "PROJET SIGNATURE"}
+                            </h2>
+                        </div>
+
                         <div className="flex items-center gap-4 mb-8">
                             <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent border border-accent/20">
                                 <Cpu size={20} />
@@ -188,7 +191,7 @@ export default function ProjectCard({ title, description, longDescription, objec
                         </div>
 
                         {/* Simulated Live Feed */}
-                        <ProjectLiveFeed category={category} />
+                        {/* <ProjectLiveFeed category={category} /> */}
                     </motion.div>
                 </div>
             </motion.div>

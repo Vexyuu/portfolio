@@ -56,8 +56,8 @@ export default function Projects() {
                                 <div className="absolute inset-0 p-8 flex flex-col justify-end z-10">
                                     <div className="flex items-center gap-3 mb-4">
                                         <span className={`text-[10px] uppercase tracking-widest font-black px-3 py-1 rounded-full backdrop-blur-md border ${project.isFinite
-                                                ? "bg-green-500/20 text-green-400 border-green-500/30"
-                                                : "bg-amber-500/20 text-amber-400 border-amber-500/30"
+                                            ? "bg-green-500/20 text-green-400 border-green-500/30"
+                                            : "bg-amber-500/20 text-amber-400 border-amber-500/30"
                                             }`}>
                                             {project.isFinite ? "Fini" : "En cours"}
                                         </span>

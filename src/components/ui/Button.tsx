@@ -1,7 +1,7 @@
 // src/components/ui/Button.tsx
 "use client";
 
-import { ReactNode, useRef, useState, useMemo } from 'react';
+import { ReactNode, useRef, useState } from 'react';
 import { motion, HTMLMotionProps } from 'framer-motion';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -40,7 +40,7 @@ export default function Button({
     fullWidth = false,
     ...props
 }: ButtonProps) {
-    const elementRef = useRef<any>(null);
+    const elementRef = useRef<HTMLButtonElement | HTMLAnchorElement>(null);
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isHovered, setIsHovered] = useState(false);
 
@@ -61,7 +61,7 @@ export default function Button({
         outline: "border border-white/10 bg-white/5 backdrop-blur-md text-white/80 hover:text-white hover:border-white/30",
         glass: "bg-white/5 backdrop-blur-2xl border border-white/10 text-white/90 hover:bg-white/10 hover:border-white/20 shadow-2xl",
         ghost: "bg-transparent hover:bg-white/5 text-white/60 hover:text-white",
-        white: "bg-white text-black border border-white/20 hover:bg-secondary hover:text-white",
+        white: "bg-white text-black border border-white/20 hover:bg-foreground hover:text-background",
     };
 
     const sizes = {
@@ -128,6 +128,8 @@ export default function Button({
                 href={href} 
                 target={target}
                 className={combinedClassName}
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                ref={elementRef as any}
                 onMouseMove={handleMouseMove}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
@@ -139,7 +141,8 @@ export default function Button({
 
     return (
         <motion.button
-            ref={elementRef}
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            ref={elementRef as any}
             className={combinedClassName}
             disabled={disabled || isLoading}
             onMouseMove={handleMouseMove}
