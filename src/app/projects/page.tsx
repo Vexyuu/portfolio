@@ -8,6 +8,7 @@ import { Search } from "lucide-react";
 import Fuse from "fuse.js";
 import { projects } from "@/data/projects";
 import TiltCard from "@/components/TiltCard";
+import Button from "@/components/ui/Button";
 
 export default function ProjectsPage() {
     const [filter, setFilter] = useState("all");
@@ -56,25 +57,25 @@ export default function ProjectsPage() {
     return (
         <section className="py-32 px-6 bg-background text-foreground relative overflow-hidden min-h-screen">
             <div className="max-w-7xl mx-auto relative z-10">
-                
+
                 {/* --- HEADER --- */}
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="text-center mb-20"
                 >
                     <h2 className="text-secondary font-black tracking-[0.4em] uppercase text-xs mb-4">Showcase complet</h2>
-                    <h1 className="text-5xl md:text-8xl font-black tracking-tighter mb-6 bg-mask-text py-2">
+                    <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-6 bg-mask-text py-2">
                         TOUS MES PROJETS.
                     </h1>
                     <div className="w-24 h-[2px] bg-secondary mx-auto rounded-full mb-8 shadow-[0_0_15px_rgba(217,119,6,0.5)]" />
-                    <p className="text-muted-foreground max-w-2xl mx-auto text-xl font-medium tracking-tight">
-                        Explorez l&apos;univers de mes créations, du développement Web à l&apos;Intelligence Artificielle. 
+                    <p className="text-muted-foreground max-w-2xl mx-auto text-lg font-medium tracking-tight">
+                        Explorez l&apos;univers de mes créations, du développement Web à l&apos;Intelligence Artificielle.
                     </p>
                 </motion.div>
 
                 {/* --- CONTROLES (PEPS STYLE) --- */}
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
@@ -117,7 +118,7 @@ export default function ProjectsPage() {
                 </motion.div>
 
                 {/* CATEGORY TAGS (NEON PILLS) */}
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.3 }}
@@ -127,11 +128,10 @@ export default function ProjectsPage() {
                         <button
                             key={cat}
                             onClick={() => setActiveCategory(cat)}
-                            className={`px-10 py-4 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-500 border-2 ${
-                                activeCategory === cat
+                            className={`px-10 py-4 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-500 border-2 ${activeCategory === cat
                                 ? "bg-secondary border-secondary text-background shadow-[0_0_30px_rgba(217,119,6,0.3)] scale-110"
                                 : "bg-white/5 border-white/5 text-muted-foreground hover:border-secondary/50 hover:text-foreground hover:bg-white/10"
-                            }`}
+                                }`}
                         >
                             {cat}
                         </button>
@@ -152,8 +152,8 @@ export default function ProjectsPage() {
                                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
-                                transition={{ 
-                                    duration: 0.5, 
+                                transition={{
+                                    duration: 0.5,
                                     delay: index * 0.05,
                                     type: "spring",
                                     stiffness: 100,
@@ -170,13 +170,13 @@ export default function ProjectsPage() {
                                                 className="object-cover transition-transform duration-700 group-hover:scale-110"
                                             />
                                             <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
-                                            
+
                                             {/* Badge Statut */}
                                             <div className="absolute top-6 right-6">
                                                 {project.isFinite ? (
-                                                    <span className="bg-green-500/20 text-green-400 text-[10px] uppercase font-black px-4 py-1.5 rounded-full backdrop-blur-xl border border-green-500/30">Ready</span>
+                                                    <span className="bg-green-500/20 text-green-400 text-[10px] uppercase font-black px-4 py-1.5 rounded-full backdrop-blur-xl border border-green-500/30">Terminé</span>
                                                 ) : (
-                                                    <span className="bg-amber-500/20 text-amber-400 text-[10px] uppercase font-black px-4 py-1.5 rounded-full backdrop-blur-xl border border-amber-500/30">In Progress</span>
+                                                    <span className="bg-amber-500/20 text-amber-400 text-[10px] uppercase font-black px-4 py-1.5 rounded-full backdrop-blur-xl border border-amber-500/30">En cours</span>
                                                 )}
                                             </div>
                                         </div>
@@ -192,7 +192,7 @@ export default function ProjectsPage() {
                                                 </span>
                                             </div>
 
-                                            <h3 className="text-3xl font-black text-foreground mb-4 leading-none tracking-tighter group-hover:text-primary transition-colors duration-300">
+                                            <h3 className="text-2xl font-black text-foreground mb-4 leading-none tracking-tighter group-hover:text-primary transition-colors duration-300">
                                                 {project.title}
                                             </h3>
 
@@ -201,19 +201,22 @@ export default function ProjectsPage() {
                                             </p>
 
                                             <div className="flex items-center gap-4 mt-auto">
-                                                <Link 
-                                                    href={project.more} 
-                                                    className="px-8 py-3 rounded-full bg-foreground text-background font-black text-[10px] uppercase tracking-widest hover:bg-primary hover:text-white transition-all duration-300"
+                                                <Button
+                                                    href={project.more}
+                                                    variant="primary"
+                                                    size="sm"
+                                                    className="px-8"
                                                 >
-                                                    Exploration
-                                                </Link>
-                                                <Link
+                                                    Voir le projet
+                                                </Button>
+                                                <Button
                                                     href={project.link}
                                                     target="_blank"
-                                                    className="p-3 rounded-full border border-muted-foreground/20 text-foreground hover:border-primary/50 hover:text-primary transition-all duration-300"
-                                                >
-                                                    <Search size={16} />
-                                                </Link>
+                                                    variant="outline"
+                                                    size="sm"
+                                                    className="px-4"
+                                                    icon={<Search size={16} />}
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -225,18 +228,19 @@ export default function ProjectsPage() {
 
                 {/* --- PAGINATION (SIGNATURE STYLE) --- */}
                 {visibleCount < count && (
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         className="text-center mt-32"
                     >
-                        <button
+                        <Button
+                            variant="secondary"
+                            size="lg"
                             onClick={() => setVisibleCount(visibleCount + 6)}
-                            className="group relative px-16 py-6 bg-secondary text-background rounded-full font-black text-xs uppercase tracking-[0.3em] hover:shadow-[0_0_50px_rgba(217,119,6,0.3)] transition-all duration-500 overflow-hidden shadow-2xl shadow-black/40"
+                            className="px-16"
                         >
-                            <span className="relative z-10">Charger plus de projets</span>
-                            <div className="absolute inset-0 bg-gradient-to-r from-secondary via-amber-300 to-secondary translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                        </button>
+                            Charger plus de projets
+                        </Button>
                     </motion.div>
                 )}
             </div>

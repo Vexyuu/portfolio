@@ -34,7 +34,7 @@ export default function Shakello() {
             objective="Créer un site web engageant et responsable pour partager la passion des cocktails, tout en promouvant une consommation modérée."
             image={getAssetPath("/data/projects/shakello.png")}
             stack={["NextJS", "Tailwind CSS", "TypeScript", "Node.js", "PostgreSQL"]}
-            github="#"
+            // github="#"
             demo="https://www.shakello.com"
             category="Web"
         />

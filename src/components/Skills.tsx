@@ -29,10 +29,10 @@ export default function Skills() {
                 
                 <div className="flex flex-col items-center text-center mb-24 gap-6">
                     <h2 className="text-xs uppercase tracking-[0.4em] font-black text-secondary px-6 py-2 bg-secondary/10 border border-secondary/20 rounded-full inline-block backdrop-blur-md">Expertise</h2>
-                    <h3 className="text-5xl md:text-8xl font-black tracking-tighter">
+                    <h3 className="text-4xl md:text-6xl font-black tracking-tighter">
                         <span className="bg-mask-text">MAÎTRISE TECHNIQUE</span>
                     </h3>
-                    <p className="text-muted-foreground max-w-2xl font-medium text-xl tracking-tight mt-4">
+                    <p className="text-muted-foreground max-w-2xl font-medium text-lg tracking-tight mt-4">
                         Un ensemble de technologies modernes pour bâtir des expériences web performantes et scalables.
                     </p>
                 </div>

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, Github, ExternalLink, Cpu, Target, Layout } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Button from "./ui/Button";
 
 import ProjectLiveFeed from "./ProjectLiveFeed";
 
@@ -45,12 +46,12 @@ export default function ProjectCard({ title, description, longDescription, objec
 
     return (
         <div className="min-h-screen bg-background text-foreground relative overflow-hidden pb-32">
-            {/* --- HERO SECTION --- */}
-            <div className="relative w-full h-[60vh] md:h-[75vh] min-h-[500px] overflow-hidden">
+            {/* --- HERO SECTION --- (REFINED & ÉPURÉ) */}
+            <div className="relative w-full h-[55vh] min-h-[450px] overflow-hidden">
                 <motion.div
-                    initial={{ scale: 1.1, opacity: 0 }}
+                    initial={{ scale: 1.05, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 1.5 }}
+                    transition={{ duration: 1.2, ease: "easeOut" }}
                     className="absolute inset-0"
                 >
                     <Image
@@ -60,57 +61,61 @@ export default function ProjectCard({ title, description, longDescription, objec
                         className="object-cover"
                         priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/40 to-background z-10" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-transparent hidden md:block z-10" />
+                    {/* Subtle Gradient Overlays */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background z-10" />
+                    <div className="absolute inset-0 bg-black/30 z-0" />
                 </motion.div>
 
-                {/* Return Button */}
-                <motion.button
-                    initial={{ opacity: 0, x: -20 }}
+                <motion.div
+                    initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    onClick={() => router.back()}
-                    className="absolute top-12 left-6 md:left-12 z-50 flex items-center gap-3 px-8 py-4 rounded-full bg-background/40 backdrop-blur-3xl border border-white/10 text-white font-black text-xs uppercase tracking-widest hover:bg-secondary hover:text-background transition-all duration-500 group shadow-2xl shadow-black/60"
+                    className="absolute top-12 left-6 md:left-12 z-50"
                 >
-                    <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform duration-300" />
-                    <span>Retour</span>
-                </motion.button>
+                    <Button 
+                        variant="glass" 
+                        size="sm" 
+                        onClick={() => router.back()} 
+                        icon={<ArrowLeft size={14} />}
+                    >
+                        Retour
+                    </Button>
+                </motion.div>
 
-                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-24 z-20">
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12 lg:p-24 z-20">
                     <div className="max-w-7xl mx-auto">
                         <motion.div
-                            initial={{ opacity: 0, y: 50 }}
+                            initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.5 }}
-                            className="relative"
+                            transition={{ duration: 0.8 }}
                         >
-                            <div className="absolute -inset-10 bg-background/20 backdrop-blur-sm rounded-[4rem] -z-10 hidden md:block" />
-                            <h2 className="text-secondary font-black tracking-[0.4em] uppercase text-[10px] mb-4 flex items-center gap-4">
-                                <span className="w-12 h-[2px] bg-secondary rounded-full" />
+                            <h2 className="text-secondary font-black tracking-[0.5em] uppercase text-[9px] mb-6 flex items-center gap-4">
+                                <span className="w-8 h-[1px] bg-secondary" />
                                 {category || "PROJET SIGNATURE"}
                             </h2>
-                            <h1 className="text-4xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8 bg-mask-text py-2 drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
+                            <h1 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-10 bg-mask-text py-1 drop-shadow-xl">
                                 {title.toUpperCase()}
                             </h1>
-                            <div className="flex flex-wrap gap-6">
+
+                            <div className="flex flex-wrap gap-4">
                                 {github && (
-                                    <Link
+                                    <Button
                                         href={github}
                                         target="_blank"
-                                        className="flex items-center gap-3 px-10 py-5 rounded-full bg-white text-black font-black text-xs uppercase tracking-[0.2em] hover:bg-secondary transition-all duration-500 group shadow-2xl shadow-black/80"
+                                        variant="white"
+                                        icon={<Github size={16} />}
                                     >
-                                        <Github size={18} />
-                                        <span>Explorer Source</span>
-                                    </Link>
+                                        Source
+                                    </Button>
                                 )}
                                 {demo && demo !== "#" && (
-                                    <Link
+                                    <Button
                                         href={demo}
                                         target="_blank"
-                                        className="flex items-center gap-3 px-10 py-5 rounded-full bg-secondary/10 backdrop-blur-2xl border border-secondary/30 text-secondary font-black text-xs uppercase tracking-[0.2em] hover:bg-secondary hover:text-black transition-all duration-500 shadow-2xl shadow-secondary/10"
+                                        variant="secondary"
+                                        icon={<ExternalLink size={16} />}
                                     >
-                                        <ExternalLink size={18} />
-                                        <span>Démo Live</span>
-                                    </Link>
+                                        Démo Live
+                                    </Button>
                                 )}
                             </div>
                         </motion.div>
@@ -118,62 +123,64 @@ export default function ProjectCard({ title, description, longDescription, objec
                 </div>
             </div>
 
-            {/* --- CONTENT SECTION --- */}
+            {/* --- CONTENT SECTION (MODERN 2-COLUMN) --- */}
             <motion.div
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="max-w-7xl mx-auto px-6 -mt-12 md:-mt-16 relative z-30 grid grid-cols-1 lg:grid-cols-3 gap-12"
+                className="max-w-7xl mx-auto px-6 py-20 relative z-30 grid grid-cols-1 lg:grid-cols-12 gap-16"
             >
-                {/* Main Content */}
-                <div className="lg:col-span-2 space-y-12">
-                    <motion.div variants={itemVariants} className="p-8 md:p-14 rounded-[3.5rem] card-glass border-white/5 shadow-2xl transition-transform hover:scale-[1.01]">
-                        <div className="flex items-center gap-6 mb-10">
-                            <div className="p-4 rounded-2xl bg-primary/10 text-primary border border-primary/20 shadow-lg shadow-primary/5">
-                                <Layout size={28} />
+                {/* Main Content (Left) */}
+                <div className="lg:col-span-8 space-y-16">
+                    <motion.div variants={itemVariants} className="space-y-8">
+                        <div className="flex items-center gap-4">
+                            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
+                                <Layout size={20} />
                             </div>
-                            <h2 className="text-4xl font-black tracking-tight">Vision du Projet</h2>
+                            <h2 className="text-lg font-black tracking-tight uppercase tracking-[0.1em]">Vision</h2>
                         </div>
-                        <p className="text-2xl text-foreground font-medium leading-relaxed mb-10 border-l-8 border-primary pl-8 italic">
-                            {description}
-                        </p>
-                        {longDescription && (
-                            <div className="space-y-8 text-foreground/80 text-xl leading-relaxed font-light">
-                                {longDescription.split('\n').map((para, i) => (
-                                    <p key={i}>{para}</p>
-                                ))}
-                            </div>
-                        )}
+                        <div className="space-y-8 text-foreground/80 text-lg leading-relaxed font-light">
+                            <p className="text-xl text-foreground font-medium border-l-4 border-primary pl-8 py-2">
+                                {description}
+                            </p>
+                            {longDescription && (
+                                <div className="space-y-6 pt-4">
+                                    {longDescription.split('\n').map((para, i) => (
+                                        <p key={i} className="opacity-80 hover:opacity-100 transition-opacity">{para}</p>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
                     </motion.div>
 
-                    <motion.div variants={itemVariants} className="p-8 md:p-14 rounded-[3.5rem] card-glass border-white/5 shadow-2xl transition-transform hover:scale-[1.01]">
-                        <div className="flex items-center gap-6 mb-10">
-                            <div className="p-4 rounded-2xl bg-secondary/10 text-secondary border border-secondary/20 shadow-lg shadow-secondary/5">
-                                <Target size={28} />
+                    <motion.div variants={itemVariants} className="pt-8 border-t border-white/5">
+                        <div className="flex items-center gap-4 mb-8">
+                            <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary border border-secondary/20">
+                                <Target size={20} />
                             </div>
-                            <h2 className="text-4xl font-black tracking-tight">Objectif Principal</h2>
+                            <h2 className="text-lg font-black tracking-tight uppercase tracking-[0.1em]">Objectif</h2>
                         </div>
-                        <p className="text-foreground/90 text-xl leading-relaxed font-light">
+                        <p className="text-foreground/70 text-lg leading-relaxed font-light max-w-3xl">
                             {objective}
                         </p>
                     </motion.div>
                 </div>
 
-                {/* Sidebar */}
-                <div className="space-y-8">
-                    <motion.div variants={itemVariants} className="p-10 rounded-[3rem] card-glass border-white/5 shadow-2xl sticky top-32">
-                        <div className="flex items-center gap-4 mb-10">
-                            <div className="p-4 rounded-2xl bg-accent/10 text-accent border border-accent/20">
-                                <Cpu size={28} />
+                {/* Sidebar (Right) */}
+                <div className="lg:col-span-4 space-y-12">
+                    <motion.div variants={itemVariants} className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 backdrop-blur-sm sticky top-32">
+                        <div className="flex items-center gap-4 mb-8">
+                            <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent border border-accent/20">
+                                <Cpu size={20} />
                             </div>
-                            <h2 className="text-2xl font-black tracking-tight">Tech Stack</h2>
+                            <h2 className="text-sm font-black tracking-tight uppercase">Technologies</h2>
                         </div>
-                        <div className="flex flex-wrap gap-4 mb-10">
+                        <div className="flex flex-wrap gap-3 mb-8">
                             {stack.map((tech) => (
                                 <span
                                     key={tech}
-                                    className="px-5 py-3 bg-white/5 border border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] text-foreground/70 hover:border-primary/50 hover:text-primary transition-all duration-300 cursor-default"
+                                    className="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-[9px] font-black uppercase tracking-widest text-foreground/60 transition-all hover:border-primary/50 hover:text-primary"
                                 >
                                     {tech}
                                 </span>

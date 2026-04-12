@@ -44,7 +44,7 @@ export default function Hero() {
                         Disponible pour de nouveaux projets
                     </h2>
 
-                    <div className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] select-none">
+                    <div className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] select-none">
                         <TextReveal text="VOTRE VISION," className="justify-center" delay={0} />
                         <motion.div
                             whileHover={{ scale: 1.05, rotate: -0.5 }}
@@ -55,7 +55,7 @@ export default function Hero() {
                     </div>
                 </motion.div>
 
-                <div className="text-xl md:text-2xl text-muted-foreground font-black tracking-tighter uppercase h-8">
+                <div className="text-lg md:text-xl text-muted-foreground font-black tracking-tighter uppercase h-8">
                     <TextReveal key={current} text={phrases[current]} className="justify-center" delay={0} />
                 </div>
 
@@ -66,17 +66,24 @@ export default function Hero() {
                     transition={{ delay: 1, duration: 1 }}
                     className="flex flex-wrap justify-center gap-6 mt-12"
                 >
-                    <Link href="/data/CV_Alternance_Sorbonne_2026_FR.pdf" target="_blank">
-                        <Button variant="secondary" size="lg" disabled={false} onClick={() => { }}>
-                            <FaDownload /> Télécharger CV
-                        </Button>
-                    </Link>
+                    <Button 
+                        variant="secondary" 
+                        size="lg" 
+                        href="/data/CV_Alternance_Sorbonne_2026_FR.pdf" 
+                        target="_blank"
+                        icon={<FaDownload />}
+                    >
+                        Télécharger CV
+                    </Button>
 
-                    <Link href="#contact">
-                        <Button variant="secondary" size="lg" disabled={false} onClick={() => { }}>
-                            <FaEnvelope /> Contact
-                        </Button>
-                    </Link>
+                    <Button 
+                        variant="glass" 
+                        size="lg" 
+                        href="#contact"
+                        icon={<FaEnvelope />}
+                    >
+                        Contact
+                    </Button>
                 </motion.div>
             </div>
 
