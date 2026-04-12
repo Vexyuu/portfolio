@@ -6,8 +6,6 @@ import { ArrowLeft, Github, ExternalLink, Cpu, Target, Layout } from "lucide-rea
 import { useRouter } from "next/navigation";
 import Button from "./ui/Button";
 
-import ProjectLiveFeed from "./ProjectLiveFeed";
-
 export type ProjectProps = {
     title: string;
     description: string;

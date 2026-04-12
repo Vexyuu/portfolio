@@ -1,35 +1,20 @@
 // src/components/CareerContent.tsx
 "use client";
 
-import { motion, useScroll, useSpring } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import {
     GraduationCap,
     Briefcase,
     Calendar,
-    MapPin,
     Download,
     ExternalLink,
-    ChevronRight,
 } from "lucide-react";
 import Link from "next/link";
 import { timelineData } from "@/data/career";
 
 export default function CareerContent() {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start end", "end end"]
-    });
-
-    const scaleY = useSpring(scrollYProgress, {
-        stiffness: 100,
-        damping: 30,
-        restDelta: 0.001
-    });
-
     return (
-        <main className="max-w-6xl mx-auto px-4 py-20 cursor-default" ref={containerRef}>
+        <main className="max-w-6xl mx-auto px-4 py-20 cursor-default">
             <section id="section-parcours">
                 {/* Header Section */}
                 <div className="text-center mb-24">
@@ -204,7 +189,7 @@ export default function CareerContent() {
                     <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 blur-[100px] rounded-full transition-transform group-hover/cta:scale-150 duration-1000" />
                     <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-secondary/10 blur-[100px] rounded-full transition-transform group-hover/cta:scale-150 duration-1000" />
 
-                    <h2 className="text-4xl font-black mb-4 bg-mask-text">ET LA SUITE S'ÉCRIT ICI...</h2>
+                    <h2 className="text-4xl font-black mb-4 bg-mask-text">ET LA SUITE S&apos;ÉCRIT ICI...</h2>
                     <p className="text-muted-foreground text-lg max-w-xl mx-auto mb-10">
                         Toujours à la recherche de nouveaux défis technologiques et de projets stimulants en ingénierie logicielle.
                     </p>
