@@ -1,105 +1,125 @@
 // src/components/CareerContent.tsx
 "use client";
-import { motion } from "framer-motion";
+
+import { motion, useScroll, useSpring } from "framer-motion";
+import { useRef } from "react";
+import {
+    GraduationCap,
+    Briefcase,
+    Calendar,
+    MapPin,
+    Download,
+    ExternalLink,
+    ChevronRight,
+} from "lucide-react";
+import Link from "next/link";
+import { timelineData } from "@/data/career";
 
 export default function CareerContent() {
-    const schoolTimeline = [
-        { icon: "🎓", title: "Université Paris 1 Panthéon-Sorbonne", place: "Paris", date: "2025 - 2026", desc: "► Licence MIAGE (Méthodes Informatiques Appliquées à la Gestion des Entreprises)" },
-        { icon: "🎓", title: "Prepa Aurlom BTS+", place: "Paris", date: "2023 - 2025", desc: "► BTS SIO (Services Informatiques aux Organisations)" },
-        { icon: "🏫", title: "Lycée La Mare Carrée", place: "Moissy-Cramayel", date: "2020 - 2023", desc: "► Baccalauréat Général - Maths & NSI" },
-        { icon: "📘", title: "Collège Les Aulnes", place: "Combs-la-Ville", date: "2016 - 2020", desc: "► Brevet National des collèges" },
-    ];
+    const containerRef = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end end"]
+    });
 
-    const workTimeline = [
-        { icon: "💻", title: "Audiens", place: "Alternance Chargé de Projet SI", date: "2025 - 2026", desc: ["► Maintenance et optimisation du site web avec Jahia", "► Développement d'outils internes en JavaScript et Java"], skills: ["Java", "Jahia", "JSP", "JavaScript", "MySQL", "Gestion de projet SI"] },
-        { icon: "💻", title: "Audiens", place: "Stage Développeur Web", date: "Janv - Fév 2025", desc: ["► Maintenance du site web", "► Hackathon : OCR Tesseract + IA Ollama"], skills: ["HTML/CSS", "JavaScript", "PHP", "MySQL", "Python"] },
-        { icon: "🖥️", title: "Cogemust", place: "Stage Support IT", date: "Avril 2023 - Juin 2024", desc: ["► Support et assistance utilisateur", "► Gestion du parc réseau informatique"], skills: ["Support IT", "Réseau", "Assistance"] },
-        { icon: "📦", title: "Cogemust", place: "CDD Magasinier", date: "Déc 2023 - Avril 2024", desc: ["► Réorganisation du magasin", "► Saisie des stocks via logiciels (Oxalys, Cegid)"], skills: ["Logistique", "Stocks", "ERP"] },
-    ];
+    const scaleY = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    });
 
     return (
-        <main className="max-w-6xl mx-auto px-4 py-20 cursor-default">
+        <main className="max-w-6xl mx-auto px-4 py-20 cursor-default" ref={containerRef}>
             <section id="section-parcours">
-                {/* Titre avec l'animation gradient pour la cohérence */}
-                <h1 className="text-6xl md:text-9xl font-black tracking-tighter text-center mb-24 py-4">
-                    <span className="bg-mask-text">MON PARCOURS.</span>
-                </h1>
+                {/* Header Section */}
+                <div className="text-center mb-24">
+                    <motion.h1
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-4xl md:text-6xl font-black tracking-tighter py-4"
+                    >
+                        <span className="bg-mask-text">MON PARCOURS.</span>
+                    </motion.h1>
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.2 }}
+                        className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mt-4"
+                    >
+                        Une progression constante entre excellence académique et expériences concrètes sur le terrain.
+                    </motion.p>
 
-                <div className="flex flex-col lg:flex-row gap-16">
-                    {/* Parcours scolaire */}
-                    <div className="flex-1">
-                        <div className="flex items-center gap-4 mb-10">
-                            <span className="w-12 h-[2px] bg-primary rounded-full" />
-                            <h2 className="text-xl font-black uppercase tracking-[0.3em] text-primary">Parcours scolaire</h2>
-                        </div>
-                        <div className="relative border-l-2 border-primary">
-                            {schoolTimeline.map((item, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, x: -50 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.6, delay: i * 0.2 }}
-                                    className="mb-10 ml-6 relative"
-                                >
-                                    {/* Point de la timeline (Bullet) OUTSIDE card-glass to prevent clipping */}
-                                    <div className="absolute flex items-center justify-center w-10 h-10 bg-primary/20 text-primary rounded-full -left-[45px] top-4 border-2 border-background shadow-md backdrop-blur-sm z-10">
-                                        <span className="text-lg">{item.icon}</span>
-                                    </div>
-                                    {/* Glassmorphism card */}
-                                    <div className="card-glass p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/20">
-                                        <div className="flex flex-col">
-                                            <p className="font-semibold text-foreground text-lg mb-1">{item.title}</p>
-                                            <span className="text-sm text-primary font-medium mb-3">
-                                                {item.place} • {item.date}
-                                            </span>
-                                        </div>
-                                        <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
+                    {/* CV Download Buttons */}
+                    <div className="flex flex-wrap justify-center gap-4 mt-10">
+                        <Link
+                            href="/data/CV_Alternance_Sorbonne_2025_FR.pdf"
+                            target="_blank"
+                            className="group flex items-center gap-3 px-6 py-3 rounded-xl bg-primary/10 border border-primary/20 text-primary font-bold hover:bg-primary hover:text-white transition-all duration-300"
+                        >
+                            <Download size={20} className="group-hover:bounce" />
+                            <span>CV ALTERNANCE 2025</span>
+                        </Link>
+                        <Link
+                            href="/data/CV_Alternance_Sorbonne_2026_FR.pdf"
+                            target="_blank"
+                            className="group flex items-center gap-3 px-6 py-3 rounded-xl bg-secondary/10 border border-secondary/20 text-secondary font-bold hover:bg-secondary hover:text-white transition-all duration-300"
+                        >
+                            <Download size={20} className="group-hover:bounce" />
+                            <span>CV ALTERNANCE 2026</span>
+                        </Link>
                     </div>
+                </div>
 
-                    {/* Parcours pro */}
+                <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 mt-16">
+                    {/* Parcours Scolaire */}
                     <div className="flex-1">
                         <div className="flex items-center gap-4 mb-10">
-                            <span className="w-12 h-[2px] bg-secondary rounded-full" />
-                            <h2 className="text-xl font-black uppercase tracking-[0.4em] text-secondary">Parcours pro</h2>
+                            <div className="p-2 rounded-lg bg-primary/10">
+                                <GraduationCap className="text-primary" size={24} />
+                            </div>
+                            <h2 className="text-xl font-black uppercase tracking-[0.3em] text-primary">Formation</h2>
                         </div>
-                        <div className="relative border-l-2 border-secondary/30">
-                            {workTimeline.map((item, i) => (
+                        
+                        <div className="relative border-l-2 border-primary/10 ml-5 space-y-12">
+                            {timelineData.filter(item => item.type === "education").map((item, i) => (
                                 <motion.div
                                     key={i}
-                                    initial={{ opacity: 0, x: 50 }}
+                                    initial={{ opacity: 0, x: -20 }}
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ duration: 0.6, delay: i * 0.2 }}
-                                    className="mb-10 ml-6 relative"
+                                    className="relative pl-10"
                                 >
-                                    {/* Point de la timeline (Bullet) */}
-                                    <div className="absolute flex items-center justify-center w-10 h-10 bg-secondary/20 text-secondary rounded-full -left-[45px] top-4 border-2 border-background shadow-md backdrop-blur-sm z-10">
-                                        <span className="text-lg">{item.icon}</span>
-                                    </div>
-                                    {/* Glassmorphism card */}
-                                    <div className="card-glass p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-secondary/20">
-                                        <div className="flex flex-col">
-                                            <p className="font-semibold text-foreground text-lg mb-1">
-                                                {item.title} <span className="text-secondary font-medium block md:inline md:ml-2">— {item.place}</span>
-                                            </p>
-                                            <span className="text-sm text-secondary font-medium mb-4">{item.date}</span>
-                                        </div>
-                                        <div className="text-sm text-muted-foreground leading-relaxed space-y-2">
-                                            {item.desc.map((d, idx) => <p key={idx}>{d}</p>)}
-                                        </div>
-                                        {/* Tags améliorés */}
-                                        <div className="flex flex-wrap gap-2 mt-5 pt-4 border-t border-muted-foreground/10">
-                                            {item.skills.map((skill, idx) => (
-                                                <span key={idx}
-                                                    className="px-3 py-1 text-xs font-medium text-secondary bg-secondary/10 border border-secondary/20 rounded-full hover:bg-secondary/20 transition-colors"
-                                                >
-                                                    {skill}
+                                    {/* Bullet node */}
+                                    <div className={`absolute -left-[11px] top-0 w-5 h-5 rounded-full border-4 border-background shadow-lg transition-all duration-500 ${
+                                        item.isCurrent ? "bg-primary ring-4 ring-primary/20 scale-125" : "bg-muted-foreground/30"
+                                    }`} />
+
+                                    <div className={`card-glass p-6 transition-all duration-500 hover:border-primary/30 ${
+                                        item.isCurrent ? "border-primary/40 bg-primary/[0.03] shadow-[0_0_30px_rgba(var(--color-primary),0.05)]" : ""
+                                    }`}>
+                                        {item.isCurrent && (
+                                            <div className="flex items-center gap-2 mb-3">
+                                                <span className="relative flex h-2 w-2">
+                                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                                                 </span>
+                                                <span className="px-2 py-0.5 rounded-md bg-primary/20 border border-primary/30 text-[10px] font-black uppercase tracking-widest text-primary shadow-[0_0_15px_rgba(var(--color-primary),0.1)]">
+                                                    En cours
+                                                </span>
+                                            </div>
+                                        )}
+                                        <div className="flex items-center gap-2 mb-2">
+                                            <Calendar size={12} className="text-primary/60" />
+                                            <span className="text-xs font-bold text-muted-foreground uppercase tracking-tight">{item.period}</span>
+                                        </div>
+                                        <h3 className="text-xl font-black mb-1">{item.title}</h3>
+                                        <p className="text-sm font-bold text-foreground/80 mb-4">{item.organization}</p>
+                                        <div className="space-y-2">
+                                            {item.description.map((desc, idx) => (
+                                                <div key={idx} className="flex gap-3">
+                                                    <div className="mt-2 w-1 h-1 rounded-full bg-primary/30 shrink-0" />
+                                                    <p className="text-sm text-muted-foreground leading-relaxed font-medium">{desc}</p>
+                                                </div>
                                             ))}
                                         </div>
                                     </div>
@@ -107,8 +127,97 @@ export default function CareerContent() {
                             ))}
                         </div>
                     </div>
+
+                    {/* Parcours Pro */}
+                    <div className="flex-1 mt-16 lg:mt-0">
+                        <div className="flex items-center gap-4 mb-10">
+                            <div className="p-2 rounded-lg bg-secondary/10">
+                                <Briefcase className="text-secondary" size={24} />
+                            </div>
+                            <h2 className="text-xl font-black uppercase tracking-[0.3em] text-secondary">Expérience</h2>
+                        </div>
+
+                        <div className="relative border-l-2 border-secondary/10 ml-5 space-y-12">
+                            {timelineData.filter(item => item.type === "work").map((item, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, x: 20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    className="relative pl-10"
+                                >
+                                    {/* Bullet node */}
+                                    <div className={`absolute -left-[11px] top-0 w-5 h-5 rounded-full border-4 border-background shadow-lg transition-all duration-500 ${
+                                        item.isCurrent ? "bg-secondary ring-4 ring-secondary/20 scale-125" : "bg-muted-foreground/30"
+                                    }`} />
+
+                                    <div className={`card-glass p-6 transition-all duration-500 hover:border-secondary/30 ${
+                                        item.isCurrent ? "border-secondary/40 bg-secondary/[0.02] shadow-[0_0_30px_rgba(217,119,6,0.05)]" : ""
+                                    }`}>
+                                        {item.isCurrent && (
+                                            <div className="flex items-center gap-2 mb-3">
+                                                <span className="relative flex h-2 w-2">
+                                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+                                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+                                                </span>
+                                                <span className="px-2 py-0.5 rounded-md bg-secondary/20 border border-secondary/30 text-[10px] font-black uppercase tracking-widest text-secondary shadow-[0_0_15px_rgba(217,119,6,0.1)]">
+                                                    Poste actuel
+                                                </span>
+                                            </div>
+                                        )}
+                                        <div className="flex items-center gap-2 mb-2">
+                                            <Calendar size={12} className="text-secondary/60" />
+                                            <span className="text-xs font-bold text-muted-foreground uppercase tracking-tight">{item.period}</span>
+                                        </div>
+                                        <h3 className="text-xl font-black mb-1">{item.title}</h3>
+                                        <p className="text-sm font-bold text-foreground/80 mb-4">{item.organization}</p>
+                                        <div className="space-y-3 mb-5">
+                                            {item.description.map((desc, idx) => (
+                                                <div key={idx} className="flex gap-3">
+                                                    <div className="mt-2 w-1 h-1 rounded-full bg-secondary/30 shrink-0" />
+                                                    <p className="text-sm text-muted-foreground leading-relaxed font-medium">{desc}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                        {item.skills && (
+                                            <div className="flex flex-wrap gap-2 pt-4 border-t border-muted/10">
+                                                {item.skills.map((skill, idx) => (
+                                                    <span key={idx} className="px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest bg-secondary/10 text-secondary border border-secondary/20 rounded">
+                                                        {skill}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
+
+                {/* Final Call to action */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    className="mt-32 text-center p-12 card-glass border-dashed border-2 relative overflow-hidden group/cta"
+                >
+                    <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 blur-[100px] rounded-full transition-transform group-hover/cta:scale-150 duration-1000" />
+                    <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-secondary/10 blur-[100px] rounded-full transition-transform group-hover/cta:scale-150 duration-1000" />
+
+                    <h2 className="text-4xl font-black mb-4 bg-mask-text">ET LA SUITE S'ÉCRIT ICI...</h2>
+                    <p className="text-muted-foreground text-lg max-w-xl mx-auto mb-10">
+                        Toujours à la recherche de nouveaux défis technologiques et de projets stimulants en ingénierie logicielle.
+                    </p>
+                    <Link
+                        href="/#contact"
+                        className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-foreground text-background font-black hover:gap-6 transition-all uppercase tracking-[0.2em] shadow-2xl hover:shadow-primary/20"
+                    >
+                        <span>Me contacter</span>
+                        <ExternalLink size={20} />
+                    </Link>
+                </motion.div>
             </section>
         </main>
     );
 }
+
