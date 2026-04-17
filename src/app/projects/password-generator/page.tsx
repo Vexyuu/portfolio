@@ -9,7 +9,7 @@ export const metadata = {
     openGraph: {
         title: "Générateur de Mots de Passe Sécurisé - Killian Fievet",
         description: "Générez instantanément des mots de passe complexes et sécurisés avec des options de personnalisation avancées.",
-        url: `${BASE_URL}/projects/password-generator`,
+        url: `${BASE_URL}/projects/password-generator/`,
         siteName: "Killian Fievet - Portfolio",
         locale: "fr_FR",
         type: "article",
@@ -23,7 +23,7 @@ export const metadata = {
         ],
     },
     alternates: {
-        canonical: `${BASE_URL}/projects/password-generator`,
+        canonical: `${BASE_URL}/projects/password-generator/`,
     },
 };
 

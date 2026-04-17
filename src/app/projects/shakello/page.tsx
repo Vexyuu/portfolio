@@ -9,7 +9,7 @@ export const metadata = {
     openGraph: {
         title: "Shakello - Site de Recettes de Cocktails",
         description: "Découvrez plus de 55 recettes de cocktails sur Shakello.",
-        url: `${BASE_URL}/projects/shakello`,
+        url: `${BASE_URL}/projects/shakello/`,
         type: "article",
         images: [
             {
@@ -21,7 +21,7 @@ export const metadata = {
         ],
     },
     alternates: {
-        canonical: `${BASE_URL}/projects/shakello`,
+        canonical: `${BASE_URL}/projects/shakello/`,
     },
 };
 

@@ -58,6 +58,9 @@ export const metadata = {
     apple: "/apple-touch-icon.png",
   },
   metadataBase: new URL(baseUrl),
+  alternates: {
+    canonical: baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`,
+  },
   verification: {
     google: "6BDn5Y_D6qLr8TTu9tryKW3xzzpuomMKES5-sa_8pts",
   },

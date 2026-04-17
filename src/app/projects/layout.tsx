@@ -7,11 +7,11 @@ export const metadata = {
     openGraph: {
         title: "Projets de Killian Fievet",
         description: "Showcase de mes créations et réalisations techniques.",
-        url: `${BASE_URL}/projects`,
+        url: `${BASE_URL}/projects/`,
         type: "website",
     },
     alternates: {
-        canonical: `${BASE_URL}/projects`,
+        canonical: `${BASE_URL}/projects/`,
     },
 };
 

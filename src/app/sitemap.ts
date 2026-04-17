@@ -9,37 +9,43 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     return [
         {
-            url: baseUrl,
+            url: `${baseUrl}/`,
             lastModified: new Date(),
             changeFrequency: "monthly",
             priority: 1.0,
         },
         {
-            url: `${baseUrl}/career`,
+            url: `${baseUrl}/career/`,
             lastModified: new Date(),
             changeFrequency: "yearly",
             priority: 0.8,
         },
         {
-            url: `${baseUrl}/projects`,
+            url: `${baseUrl}/projects/`,
             lastModified: new Date(),
             changeFrequency: "yearly",
             priority: 0.8,
         },
         {
-            url: `${baseUrl}/projects/password-generator`,
+            url: `${baseUrl}/projects/password-generator/`,
             lastModified: new Date(),
             changeFrequency: "yearly",
             priority: 0.7,
         },
         {
-            url: `${baseUrl}/projects/billy-ia`,
+            url: `${baseUrl}/projects/billy-ia/`,
             lastModified: new Date(),
             changeFrequency: "yearly",
             priority: 0.7,
         },
         {
-            url: `${baseUrl}/projects/ndi-2025`,
+            url: `${baseUrl}/projects/ndi-2025/`,
+            lastModified: new Date(),
+            changeFrequency: "yearly",
+            priority: 0.7,
+        },
+        {
+            url: `${baseUrl}/projects/shakello/`,
             lastModified: new Date(),
             changeFrequency: "yearly",
             priority: 0.7,

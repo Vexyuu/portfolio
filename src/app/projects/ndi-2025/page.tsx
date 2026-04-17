@@ -9,7 +9,7 @@ export const metadata = {
     openGraph: {
         title: "Projet Nuit de l'info 2025 - Killian Fievet",
         description: "Projet développé pour la Nuit de l'info 2025. Découvrez notre solution innovante.",
-        url: `${BASE_URL}/projects/ndi-2025`,
+        url: `${BASE_URL}/projects/ndi-2025/`,
         type: "article",
         images: [
             {
@@ -21,7 +21,7 @@ export const metadata = {
         ],
     },
     alternates: {
-        canonical: `${BASE_URL}/projects/ndi-2025`,
+        canonical: `${BASE_URL}/projects/ndi-2025/`,
     },
 };
 

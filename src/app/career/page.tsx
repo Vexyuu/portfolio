@@ -15,7 +15,7 @@ export const metadata = {
     openGraph: {
         title: "Carrière de Killian Fievet",
         description: "Découvrez mes expériences académiques et professionnelles en informatique.",
-        url: `${BASE_URL}/career`,
+        url: `${BASE_URL}/career/`,
         type: "profile",
         images: [
             {
@@ -27,7 +27,7 @@ export const metadata = {
         ],
     },
     alternates: {
-        canonical: `${BASE_URL}/career`,
+        canonical: `${BASE_URL}/career/`,
     },
 };
 

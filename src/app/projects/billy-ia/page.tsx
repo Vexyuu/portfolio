@@ -9,7 +9,7 @@ export const metadata = {
     openGraph: {
         title: "Projet Billy.IA - Assistant IA local",
         description: "Assistant personnel propulsé par l’IA, développé avec Python, TensorFlow et Pandas.",
-        url: `${BASE_URL}/projects/billy-ia`,
+        url: `${BASE_URL}/projects/billy-ia/`,
         type: "article",
         images: [
             {
@@ -21,7 +21,7 @@ export const metadata = {
         ],
     },
     alternates: {
-        canonical: `${BASE_URL}/projects/billy-ia`,
+        canonical: `${BASE_URL}/projects/billy-ia/`,
     },
 };
 
