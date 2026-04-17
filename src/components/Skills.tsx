@@ -26,7 +26,7 @@ export default function Skills() {
             >
                 {/* Header Section */}
                 <div className="flex flex-col items-center text-center mb-24 gap-6">
-                    <motion.h2 
+                    <motion.h2
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         className="text-xs uppercase tracking-[0.4em] font-black text-secondary px-6 py-2 bg-secondary/10 border border-secondary/20 rounded-full inline-block backdrop-blur-md"
@@ -34,7 +34,7 @@ export default function Skills() {
                         Skills Hub
                     </motion.h2>
                     <h3 className="text-4xl md:text-7xl font-black tracking-tighter">
-                        <span className="bg-mask-text">ARSENAL TECHNIQUE</span>
+                        <span className="bg-mask-text">COMPÉTENCES TECHNIQUES</span>
                     </h3>
                     <p className="text-muted-foreground max-w-2xl font-medium text-lg tracking-tight mt-4">
                         Une sélection rigoureuse de technologies pour transformer des idées complexes en solutions digitales élégantes.
@@ -129,4 +129,4 @@ export default function Skills() {
             </motion.div>
         </section>
     );
-}
+}
