@@ -59,7 +59,7 @@ export default function Skills() {
                                         alt={skill.name}
                                         width={64}
                                         height={64}
-                                        className="object-contain filter drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
+                                        className="object-contain filter drop-shadow-[0_0_10px_rgba(var(--color-foreground),0.1)]"
                                         priority={index < 4}
                                     />
                                 </div>

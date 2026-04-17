@@ -37,14 +37,6 @@ export default function CareerContent() {
                     {/* CV Download Buttons */}
                     <div className="flex flex-wrap justify-center gap-4 mt-10">
                         <Link
-                            href="/data/CV_Alternance_Sorbonne_2025_FR.pdf"
-                            target="_blank"
-                            className="group flex items-center gap-3 px-6 py-3 rounded-xl bg-primary/10 border border-primary/20 text-primary font-bold hover:bg-primary hover:text-white transition-all duration-300"
-                        >
-                            <Download size={20} className="group-hover:bounce" />
-                            <span>CV ALTERNANCE 2025</span>
-                        </Link>
-                        <Link
                             href="/data/CV_Alternance_Sorbonne_2026_FR.pdf"
                             target="_blank"
                             className="group flex items-center gap-3 px-6 py-3 rounded-xl bg-secondary/10 border border-secondary/20 text-secondary font-bold hover:bg-secondary hover:text-white transition-all duration-300"
@@ -64,7 +56,7 @@ export default function CareerContent() {
                             </div>
                             <h2 className="text-xl font-black uppercase tracking-[0.3em] text-primary">Formation</h2>
                         </div>
-                        
+
                         <div className="relative border-l-2 border-primary/10 ml-5 space-y-12">
                             {timelineData.filter(item => item.type === "education").map((item, i) => (
                                 <motion.div
@@ -75,13 +67,11 @@ export default function CareerContent() {
                                     className="relative pl-10"
                                 >
                                     {/* Bullet node */}
-                                    <div className={`absolute -left-[11px] top-0 w-5 h-5 rounded-full border-4 border-background shadow-lg transition-all duration-500 ${
-                                        item.isCurrent ? "bg-primary ring-4 ring-primary/20 scale-125" : "bg-muted-foreground/30"
-                                    }`} />
+                                    <div className={`absolute -left-[11px] top-0 w-5 h-5 rounded-full border-4 border-background shadow-lg transition-all duration-500 ${item.isCurrent ? "bg-primary ring-4 ring-primary/20 scale-125" : "bg-muted-foreground/30"
+                                        }`} />
 
-                                    <div className={`card-glass p-6 transition-all duration-500 hover:border-primary/30 ${
-                                        item.isCurrent ? "border-primary/40 bg-primary/[0.03] shadow-[0_0_30px_rgba(var(--color-primary),0.05)]" : ""
-                                    }`}>
+                                    <div className={`card-glass p-6 transition-all duration-500 hover:border-primary/30 ${item.isCurrent ? "border-primary/40 bg-primary/[0.03] shadow-[0_0_30px_rgba(var(--color-primary),0.05)]" : ""
+                                        }`}>
                                         {item.isCurrent && (
                                             <div className="flex items-center gap-2 mb-3">
                                                 <span className="relative flex h-2 w-2">
@@ -132,13 +122,11 @@ export default function CareerContent() {
                                     className="relative pl-10"
                                 >
                                     {/* Bullet node */}
-                                    <div className={`absolute -left-[11px] top-0 w-5 h-5 rounded-full border-4 border-background shadow-lg transition-all duration-500 ${
-                                        item.isCurrent ? "bg-secondary ring-4 ring-secondary/20 scale-125" : "bg-muted-foreground/30"
-                                    }`} />
+                                    <div className={`absolute -left-[11px] top-0 w-5 h-5 rounded-full border-4 border-background shadow-lg transition-all duration-500 ${item.isCurrent ? "bg-secondary ring-4 ring-secondary/20 scale-125" : "bg-muted-foreground/30"
+                                        }`} />
 
-                                    <div className={`card-glass p-6 transition-all duration-500 hover:border-secondary/30 ${
-                                        item.isCurrent ? "border-secondary/40 bg-secondary/[0.02] shadow-[0_0_30px_rgba(217,119,6,0.05)]" : ""
-                                    }`}>
+                                    <div className={`card-glass p-6 transition-all duration-500 hover:border-secondary/30 ${item.isCurrent ? "border-secondary/40 bg-secondary/[0.02] shadow-[0_0_30px_rgba(217,119,6,0.05)]" : ""
+                                        }`}>
                                         {item.isCurrent && (
                                             <div className="flex items-center gap-2 mb-3">
                                                 <span className="relative flex h-2 w-2">

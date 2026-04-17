@@ -28,7 +28,9 @@ export default function Hero() {
     }, []);
 
     return (
-        <section className="relative min-h-screen pt-32 flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+        <section className="relative min-h-screen pt-32 pb-12 flex flex-col items-center justify-between text-center px-6 overflow-hidden">
+            {/* Top Spacer to balance the layout */}
+            <div className="h-0 md:h-20" />
 
             {/* 2. Contenu Principal */}
             <div className="relative z-200 flex flex-col items-center gap-8 max-w-4xl">
@@ -63,21 +65,21 @@ export default function Hero() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1, duration: 1 }}
-                    className="flex flex-wrap justify-center gap-6 mt-12"
+                    className="flex flex-wrap justify-center gap-6 mt-8"
                 >
-                    <Button 
-                        variant="secondary" 
-                        size="lg" 
-                        href="/data/CV_Alternance_Sorbonne_2026_FR.pdf" 
+                    <Button
+                        variant="secondary"
+                        size="lg"
+                        href="/data/CV_Alternance_Sorbonne_2026_FR.pdf"
                         target="_blank"
                         icon={<FaDownload />}
                     >
                         Télécharger CV
                     </Button>
 
-                    <Button 
-                        variant="glass" 
-                        size="lg" 
+                    <Button
+                        variant="glass"
+                        size="lg"
                         href="#contact"
                         icon={<FaEnvelope />}
                     >
@@ -86,15 +88,15 @@ export default function Hero() {
                 </motion.div>
             </div>
 
-            {/* Scroll Indicator */}
+            {/* Scroll Indicator - Now part of the flex flow for guaranteed spacing */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 2, duration: 1 }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+                className="flex flex-col items-center gap-4 mt-12"
             >
-                <span className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground">Scroll</span>
-                <div className="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent animate-bounce" />
+                <span className="text-[9px] uppercase tracking-[0.4em] font-black text-muted-foreground/40">Scroll</span>
+                <div className="w-[1px] h-10 bg-gradient-to-b from-secondary to-transparent animate-bounce opacity-20" />
             </motion.div>
         </section>
     );

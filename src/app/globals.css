@@ -2,7 +2,29 @@
 @import "tailwindcss";
 
 :root {
-  /* Midnight Aurora - Signature Palette */
+  /* Light Theme - Soft Editorial */
+  --color-background: 210 40% 98%;   /* Soft White/Gray #f8fafc */
+  --color-foreground: 222 47% 4%;    /* Deep Midnight #020617 */
+  
+  --color-primary: 262 83% 58%;      /* Aurora Violet #8b5cf6 */
+  --color-primary-glow: 262 83% 58% / 0.2;
+  
+  --color-secondary: 45 93% 40%;     /* Rich Gold #b45309 - Slightly darker for contrast */
+  --color-secondary-glow: 45 93% 40% / 0.15;
+  
+  --color-accent: 316 70% 45%;       /* Magenta Burst */
+  --color-muted: 210 40% 94%;
+  --color-muted-foreground: 215 16% 40%;
+
+  /* Signature Textures - Light */
+  --card-bg: 210 40% 100% / 0.7;
+  --card-border: 210 40% 88% / 0.8;
+  --shadow-color: 222 47% 4% / 0.05;
+  --glass-reflection: 222 47% 4% / 0.02;
+}
+
+.dark {
+  /* Dark Theme - Midnight Aurora */
   --color-background: 222 47% 4%;    /* Deep Midnight #020617 */
   --color-foreground: 210 40% 98%;   /* Pure Off-white */
   
@@ -16,19 +38,11 @@
   --color-muted: 215 25% 27%;
   --color-muted-foreground: 215 16% 56%;
 
-  /* Signature Textures */
+  /* Signature Textures - Dark */
   --card-bg: 222 47% 10% / 0.4;
   --card-border: 222 47% 20% / 0.5;
   --shadow-color: 0 0% 0% / 0.8;
   --glass-reflection: 255 255% 255% / 0.03;
-}
-
-/* On force le mode sombre au niveau systémique */
-@media (prefers-color-scheme: light) {
-  :root {
-    /* Identique au mode sombre pour garantir l'unicité de la signature */
-    --color-background: 222 47% 4%;
-  }
 }
 
 * {
@@ -73,8 +87,8 @@ h1, h2, h3, h4 {
 .bg-mask-text {
   background: linear-gradient(
     135deg, 
-    #f8fafc 0%, 
-    #cbd5e1 40%, 
+    hsl(var(--color-foreground)) 0%, 
+    hsl(var(--color-muted-foreground)) 40%, 
     hsl(var(--color-primary)) 70%, 
     hsl(var(--color-secondary)) 100%
   );

@@ -34,7 +34,7 @@ export default function AuraBackground() {
 
             {/* Floating primary (Violet) - Top Left */}
             <motion.div
-                className="absolute w-[70vw] h-[70vw] rounded-spread bg-primary/15 blur-[160px] mix-blend-plus-lighter"
+                className="absolute w-[70vw] h-[70vw] rounded-spread bg-primary/10 dark:bg-primary/15 blur-[160px] dark:mix-blend-plus-lighter"
                 animate={{
                     x: ["-20%", "10%", "-20%"],
                     y: ["-10%", "20%", "-10%"],
@@ -50,7 +50,7 @@ export default function AuraBackground() {
 
             {/* Floating accent (Secondary) - Bottom Right */}
             <motion.div
-                className="absolute w-[60vw] h-[60vw] rounded-spread bg-secondary/15 blur-[180px] mix-blend-plus-lighter"
+                className="absolute w-[60vw] h-[60vw] rounded-spread bg-secondary/10 dark:bg-secondary/15 blur-[180px] dark:mix-blend-plus-lighter"
                 animate={{
                     x: ["10%", "-10%", "10%"],
                     y: ["10%", "-5%", "10%"],

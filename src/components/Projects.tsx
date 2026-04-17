@@ -41,7 +41,7 @@ export default function Projects() {
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                                className={`group relative h-full min-h-[300px] overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md ${bentoSpans[index] || ""}`}
+                                className={`group relative h-full min-h-[300px] overflow-hidden rounded-3xl border border-foreground/10 bg-foreground/5 backdrop-blur-md ${bentoSpans[index] || ""}`}
                             >
                                 <div className="absolute inset-0 z-0">
                                     <Image
@@ -50,29 +50,29 @@ export default function Projects() {
                                         fill
                                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
                                 </div>
 
                                 <div className="absolute inset-0 p-8 flex flex-col justify-end z-10">
                                     <div className="flex items-center gap-3 mb-4">
                                         <span className={`text-[10px] uppercase tracking-widest font-black px-3 py-1 rounded-full backdrop-blur-md border ${project.isFinite
-                                            ? "bg-green-500/20 text-green-400 border-green-500/30"
-                                            : "bg-amber-500/20 text-amber-400 border-amber-500/30"
+                                            ? "bg-green-500/20 text-green-600 dark:text-green-400 border-green-500/30"
+                                            : "bg-amber-500/20 text-amber-600 dark:text-amber-400 border-amber-500/30"
                                             }`}>
                                             {project.isFinite ? "Fini" : "En cours"}
                                         </span>
-                                        <span className="text-[10px] uppercase tracking-widest font-black px-3 py-1 rounded-full bg-white/10 text-white/70 border border-white/20">
+                                        <span className="text-[10px] uppercase tracking-widest font-black px-3 py-1 rounded-full bg-foreground/10 text-foreground/70 border border-foreground/20">
                                             {project.year}
                                         </span>
                                     </div>
 
-                                    <h3 className="text-2xl md:text-3xl font-black text-white mb-2 leading-tight">{project.title}</h3>
-                                    <p className="text-white/60 text-sm mb-6 line-clamp-2 max-w-sm">
+                                    <h3 className="text-2xl md:text-3xl font-black text-foreground mb-2 leading-tight">{project.title}</h3>
+                                    <p className="text-foreground/60 text-sm mb-6 line-clamp-2 max-w-sm">
                                         {project.description}
                                     </p>
 
                                     <div className="flex gap-4 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 mt-2 md:mt-0">
-                                        <Button href={project.more} variant="white" size="sm">
+                                        <Button href={project.more} variant="primary" size="sm">
                                             Détails
                                         </Button>
                                         <Button href={project.link} target="_blank" variant="glass" size="sm">
@@ -82,8 +82,8 @@ export default function Projects() {
                                 </div>
 
                                 <div className="absolute top-6 right-6 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
-                                    <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20">
-                                        <span className="text-white text-xl">→</span>
+                                    <div className="w-10 h-10 rounded-full bg-foreground/10 backdrop-blur-md flex items-center justify-center border border-foreground/20">
+                                        <span className="text-foreground text-xl">→</span>
                                     </div>
                                 </div>
                             </motion.div>

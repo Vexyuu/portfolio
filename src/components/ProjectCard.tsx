@@ -60,7 +60,7 @@ export default function ProjectCard({ title, description, longDescription, objec
                     />
                     {/* Subtle Gradient Overlays */}
                     <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background z-10" />
-                    <div className="absolute inset-0 bg-black/30 z-0" />
+                    <div className="absolute inset-0 bg-foreground/10 z-0" />
                 </motion.div>
 
                 <motion.div
@@ -94,7 +94,7 @@ export default function ProjectCard({ title, description, longDescription, objec
                                     <Button
                                         href={github}
                                         target="_blank"
-                                        variant="white"
+                                        variant="primary"
                                         icon={<Github size={16} />}
                                     >
                                         Source
@@ -147,7 +147,7 @@ export default function ProjectCard({ title, description, longDescription, objec
                         </div>
                     </motion.div>
 
-                    <motion.div variants={itemVariants} className="pt-8 border-t border-white/5">
+                    <motion.div variants={itemVariants} className="pt-8 border-t border-foreground/5">
                         <div className="flex items-center gap-4 mb-8">
                             <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary border border-secondary/20">
                                 <Target size={20} />
@@ -162,7 +162,7 @@ export default function ProjectCard({ title, description, longDescription, objec
 
                 {/* Sidebar (Right) */}
                 <div className="lg:col-span-4 space-y-12">
-                    <motion.div variants={itemVariants} className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 backdrop-blur-sm sticky top-32">
+                    <motion.div variants={itemVariants} className="p-8 rounded-[2rem] bg-foreground/[0.02] border border-foreground/5 backdrop-blur-sm sticky top-32">
                         {/* Catégorie */}
                         <div className="inline-flex items-center gap-3 px-4 py-2 rounded-xl bg-secondary/10 border border-secondary/20 backdrop-blur-md mb-8">
                             <div className="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_10px_rgba(217,119,6,0.5)]" />
@@ -181,7 +181,7 @@ export default function ProjectCard({ title, description, longDescription, objec
                             {stack.map((tech) => (
                                 <span
                                     key={tech}
-                                    className="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-[9px] font-black uppercase tracking-widest text-foreground/60 transition-all hover:border-primary/50 hover:text-primary"
+                                    className="px-4 py-2 bg-foreground/5 border border-foreground/10 rounded-xl text-[9px] font-black uppercase tracking-widest text-foreground/60 transition-all hover:border-primary/50 hover:text-primary"
                                 >
                                     {tech}
                                 </span>

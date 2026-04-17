@@ -1,42 +1,50 @@
 // src/components/ThemeToggle.tsx
 "use client";
+
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { Sun, Moon, Monitor } from "lucide-react";
 
 export default function ThemeToggle() {
     const { theme, setTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
 
-    // Nécessaire pour éviter l'hydration mismatch
     useEffect(() => setMounted(true), []);
     if (!mounted) return null;
 
-    return (
-        <div className="flex gap-2">
-            {/* Toggle Light/Dark */}
-            <button
-                onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-                className="relative w-16 h-8 flex items-center rounded-full bg-muted p-1 border-2
-                transition-all duration-300 border-gray-500 hover:border-primary focus:border-accent shadow-lg hover:shadow-xl"
-            >
-                <motion.div
-                    className="w-6 h-6 rounded-full bg-background flex items-center justify-center shadow-md"
-                    animate={{ x: theme === "light" ? 0 : 32 }}
-                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                >
-                    {theme === "light" ? "🌞" : "🌙"}
-                </motion.div>
-            </button>
+    const modes = [
+        { id: "light", icon: <Sun size={14} />, label: "Clair" },
+        { id: "dark", icon: <Moon size={14} />, label: "Sombre" },
+        { id: "system", icon: <Monitor size={14} />, label: "Système" },
+    ];
 
-            {/* Bouton System */}
-            <button
-                onClick={() => setTheme("system")}
-                className={`relative w-8 h-8 rounded-full border-2 ${theme === "system" ? "bg-accent text-background" : "bg-secondary text-background"
-                    } transition-all duration-300 border-gray-500 hover:border-primary focus:border-accent shadow-lg hover:shadow-xl`}
-            >
-                💻
-            </button>
+    return (
+        <div className="flex items-center bg-muted/50 backdrop-blur-md p-1 rounded-full border border-foreground/10 shadow-inner">
+            <div className="relative flex items-center gap-1">
+                {modes.map((mode) => (
+                    <button
+                        key={mode.id}
+                        onClick={() => setTheme(mode.id)}
+                        className={`relative z-10 p-2 rounded-full transition-colors duration-300 ${
+                            theme === mode.id 
+                                ? "text-foreground" 
+                                : "text-muted-foreground hover:text-foreground/70"
+                        }`}
+                        title={mode.label}
+                    >
+                        {mode.icon}
+                        
+                        {theme === mode.id && (
+                            <motion.div
+                                layoutId="activeTab"
+                                className="absolute inset-0 bg-background rounded-full shadow-sm border border-foreground/5 -z-10"
+                                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                            />
+                        )}
+                    </button>
+                ))}
+            </div>
         </div>
     );
-}
+}

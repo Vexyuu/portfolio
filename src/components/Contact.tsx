@@ -79,22 +79,22 @@ export default function Contact() {
                             <div>
                                 <h4 className="text-sm uppercase tracking-widest text-muted-foreground font-bold mb-4">Mes réseaux</h4>
                                 <div className="flex flex-col gap-3">
-                                    <Link href="https://github.com/Vexyuu" target="_blank" className="group flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                        <FaGithub className="text-2xl text-white/50 group-hover:text-white transition-colors" />
+                                    <Link href="https://github.com/Vexyuu" target="_blank" className="group flex items-center gap-4 p-4 rounded-2xl bg-foreground/5 border border-foreground/10 hover:bg-foreground/10 transition-all">
+                                        <FaGithub className="text-2xl text-foreground/50 group-hover:text-foreground transition-colors" />
                                         <span className="font-bold">GitHub</span>
                                     </Link>
-                                    <Link href="https://www.linkedin.com/in/killian-fievet-4a3788287" target="_blank" className="group flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                        <FaLinkedin className="text-2xl text-white/50 group-hover:text-blue-400 transition-colors" />
+                                    <Link href="https://www.linkedin.com/in/killian-fievet-4a3788287" target="_blank" className="group flex items-center gap-4 p-4 rounded-2xl bg-foreground/5 border border-foreground/10 hover:bg-foreground/10 transition-all">
+                                        <FaLinkedin className="text-2xl text-foreground/50 group-hover:text-blue-500 transition-colors" />
                                         <span className="font-bold">LinkedIn</span>
                                     </Link>
-                                    <Link href="mailto:killianfievetpro@gmail.com" className="group flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                        <FaEnvelope className="text-2xl text-white/50 group-hover:text-secondary transition-colors" />
+                                    <Link href="mailto:killianfievetpro@gmail.com" className="group flex items-center gap-4 p-4 rounded-2xl bg-foreground/5 border border-foreground/10 hover:bg-foreground/10 transition-all">
+                                        <FaEnvelope className="text-2xl text-foreground/50 group-hover:text-secondary transition-colors" />
                                         <span className="font-bold">Email</span>
                                     </Link>
                                 </div>
                             </div>
 
-                            <div className="pt-8 border-t border-white/10 text-sm text-muted-foreground leading-relaxed">
+                            <div className="pt-8 border-t border-foreground/10 text-sm text-muted-foreground leading-relaxed">
                                 <p>Disponible pour des opportunités en <span className="text-secondary font-bold">alternance</span> ou des projets <span className="text-primary font-bold">freelance</span>.</p>
                             </div>
                         </div>

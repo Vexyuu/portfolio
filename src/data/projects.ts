@@ -3,6 +3,7 @@ import { getAssetPath } from "@/utils/paths";
 
 export const projects = [
     {
+        id: "billy-ia",
         title: "Billy.IA - Assistant IA",
         description: "Un assistant personnel propulsé par l'IA pour répondre à vos questions.",
         link: "https://github.com/Vexyuu/portfolio",
@@ -12,8 +13,10 @@ export const projects = [
         isFinite: false,
         category: "IA",
         year: 2025,
+        stack: ["Python", "TensorFlow", "Pandas", "Tkinter"],
     },
     {
+        id: "password-generator",
         title: "Générateur de mots de passe",
         description: "Un petit outil pratique pour créer des mots de passe sécurisés.",
         link: "https://passgen.killianfievet.com",
@@ -23,8 +26,10 @@ export const projects = [
         isFinite: true,
         category: "Outils",
         year: 2023,
+        stack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     },
     {
+        id: "shakello",
         title: "Shakello - Recettes de Cocktails",
         description: "Site web de recettes de cocktails artisanaux avec plus de 55 créations.",
         link: "https://www.shakello.com",
@@ -34,8 +39,10 @@ export const projects = [
         isFinite: true,
         category: "Web",
         year: 2026,
+        stack: ["Next.js", "Tailwind CSS", "TypeScript", "Node.js", "PostgreSQL"],
     },
     {
+        id: "ndi-2025",
         title: "Nuit de l'info 2025 - Projet NDI",
         description: "Projet collaboratif réalisé lors de la Nuit de l'info 2025.",
         link: "https://404-not-found-krir-nuitdelinfo.great-site.net",
@@ -45,5 +52,6 @@ export const projects = [
         isFinite: true,
         category: "Web",
         year: 2025,
+        stack: ["PHP", "CSS", "JavaScript", "SQL"],
     },
 ];

@@ -81,22 +81,22 @@ export default function ProjectsPage() {
                     className="flex flex-col md:flex-row flex-wrap items-center justify-center gap-6 mb-12 p-10 card-glass rounded-[3.5rem]"
                 >
                     {/* Search Field */}
-                    <div className="relative w-full md:w-96 group">
-                        <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within:text-secondary transition-colors" size={20} />
-                        <input
-                            type="text"
-                            placeholder="RECHERCHER UN PROJET..."
-                            className="w-full bg-background/50 border border-white/5 text-foreground pl-14 pr-8 py-5 rounded-full focus:outline-none focus:ring-2 focus:ring-secondary/40 focus:border-secondary/40 transition-all placeholder:text-muted-foreground/30 text-xs font-black uppercase tracking-widest"
-                            value={search}
-                            onChange={(e) => setSearch(e.target.value)}
-                        />
-                    </div>
+                            <div className="relative w-full md:w-96 group">
+                                <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within:text-secondary transition-colors" size={20} />
+                                <input
+                                    type="text"
+                                    placeholder="RECHERCHER UN PROJET..."
+                                    className="w-full bg-foreground/5 border border-foreground/10 text-foreground pl-14 pr-8 py-5 rounded-full focus:outline-none focus:ring-2 focus:ring-secondary/40 focus:border-secondary/40 transition-all placeholder:text-muted-foreground/30 text-xs font-black uppercase tracking-widest"
+                                    value={search}
+                                    onChange={(e) => setSearch(e.target.value)}
+                                />
+                            </div>
 
                     <div className="flex gap-4 w-full md:w-auto">
                         <select
                             value={filter}
                             onChange={(e) => setFilter(e.target.value)}
-                            className="flex-1 md:w-48 bg-background/50 border border-white/5 text-foreground px-8 py-5 rounded-full focus:outline-none focus:ring-2 focus:ring-secondary/40 transition-all cursor-pointer text-xs font-black uppercase tracking-widest appearance-none text-center"
+                            className="flex-1 md:w-48 bg-foreground/5 border border-foreground/10 text-foreground px-8 py-5 rounded-full focus:outline-none focus:ring-2 focus:ring-secondary/40 transition-all cursor-pointer text-xs font-black uppercase tracking-widest appearance-none text-center"
                         >
                             <option value="all">Statuts</option>
                             <option value="progress">En cours</option>
@@ -106,7 +106,7 @@ export default function ProjectsPage() {
                         <select
                             value={sort}
                             onChange={(e) => setSort(e.target.value)}
-                            className="flex-1 md:w-48 bg-background/50 border border-white/5 text-foreground px-8 py-5 rounded-full focus:outline-none focus:ring-2 focus:ring-secondary/40 transition-all cursor-pointer text-xs font-black uppercase tracking-widest appearance-none text-center"
+                            className="flex-1 md:w-48 bg-foreground/5 border border-foreground/10 text-foreground px-8 py-5 rounded-full focus:outline-none focus:ring-2 focus:ring-secondary/40 transition-all cursor-pointer text-xs font-black uppercase tracking-widest appearance-none text-center"
                         >
                             <option value="recent">Plus récents</option>
                             <option value="old">Plus anciens</option>
@@ -129,7 +129,7 @@ export default function ProjectsPage() {
                             onClick={() => setActiveCategory(cat)}
                             className={`px-10 py-4 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-500 border-2 ${activeCategory === cat
                                 ? "bg-secondary border-secondary text-background shadow-[0_0_30px_rgba(217,119,6,0.3)] scale-110"
-                                : "bg-white/5 border-white/5 text-muted-foreground hover:border-secondary/50 hover:text-foreground hover:bg-white/10"
+                                : "bg-foreground/5 border-foreground/5 text-muted-foreground hover:border-secondary/50 hover:text-foreground hover:bg-foreground/10"
                                 }`}
                         >
                             {cat}
@@ -173,9 +173,9 @@ export default function ProjectsPage() {
                                             {/* Badge Statut */}
                                             <div className="absolute top-6 right-6">
                                                 {project.isFinite ? (
-                                                    <span className="bg-green-500/20 text-green-400 text-[10px] uppercase font-black px-4 py-1.5 rounded-full backdrop-blur-xl border border-green-500/30">Terminé</span>
+                                                    <span className="bg-green-500/20 text-green-600 dark:text-green-400 text-[10px] uppercase font-black px-4 py-1.5 rounded-full backdrop-blur-xl border border-green-500/30">Terminé</span>
                                                 ) : (
-                                                    <span className="bg-amber-500/20 text-amber-400 text-[10px] uppercase font-black px-4 py-1.5 rounded-full backdrop-blur-xl border border-amber-500/30">En cours</span>
+                                                    <span className="bg-amber-500/20 text-amber-600 dark:text-amber-400 text-[10px] uppercase font-black px-4 py-1.5 rounded-full backdrop-blur-xl border border-amber-500/30">En cours</span>
                                                 )}
                                             </div>
                                         </div>

@@ -100,15 +100,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="antialiased hide-cursor">
         <GoogleTagManager gtmId="GTM-WRBS4SJ3" />
         <noscript>
-          <iframe 
+          <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-WRBS4SJ3"
-            height="0" 
-            width="0" 
+            height="0"
+            width="0"
             style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
         {/* Ajout du provider global */}
-        <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {/* <CustomCursor /> */}
           <AuraBackground />
           <Navbar />

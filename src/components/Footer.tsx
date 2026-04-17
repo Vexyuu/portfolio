@@ -27,7 +27,7 @@ export default function Footer() {
             href: "https://github.com/Vexyuu", 
             label: "GitHub", 
             icon: <Github size={18} />,
-            color: "hover:text-white"
+            color: "hover:text-foreground"
         },
         { 
             href: "mailto:killianfievetpro@gmail.com", 
@@ -38,7 +38,7 @@ export default function Footer() {
     ];
 
     return (
-        <footer className="w-full py-20 bg-background border-t border-white/5 relative z-10 overflow-hidden">
+        <footer className="w-full py-20 bg-background border-t border-foreground/5 relative z-10 overflow-hidden">
             {/* Background Decor */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none overflow-hidden opacity-20">
                 <div className="absolute -top-24 left-1/4 w-96 h-96 bg-primary/10 blur-[120px] rounded-full" />
@@ -56,7 +56,7 @@ export default function Footer() {
                             viewport={{ once: true }}
                             className="space-y-4"
                         >
-                            <h2 className="text-3xl font-black tracking-tighter text-white">
+                            <h2 className="text-3xl font-black tracking-tighter text-foreground">
                                 KILLIAN <span className="text-secondary">F.</span>
                             </h2>
                             <p className="text-muted-foreground text-lg max-w-sm mx-auto md:mx-0 font-medium">
@@ -71,13 +71,13 @@ export default function Footer() {
 
                     {/* Quick Navigation */}
                     <div className="md:col-span-3 text-center md:text-left">
-                        <h3 className="text-xs uppercase tracking-[0.3em] font-black text-white/30 mb-8">Navigation</h3>
+                        <h3 className="text-xs uppercase tracking-[0.3em] font-black text-foreground/30 mb-8">Navigation</h3>
                         <ul className="space-y-4">
                             {navLinks.map((link) => (
                                 <li key={link.label}>
                                     <Link 
                                         href={link.href}
-                                        className="text-sm font-bold text-muted-foreground hover:text-white transition-colors flex items-center justify-center md:justify-start gap-2 group"
+                                        className="text-sm font-bold text-muted-foreground hover:text-foreground transition-colors flex items-center justify-center md:justify-start gap-2 group"
                                     >
                                         <span className="w-0 group-hover:w-2 h-[1px] bg-secondary transition-all" />
                                         {link.label}
@@ -89,7 +89,7 @@ export default function Footer() {
 
                     {/* Socials Section */}
                     <div className="md:col-span-4 text-center md:text-left">
-                        <h3 className="text-xs uppercase tracking-[0.3em] font-black text-white/30 mb-8">Réseaux Sociaux</h3>
+                        <h3 className="text-xs uppercase tracking-[0.3em] font-black text-foreground/30 mb-8">Réseaux Sociaux</h3>
                         <div className="flex flex-col gap-4">
                             {socialLinks.map((social) => (
                                 <a
@@ -99,7 +99,7 @@ export default function Footer() {
                                     rel="noopener noreferrer"
                                     className={`flex items-center justify-center md:justify-start gap-3 text-sm font-bold text-muted-foreground transition-all ${social.color} group`}
                                 >
-                                    <span className="p-2 bg-white/5 rounded-lg border border-white/10 group-hover:border-current/30 transition-colors">
+                                    <span className="p-2 bg-foreground/5 rounded-lg border border-foreground/10 group-hover:border-current/30 transition-colors">
                                         {social.icon}
                                     </span>
                                     <span>{social.label}</span>
@@ -111,7 +111,7 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div className="pt-8 border-t border-foreground/5 flex flex-col md:flex-row justify-between items-center gap-6">
                     <p className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/30">
                         © {currentYear} <span className="text-secondary/60">KILLIAN F.</span> - SIGNATURE EXPERIENCE
                     </p>
@@ -119,7 +119,7 @@ export default function Footer() {
                     <div className="flex gap-6">
                         <button 
                             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                            className="text-[10px] uppercase tracking-widest font-black text-white/20 hover:text-secondary transition-colors"
+                            className="text-[10px] uppercase tracking-widest font-black text-foreground/20 hover:text-secondary transition-colors"
                         >
                             Retour en haut ↑
                         </button>
@@ -129,3 +129,4 @@ export default function Footer() {
         </footer>
     );
 }
+

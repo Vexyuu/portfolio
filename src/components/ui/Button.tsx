@@ -56,12 +56,12 @@ export default function Button({
     const baseStyles = "relative inline-flex items-center justify-center gap-3 rounded-2xl font-black transition-all cursor-pointer overflow-hidden active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none group uppercase tracking-[0.15em] select-none";
 
     const variants = {
-        primary: "bg-foreground text-background border border-foreground/10 hover:shadow-[0_20px_40px_rgba(255,255,255,0.1)]",
+        primary: "bg-foreground text-background border border-foreground/10 hover:shadow-[0_20px_40px_rgba(var(--color-foreground),0.1)]",
         secondary: "bg-secondary text-background border border-secondary/20 shadow-[0_10px_30px_rgba(217,119,6,0.2)] hover:shadow-[0_20px_50px_rgba(217,119,6,0.4)]",
-        outline: "border border-white/10 bg-white/5 backdrop-blur-md text-white/80 hover:text-white hover:border-white/30",
-        glass: "bg-white/5 backdrop-blur-2xl border border-white/10 text-white/90 hover:bg-white/10 hover:border-white/20 shadow-2xl",
-        ghost: "bg-transparent hover:bg-white/5 text-white/60 hover:text-white",
-        white: "bg-white text-black border border-white/20 hover:bg-foreground hover:text-background",
+        outline: "border border-foreground/10 bg-foreground/5 backdrop-blur-md text-foreground/80 hover:text-foreground hover:border-foreground/30",
+        glass: "bg-foreground/5 backdrop-blur-2xl border border-foreground/10 text-foreground/90 hover:bg-foreground/10 hover:border-foreground/20 shadow-2xl",
+        ghost: "bg-transparent hover:bg-foreground/5 text-foreground/60 hover:text-foreground",
+        white: "bg-foreground text-background border border-foreground/20 hover:opacity-90",
     };
 
     const sizes = {
@@ -78,7 +78,7 @@ export default function Button({
                 className="absolute inset-0 z-0 pointer-events-none transition-opacity duration-500"
                 style={{
                     opacity: isHovered ? 1 : 0,
-                    background: `radial-gradient(circle 100px at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,255,255,0.12), transparent)`,
+                    background: `radial-gradient(circle 100px at ${mousePosition.x}px ${mousePosition.y}px, hsl(var(--color-foreground) / 0.08), transparent)`,
                 }}
             />
 
@@ -94,7 +94,7 @@ export default function Button({
                         ease: "linear",
                         repeatDelay: 3
                     }}
-                    className="absolute inset-0 w-1/3 h-full bg-gradient-to-r from-transparent via-white/[0.05] to-transparent skew-x-[-30deg]"
+                    className="absolute inset-0 w-1/3 h-full bg-gradient-to-r from-transparent via-foreground/[0.03] to-transparent skew-x-[-30deg]"
                 />
             </div>
 
