@@ -80,7 +80,7 @@ export default function Hero() {
                     <Button
                         variant="glass"
                         size="lg"
-                        href="#contact"
+                        href="/#contact"
                         icon={<FaEnvelope />}
                     >
                         Contact
