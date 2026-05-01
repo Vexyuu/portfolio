@@ -33,9 +33,33 @@ export async function sendEmail(formData: { name: string; email: string; message
     });
 
     if (error) {
-      console.error("Resend Error:", error);
+      console.error("Resend Error (Admin):", error);
       return { success: false, error: error.message };
     }
+
+    // 2. Envoyer un accusé de réception à l'expéditeur
+    await resend.emails.send({
+      from: 'Killian Fievet <contact@killianfievet.com>',
+      to: [email],
+      subject: 'Merci pour votre message !',
+      html: `
+        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 30px; background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 12px; color: #1a1a1a;">
+          <h1 style="font-size: 24px; font-weight: 700; margin-bottom: 20px; color: #000;">Bonjour ${name},</h1>
+          <p style="font-size: 16px; line-height: 1.6; color: #4a4a4a;">
+            Merci de m'avoir contacté ! J'ai bien reçu votre message et je l'étudierai avec attention.
+          </p>
+          <p style="font-size: 16px; line-height: 1.6; color: #4a4a4a;">
+            Je reviendrai vers vous dès que possible.
+          </p>
+          <hr style="border: 0; border-top: 1px solid #eeeeee; margin: 30px 0;" />
+          <p style="font-size: 14px; color: #888888; margin-bottom: 5px;">Cordialement,</p>
+          <p style="font-size: 16px; font-weight: 600; color: #000; margin-top: 0;">Killian Fievet</p>
+          <div style="margin-top: 20px;">
+            <a href="https://killianfievet.com" style="font-size: 14px; color: #3b82f6; text-decoration: none;">killianfievet.com</a>
+          </div>
+        </div>
+      `,
+    });
 
     return { success: true };
   } catch (error) {
