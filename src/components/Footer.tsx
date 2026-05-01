@@ -10,28 +10,28 @@ export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     const navLinks = [
-        { href: "/", label: "Accueil" },
+        { href: "/#about", label: "À propos" },
         { href: "/career", label: "Parcours" },
         { href: "/projects", label: "Projets" },
         { href: "/#contact", label: "Contact" },
     ];
 
     const socialLinks = [
-        { 
-            href: "https://www.linkedin.com/in/killian-fievet-4a3788287", 
-            label: "LinkedIn", 
+        {
+            href: "https://www.linkedin.com/in/killian-fievet-4a3788287",
+            label: "LinkedIn",
             icon: <Linkedin size={18} />,
             color: "hover:text-blue-400"
         },
-        { 
-            href: "https://github.com/Vexyuu", 
-            label: "GitHub", 
+        {
+            href: "https://github.com/Vexyuu",
+            label: "GitHub",
             icon: <Github size={18} />,
             color: "hover:text-foreground"
         },
-        { 
-            href: "mailto:killianfievetpro@gmail.com", 
-            label: "Email", 
+        {
+            href: "mailto:killianfievetpro@gmail.com",
+            label: "Email",
             icon: <Mail size={18} />,
             color: "hover:text-secondary"
         },
@@ -39,18 +39,18 @@ export default function Footer() {
 
     return (
         <footer className="w-full py-20 bg-background border-t border-foreground/5 relative z-10 overflow-hidden">
-            {/* Background Decor */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none overflow-hidden opacity-20">
+            {/* Background Decor Removed */}
+            {/* <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none overflow-hidden opacity-20">
                 <div className="absolute -top-24 left-1/4 w-96 h-96 bg-primary/10 blur-[120px] rounded-full" />
                 <div className="absolute -bottom-24 right-1/4 w-96 h-96 bg-secondary/10 blur-[120px] rounded-full" />
-            </div>
+            </div> */}
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
-                    
+
                     {/* Brand & Support */}
                     <div className="md:col-span-5 space-y-6 text-center md:text-left">
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -63,7 +63,7 @@ export default function Footer() {
                                 Concevoir des expériences numériques d{"'"}exception.
                             </p>
                         </motion.div>
-                        
+
                         <div className="pt-4 flex justify-center md:justify-start">
                             <SupportButton />
                         </div>
@@ -75,7 +75,7 @@ export default function Footer() {
                         <ul className="space-y-4">
                             {navLinks.map((link) => (
                                 <li key={link.label}>
-                                    <Link 
+                                    <Link
                                         href={link.href}
                                         className="text-sm font-bold text-muted-foreground hover:text-foreground transition-colors flex items-center justify-center md:justify-start gap-2 group"
                                     >
@@ -113,11 +113,11 @@ export default function Footer() {
                 {/* Bottom Bar */}
                 <div className="pt-8 border-t border-foreground/5 flex flex-col md:flex-row justify-between items-center gap-6">
                     <p className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/30">
-                        © {currentYear} <span className="text-secondary/60">KILLIAN F.</span> - SIGNATURE EXPERIENCE
+                        © {currentYear} <span className="text-secondary/60">KILLIAN F.</span> All rights reserved
                     </p>
-                    
+
                     <div className="flex gap-6">
-                        <button 
+                        <button
                             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                             className="text-[10px] uppercase tracking-widest font-black text-foreground/20 hover:text-secondary transition-colors"
                         >

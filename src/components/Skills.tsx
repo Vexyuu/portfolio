@@ -13,9 +13,9 @@ export default function Skills() {
 
     return (
         <section id="skills" className="py-32 px-6 bg-background text-foreground relative overflow-hidden w-full flex flex-col items-center">
-            {/* Background Glows */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/5 blur-[120px] rounded-full pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+            {/* Background Glows Removed */}
+            {/* <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/5 blur-[120px] rounded-full pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" /> */}
 
             <motion.div
                 initial={{ opacity: 0 }}

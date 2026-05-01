@@ -1,48 +1,51 @@
 /* src/app/globals.css */
 @import "tailwindcss";
 
-:root {
-  /* Light Theme - Soft Editorial */
-  --color-background: 210 40% 98%;   /* Soft White/Gray #f8fafc */
-  --color-foreground: 222 47% 4%;    /* Deep Midnight #020617 */
-  
-  --color-primary: 262 83% 58%;      /* Aurora Violet #8b5cf6 */
-  --color-primary-glow: 262 83% 58% / 0.2;
-  
-  --color-secondary: 45 93% 40%;     /* Rich Gold #b45309 - Slightly darker for contrast */
-  --color-secondary-glow: 45 93% 40% / 0.15;
-  
-  --color-accent: 316 70% 45%;       /* Magenta Burst */
-  --color-muted: 210 40% 94%;
-  --color-muted-foreground: 215 16% 40%;
+@theme {
+  /* Mappage des couleurs pour Tailwind v4 */
+  --color-royal: var(--color-royal);
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+  --color-muted: var(--color-muted);
+  --color-muted-foreground: var(--color-muted-foreground);
+}
 
-  /* Signature Textures - Light */
-  --card-bg: 210 40% 100% / 0.7;
-  --card-border: 210 40% 88% / 0.8;
-  --shadow-color: 222 47% 4% / 0.05;
-  --glass-reflection: 222 47% 4% / 0.02;
+:root {
+  /* L'Étudiant Tech - Minimalist Light Theme */
+  --color-background: #f8f9fa;
+  --color-foreground: #191c1d;
+  
+  --color-primary: #4f46e5;
+  --color-secondary: #3525cd;
+  --color-royal: #3525cd;
+  
+  --color-muted: #edeeef;
+  --color-muted-foreground: #71717a;
+  
+  /* Textures */
+  --card-bg: #ffffff;
+  --card-border: #e4e4e7;
+  --shadow-color: rgba(0, 0, 0, 0.03);
 }
 
 .dark {
-  /* Dark Theme - Midnight Aurora */
-  --color-background: 222 47% 4%;    /* Deep Midnight #020617 */
-  --color-foreground: 210 40% 98%;   /* Pure Off-white */
+  /* Minimalist Dark Theme */
+  --color-background: #030712;
+  --color-foreground: #f8f9fa;
   
-  --color-primary: 262 83% 58%;      /* Aurora Violet #8b5cf6 */
-  --color-primary-glow: 262 83% 58% / 0.3;
+  --color-primary: #818cf8;
+  --color-secondary: #4f46e5;
+  --color-royal: #6366f1; /* Un peu plus clair pour le mode sombre */
   
-  --color-secondary: 45 93% 47%;     /* Luxury Gold #d97706 */
-  --color-secondary-glow: 45 93% 47% / 0.2;
-  
-  --color-accent: 316 70% 50%;       /* Magenta Burst (Subtle) */
-  --color-muted: 215 25% 27%;
-  --color-muted-foreground: 215 16% 56%;
+  --color-muted: #1f2937;
+  --color-muted-foreground: #a1a1aa;
 
-  /* Signature Textures - Dark */
-  --card-bg: 222 47% 10% / 0.4;
-  --card-border: 222 47% 20% / 0.5;
-  --shadow-color: 0 0% 0% / 0.8;
-  --glass-reflection: 255 255% 255% / 0.03;
+  /* Textures */
+  --card-bg: #09090b;
+  --card-border: #27272a;
+  --shadow-color: rgba(0, 0, 0, 0.5);
 }
 
 * {
@@ -50,67 +53,42 @@
   scroll-behavior: smooth;
 }
 
-/* Pour le curseur personnalisé */
-/* .hide-cursor, .hide-cursor * {
-  cursor: none !important;
-} */
-
 body {
-  background-color: hsl(var(--color-background));
-  color: hsl(var(--color-foreground));
+  background-color: var(--color-background);
+  color: var(--color-foreground);
   overflow-x: hidden;
-  font-family: var(--font-inter);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.75;
   -webkit-font-smoothing: antialiased;
   position: relative;
 }
 
-/* Editorial Typography Signature */
+/* Minimalist Typography Hierarchy */
 h1, h2, h3, h4 {
-  letter-spacing: -0.05em;
-  line-height: 0.9;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-weight: 700;
+  color: var(--color-foreground);
 }
 
-/* High-End Grain Overlay */
-.grain-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
-/* Signature Text Gradient */
+/* Subtle Text Gradient */
 .bg-mask-text {
   background: linear-gradient(
-    135deg, 
-    hsl(var(--color-foreground)) 0%, 
-    hsl(var(--color-muted-foreground)) 40%, 
-    hsl(var(--color-primary)) 70%, 
-    hsl(var(--color-secondary)) 100%
+    to bottom right,
+    var(--color-foreground) 30%,
+    var(--color-primary) 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-size: 200% auto;
-  animation: gradientFlow 8s ease infinite;
-}
-
-@keyframes gradientFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 /* Premium Glassmorphism */
 .card-glass {
-  background: hsl(var(--card-bg));
+  background: var(--card-bg);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid hsl(var(--card-border));
+  border: 1px solid var(--card-border);
   box-shadow: 0 25px 50px -12px var(--shadow-color);
   transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -130,7 +108,7 @@ h1, h2, h3, h4 {
     135deg,
     transparent 0%,
     transparent 45%,
-    var(--glass-reflection) 50%,
+    rgba(255, 255, 255, 0.05) 50%,
     transparent 55%,
     transparent 100%
   );
@@ -152,14 +130,14 @@ h1, h2, h3, h4 {
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(var(--color-background));
+  background: var(--color-background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--color-muted));
+  background: var(--color-muted);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--color-primary));
+  background: var(--color-primary);
 }

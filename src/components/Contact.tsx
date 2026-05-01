@@ -59,8 +59,10 @@ export default function Contact() {
 
     return (
         <section id="contact" className="py-32 px-6 bg-background text-foreground relative overflow-hidden">
-             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/5 blur-[120px] rounded-full pointer-events-none" />
-             
+            {/* Section Aura Removed */}
+            {/* <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/5 blur-[120px] rounded-full pointer-events-none" /> */}
+
+
             <div className="max-w-5xl mx-auto">
                 <div className="flex flex-col items-center text-center mb-16 gap-6">
                     <h2 className="text-xs uppercase tracking-[0.4em] font-black text-secondary px-6 py-2 bg-secondary/10 border border-secondary/20 rounded-full inline-block backdrop-blur-md">Contact</h2>
@@ -103,47 +105,47 @@ export default function Contact() {
                     {/* Formulaire */}
                     <div className="md:col-span-3">
                         <form onSubmit={handleSubmit} className="card-glass p-8 md:p-12 rounded-[2rem] grid gap-6">
-                    <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="Votre nom"
-                        className="p-4 rounded-xl bg-muted/5 border border-muted-foreground/20 text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
-                    />
-                    <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="Votre email"
-                        className="p-4 rounded-xl bg-muted/5 border border-muted-foreground/20 text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
-                    />
-                    <textarea
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        placeholder="Votre message"
-                        rows={5}
-                        className="p-4 rounded-xl bg-muted/5 border border-muted-foreground/20 text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all resize-none"
-                    />
-                    <Button
-                        type="submit"
-                        variant="primary"
-                        size="lg"
-                        className="w-full py-4"
-                        disabled={isSubmitting || isFormIncomplete}
-                        isLoading={isSubmitting}
-                    >
-                        Envoyer le message
-                    </Button>
-                    {responseMessage && (
-                        <p className={`mt-4 text-lg font-medium transition-opacity duration-500 ${responseMessage.includes("succès") ? "text-green-500" : "text-red-500"}`}>
-                            {responseMessage}
-                        </p>
-                    )}
-                </form>
-                </div>
+                            <input
+                                type="text"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                placeholder="Votre nom"
+                                className="p-4 rounded-xl bg-muted/5 border border-muted-foreground/20 text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
+                            />
+                            <input
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                placeholder="Votre email"
+                                className="p-4 rounded-xl bg-muted/5 border border-muted-foreground/20 text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all"
+                            />
+                            <textarea
+                                name="message"
+                                value={formData.message}
+                                onChange={handleChange}
+                                placeholder="Votre message"
+                                rows={5}
+                                className="p-4 rounded-xl bg-muted/5 border border-muted-foreground/20 text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all resize-none"
+                            />
+                            <Button
+                                type="submit"
+                                variant="primary"
+                                size="lg"
+                                className="w-full py-4"
+                                disabled={isSubmitting || isFormIncomplete}
+                                isLoading={isSubmitting}
+                            >
+                                Envoyer le message
+                            </Button>
+                            {responseMessage && (
+                                <p className={`mt-4 text-lg font-medium transition-opacity duration-500 ${responseMessage.includes("succès") ? "text-green-500" : "text-red-500"}`}>
+                                    {responseMessage}
+                                </p>
+                            )}
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>

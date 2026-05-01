@@ -68,7 +68,7 @@ export default function Hero() {
                     className="flex flex-wrap justify-center gap-6 mt-8"
                 >
                     <Button
-                        variant="secondary"
+                        variant="royal"
                         size="lg"
                         href="/data/CV_Alternance_Sorbonne_2026_FR.pdf"
                         target="_blank"

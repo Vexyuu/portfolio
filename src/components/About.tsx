@@ -8,7 +8,7 @@ import SpotlightCard from "./SpotlightCard";
 export default function About() {
     return (
         <section id="about" className="py-32 px-6 bg-background text-foreground overflow-hidden w-full flex flex-col items-center">
-            <motion.div 
+            <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
@@ -33,17 +33,17 @@ export default function About() {
                         <SpotlightCard className="p-6 card-glass card-shine rounded-2xl border-l-[3px] border-l-primary/70">
                             <FaGraduationCap className="text-3xl text-primary mb-4" />
                             <h3 className="font-bold text-lg mb-2 text-foreground">Développement</h3>
-                            <p className="text-sm text-muted-foreground">Frontend (React, Next) & Backend (Express, Symfony).</p>
+                            <p className="text-sm text-muted-foreground">Frontend (React, Next) & Backend (Node.js, Python).</p>
                         </SpotlightCard>
-                        <SpotlightCard className="p-6 card-glass card-shine rounded-2xl border-l-[3px] border-l-secondary/70">
-                            <FaNetworkWired className="text-3xl text-secondary mb-4" />
+                        <SpotlightCard className="p-6 card-glass card-shine rounded-2xl border-l-[3px] border-l-primary/70">
+                            <FaNetworkWired className="text-3xl text-primary mb-4" />
                             <h3 className="font-bold text-lg mb-2 text-foreground">Data & IA</h3>
-                            <p className="text-sm text-muted-foreground">Création d&apos;outils d&apos;intelligence artificielle (LLMs, RAG, NLP).</p>
+                            <p className="text-sm text-muted-foreground">Création d&apos;outils d&apos;intelligence artificielle.</p>
                         </SpotlightCard>
-                        <SpotlightCard className="p-6 card-glass card-shine rounded-2xl border-l-[3px] border-l-accent/70">
-                            <FaLightbulb className="text-3xl text-accent mb-4" />
+                        <SpotlightCard className="p-6 card-glass card-shine rounded-2xl border-l-[3px] border-l-primary/70">
+                            <FaLightbulb className="text-3xl text-primary mb-4" />
                             <h3 className="font-bold text-lg mb-2 text-foreground">Vision</h3>
-                            <p className="text-sm text-muted-foreground">Améliorer l&apos;UX/UI en alliant esthétique et performance brute.</p>
+                            <p className="text-sm text-muted-foreground">Améliorer l&apos;UX/UI en alliant esthétique et performance.</p>
                         </SpotlightCard>
                     </div>
                 </div>

@@ -131,9 +131,9 @@ export default function ProjectCard({ title, description, longDescription, objec
                             <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
                                 <Layout size={20} />
                             </div>
-                            <h2 className="text-lg font-black tracking-tight uppercase tracking-[0.1em]">Vision</h2>
+                            <h2 className="text-lg font-black tracking-[0.1em] uppercase">Vision</h2>
                         </div>
-                        <div className="space-y-8 text-foreground/80 text-lg leading-relaxed font-light">
+                        <div className="space-y-8 text-foreground/80 text-lg font-light leading-relaxed">
                             <p className="text-xl text-foreground font-medium border-l-4 border-primary pl-8 py-2">
                                 {description}
                             </p>
@@ -152,9 +152,9 @@ export default function ProjectCard({ title, description, longDescription, objec
                             <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary border border-secondary/20">
                                 <Target size={20} />
                             </div>
-                            <h2 className="text-lg font-black tracking-tight uppercase tracking-[0.1em]">Objectif</h2>
+                            <h2 className="text-lg font-black tracking-[0.1em] uppercase">Objectif</h2>
                         </div>
-                        <p className="text-foreground/70 text-lg leading-relaxed font-light max-w-3xl">
+                        <p className="text-foreground/70 text-lg font-light leading-relaxed max-w-3xl">
                             {objective}
                         </p>
                     </motion.div>
@@ -175,7 +175,7 @@ export default function ProjectCard({ title, description, longDescription, objec
                             <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent border border-accent/20">
                                 <Cpu size={20} />
                             </div>
-                            <h2 className="text-sm font-black tracking-tight uppercase">Technologies</h2>
+                            <h2 className="text-sm font-black tracking-[0.1em] uppercase">Technologies</h2>
                         </div>
                         <div className="flex flex-wrap gap-3 mb-8">
                             {stack.map((tech) => (

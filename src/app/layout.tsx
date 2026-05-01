@@ -2,7 +2,6 @@
 import "./globals.css";
 import Navbar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-import AuraBackground from "@/components/AuraBackground";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 import { BASE_URL } from "@/utils/env";
@@ -110,7 +109,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Ajout du provider global */}
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {/* <CustomCursor /> */}
-          <AuraBackground />
           <Navbar />
           <main className="w-full flex flex-col items-center relative z-10">
             {children}

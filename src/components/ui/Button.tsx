@@ -13,7 +13,7 @@ function cn(...inputs: ClassValue[]) {
 
 interface CommonProps {
     children?: ReactNode;
-    variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'glass' | 'white';
+    variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'glass' | 'white' | 'royal';
     size?: 'sm' | 'md' | 'lg' | 'xl';
     isLoading?: boolean;
     href?: string;
@@ -57,11 +57,12 @@ export default function Button({
 
     const variants = {
         primary: "bg-foreground text-background border border-foreground/10 hover:shadow-[0_20px_40px_rgba(var(--color-foreground),0.1)]",
-        secondary: "bg-secondary text-background border border-secondary/20 shadow-[0_10px_30px_rgba(217,119,6,0.2)] hover:shadow-[0_20px_50px_rgba(217,119,6,0.4)]",
+        secondary: "bg-secondary text-background border border-secondary/20 shadow-lg shadow-primary/20 hover:shadow-primary/40",
         outline: "border border-foreground/10 bg-foreground/5 backdrop-blur-md text-foreground/80 hover:text-foreground hover:border-foreground/30",
         glass: "bg-foreground/5 backdrop-blur-2xl border border-foreground/10 text-foreground/90 hover:bg-foreground/10 hover:border-foreground/20 shadow-2xl",
         ghost: "bg-transparent hover:bg-foreground/5 text-foreground/60 hover:text-foreground",
         white: "bg-foreground text-background border border-foreground/20 hover:opacity-90",
+        royal: "bg-royal text-white border border-royal/10 shadow-lg shadow-royal/20 hover:shadow-royal/40",
     };
 
     const sizes = {
@@ -115,17 +116,17 @@ export default function Button({
     );
 
     const combinedClassName = cn(
-        baseStyles, 
-        variants[variant], 
-        sizes[size], 
+        baseStyles,
+        variants[variant],
+        sizes[size],
         fullWidth && "w-full",
         className
     );
 
     if (href) {
         return (
-            <Link 
-                href={href} 
+            <Link
+                href={href}
                 target={target}
                 className={combinedClassName}
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any

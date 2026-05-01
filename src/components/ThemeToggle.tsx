@@ -20,31 +20,22 @@ export default function ThemeToggle() {
     ];
 
     return (
-        <div className="flex items-center bg-muted/50 backdrop-blur-md p-1 rounded-full border border-foreground/10 shadow-inner">
-            <div className="relative flex items-center gap-1">
-                {modes.map((mode) => (
-                    <button
-                        key={mode.id}
-                        onClick={() => setTheme(mode.id)}
-                        className={`relative z-10 p-2 rounded-full transition-colors duration-300 ${
-                            theme === mode.id 
-                                ? "text-foreground" 
-                                : "text-muted-foreground hover:text-foreground/70"
-                        }`}
-                        title={mode.label}
-                    >
-                        {mode.icon}
-                        
-                        {theme === mode.id && (
-                            <motion.div
-                                layoutId="activeTab"
-                                className="absolute inset-0 bg-background rounded-full shadow-sm border border-foreground/5 -z-10"
-                                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                            />
-                        )}
-                    </button>
-                ))}
-            </div>
-        </div>
+        <button
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-500 dark:text-gray-400"
+            aria-label="Toggle Theme"
+        >
+            <AnimatePresence mode="wait">
+                <motion.div
+                    key={theme}
+                    initial={{ y: -10, opacity: 0, rotate: -45 }}
+                    animate={{ y: 0, opacity: 1, rotate: 0 }}
+                    exit={{ y: 10, opacity: 0, rotate: 45 }}
+                    transition={{ duration: 0.2 }}
+                >
+                    {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+                </motion.div>
+            </AnimatePresence>
+        </button>
     );
 }

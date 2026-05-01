@@ -21,7 +21,7 @@ export default function Projects() {
                         <span className="bg-mask-text">PROJETS SÉLECTIONNÉS</span>
                     </h3>
                     <Link href="/projects" className="group flex items-center gap-3 text-secondary font-black text-xs uppercase tracking-[0.4em] hover:scale-105 transition-all duration-500 mt-4">
-                        Explorer tout l&apos;univers <span className="text-xl">→</span>
+                        Explorer tous les projets <span className="text-xl">→</span>
                     </Link>
                 </div>
 
