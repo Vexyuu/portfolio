@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import emailjs from "@emailjs/browser";
+import { sendEmail } from "@/app/actions";
 import Link from "next/link";
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import Button from "./ui/Button";
@@ -31,23 +31,22 @@ export default function Contact() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
+        setResponseMessage("");
 
         try {
-            const result = await emailjs.sendForm(
-                "service_q23dtpe",    // Service ID
-                "template_wbcsc7d",   // Template ID
-                e.target as HTMLFormElement, // Utilisation du formulaire dans la soumission
-                "8EGel7H_ryggwHh1h"     // User ID
-            );
-            console.log(result.text);
-            setResponseMessage("Message envoyé avec succès !");
+            const result = await sendEmail(formData);
+
+            if (result.success) {
+                setResponseMessage("Message envoyé avec succès !");
+                // Réinitialiser le formulaire
+                setFormData({ name: "", email: "", message: "" });
+            } else {
+                setResponseMessage(result.error || "Erreur lors de l'envoi du message.");
+            }
 
             setTimeout(() => {
                 setResponseMessage("");
             }, 5000); // 5 secondes
-
-            // Réinitialiser le formulaire
-            setFormData({ name: "", email: "", message: "" });
 
         } catch (error) {
             console.error("Erreur d'envoi", error);
